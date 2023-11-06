@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Wall-Net",
+    "\\Wall-Net\\Controllers",
+    "\\Wall-Net\\DataAccess",
+    "\\Wall-Net\\Models",
+    "\\Wall-Net\\obj",
+    "\\Wall-Net\\Repositories",
+    "\\Wall-Net\\Seeders",
+    "\\Wall-Net\\Services"
   ],
-  "SelectedNode": "\\C:\\Users\\estudiante\\Source\\Repos\\MSM-NET-T1",
   "PreviewInSolutionExplorer": false
 }

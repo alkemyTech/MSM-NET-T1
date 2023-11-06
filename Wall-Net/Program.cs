@@ -1,4 +1,5 @@
 using Wall_Net.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Wall_Net.Repositories;
 using Wall_Net.Services;
 
@@ -15,6 +16,10 @@ builder.Services.AddDbContext<Wall_Net_DbContext>();
 
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
 builder.Services.AddScoped<IRolesServices, RolesServices>();
+
+builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
+builder.Services.AddScoped<IAccountServices, AccountServices>();
+
 
 var app = builder.Build();
 
