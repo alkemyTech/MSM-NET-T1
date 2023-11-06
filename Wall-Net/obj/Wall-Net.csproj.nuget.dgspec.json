@@ -40,6 +40,7 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+<<<<<<< HEAD
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.24, )"
@@ -53,6 +54,11 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.24, )"
+=======
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+>>>>>>> 549320672e00e3f0116488caf7f84c60b51d855c
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -60,7 +66,11 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.24, )"
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
