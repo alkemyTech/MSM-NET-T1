@@ -17,7 +17,7 @@ namespace Wall_Net.Controllers
             _rolesServices=rolesServices;
         }
 
-        // GET: api/<RolesController>
+        // GET: api/Roles
         [HttpGet]
         public IActionResult Get()
         {
@@ -25,7 +25,7 @@ namespace Wall_Net.Controllers
             return Ok(roles);
         }
 
-        // GET api/<RolesController>/{id}
+        // GET api/Roles/{id}
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -37,23 +37,32 @@ namespace Wall_Net.Controllers
             return NotFound();
         }
 
-        // POST api/<RolesController>
+        // POST api/Roles
         [HttpPost]
         public IActionResult Post(Roles rol)
         {
-            _rolesServices.AddRoles(rol);
-            return CreatedAtAction(nameof(Get), new { Id = rol.Id }, rol);
+            if(rol.Name == "Admin" || rol.Name == "Regular")
+            {
+                _rolesServices.AddRoles(rol);
+                return CreatedAtAction(nameof(Get), new { Id = rol.Id }, rol);
+            }
+            return BadRequest();
         }
 
-        // PUT api/<RolesController>/5
+        // PUT api/Roles
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Roles updateRol)
+        public IActionResult Put(Roles updateRol)
         {
-            var rol = _rolesServices.GetRolesById(id);
+            var rol = _rolesServices.GetRolesById(updateRol.Id);
             if (rol == null)
             {
                 return NotFound();
             }
+            else if (updateRol.Name == "Admin" || updateRol.Name == "Regular")
+            {
+                return BadRequest();
+            }
+
             rol.Name = updateRol.Name;
             rol.Description = updateRol.Description;
 
@@ -61,17 +70,19 @@ namespace Wall_Net.Controllers
             return NoContent();
         }
 
-        // DELETE api/<RolesController>/5
+        // DELETE api/Roles/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var rol = _rolesServices.GetRolesById(id);
-            if(rol  != null)
+
+            if(rol  == null)
             {
-                _rolesServices.DeleteRoles(id);
-                return NoContent();
+                return NotFound();
             }
-            return NotFound();
+
+            _rolesServices.DeleteRoles(id);
+            return NoContent();
         }
     }
 }

@@ -24,21 +24,14 @@ namespace Wall_Net.Repositories
 
         public void Add(Roles Roles)
         {
-            if(Roles.Name == "Admin" || Roles.Name == "Regular") 
-            { 
                 _dbContext.roles.Add(Roles);
                 _dbContext.SaveChanges();
-            }
- 
         }
 
         public void Update(Roles Roles)
         {
-            if (Roles.Name == "Admin" || Roles.Name == "Regular")
-            {
                 _dbContext.roles.Update(Roles);
                 _dbContext.SaveChanges();
-            }
         }
 
         public void Delete(int id)

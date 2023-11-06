@@ -1,4 +1,6 @@
+using Wall_Net.DataAccess;
 using Wall_Net.Repositories;
+using Wall_Net.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<Wall_Net_DbContext>();
+
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+builder.Services.AddScoped<IRolesServices, RolesServices>();
 
 var app = builder.Build();
 
