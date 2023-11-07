@@ -50,7 +50,7 @@ namespace Wall_Net.Controllers
         }
 
         // PUT api/Roles
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> Put(Roles updateRol)
         {
             var rol = await _rolesServices.GetRolesById(updateRol.Id);
