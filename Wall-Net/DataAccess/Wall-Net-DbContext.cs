@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
+using System;
 using Wall_Net.Models;
+using Wall_Net.DataAccess.SeedsData;
 
 namespace Wall_Net.DataAccess
 {
@@ -15,8 +18,17 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=Pavi;Initial Catalog=WallNet-db;User ID=sa;Password=Root;Pooling=False;Trust Server Certificate=true");
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
         }
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Semillas de usuarios
+            modelBuilder.Entity<User>().HasData(UserSeed.GetUsers());
+
+           
+        }*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -39,7 +51,7 @@ namespace Wall_Net.DataAccess
                     Email = "pepe@email.com",
                     Password = "123456",
                     Points = 20,
-                    Rol_Id = 1,
+                    Rol_Id = 2,
                 }
                 );
             modelBuilder.Entity<Roles>().HasData(
