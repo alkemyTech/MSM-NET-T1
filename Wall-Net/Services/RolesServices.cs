@@ -12,29 +12,29 @@ namespace Wall_Net.Services
             _rolesRepository = rolesRepository;
         }
 
-        public void AddRoles(Roles rol)
+        public async Task AddRoles(Roles rol)
         {
-             _rolesRepository.Add(rol);
+             await _rolesRepository.Add(rol);
         }
 
-        public void DeleteRoles(int id)
+        public async Task DeleteRoles(int id)
         {
-            _rolesRepository.Delete(id);
+            await _rolesRepository.Delete(id);
         }
 
-        public IEnumerable<Roles> GetAllRoles()
+        public async Task<IEnumerable<Roles>> GetAllRoles()
         {
-            return _rolesRepository.GetAll();
+            return  await _rolesRepository.GetAll();
         }
 
-        public Roles GetRolesById(int id)
+        public async Task<Roles> GetRolesById(int id)
         {
-            return _rolesRepository.GetById(id);
+            return await _rolesRepository.GetById(id);
         }
 
-        public void UpdateRoles(Roles rol)
+        public Task UpdateRoles(Roles rol)
         {
-            _rolesRepository.Update(rol);
+            await _rolesRepository.Update(rol);
         }
     }
 }
