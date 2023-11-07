@@ -3,29 +3,35 @@ using Wall_Net.Models;
 
 namespace Wall_Net.DataAccess
 {
-    public class Wall_Net_DbContext : DbContext
+    public class WallNetDbContext : DbContext
     {
-        public Wall_Net_DbContext(DbContextOptions<Wall_Net_DbContext> options) : base(options)
+        public WallNetDbContext(DbContextOptions<WallNetDbContext> options) : base(options)
         {
-            FillUsers();
+           
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Roles> roles { get; set; }
+        public DbSet<Account> Accounts{ get; set; }
 
-        private void FillUsers()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (Users.Count() == 0)
-            {
-                Users.Add(new User
-                { 
+            optionsBuilder.UseSqlServer("Data Source=Pavi;Initial Catalog=WallNet-db;User ID=sa;Password=Root;Pooling=False;Trust Server Certificate=true");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
                     Id = 1,
-                    FirstName = "Leandro", 
+                    FirstName = "Leandro",
                     LastName = "Mumbach",
                     Email = "lean@email.com",
                     Password = "123456",
                     Points = 20,
                     Rol_Id = 1,
-                });
-                Users.Add(new User
+                },
+                new User
                 {
                     Id = 2,
                     FirstName = "Pepe",
@@ -34,9 +40,27 @@ namespace Wall_Net.DataAccess
                     Password = "123456",
                     Points = 20,
                     Rol_Id = 1,
-                });
-                this.SaveChanges();
-            }
+                }
+                );
+            modelBuilder.Entity<Roles>().HasData(
+                new Roles { Id = 1, Name = "Admin", Description = "Encargado de agregar y borrar usuarios" },
+                new Roles { Id = 2, Name = "Regular", Description = "Cliente nuevo" },
+                new Roles { Id = 3, Name = "Admin", Description = "Administrador de las transacciones" },
+                new Roles { Id = 4, Name = "Regular", Description = "Cliente antiguo" }
+                );
+            modelBuilder.Entity<Account>().HasData(
+                new Account {Id=1, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=2, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=3, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=4, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=5, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=6, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=7, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
+                new Account {Id=9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1}
+            );
         }
+
+
     }
 }

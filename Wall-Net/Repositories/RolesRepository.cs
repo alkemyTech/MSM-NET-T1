@@ -5,9 +5,9 @@ namespace Wall_Net.Repositories
 {
     public class RolesRepository : IRolesRepository
     {
-        private readonly Wall_Net_DbContext _dbContext;
+        private readonly WallNetDbContext _dbContext;
 
-        public RolesRepository(Wall_Net_DbContext dbContext)
+        public RolesRepository(WallNetDbContext dbContext)
         {
             _dbContext = dbContext;
         }

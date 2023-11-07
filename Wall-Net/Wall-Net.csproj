@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.24" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.24">
       <PrivateAssets>all</PrivateAssets>
@@ -18,11 +17,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.24" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
-=======
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
->>>>>>> 549320672e00e3f0116488caf7f84c60b51d855c
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 

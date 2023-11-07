@@ -5,9 +5,9 @@ namespace Wall_Net.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly Wall_Net_DbContext _dbcontext;
+        private readonly WallNetDbContext _dbcontext;
 
-        public UserRepository(Wall_Net_DbContext dbcontext)
+        public UserRepository(WallNetDbContext dbcontext)
         {
             _dbcontext = dbcontext;
         }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj": {}
+    "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj": {
+    "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
+        "projectUniqueName": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
         "projectName": "Wall-Net",
-        "projectPath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
-        "packagesPath": "C:\\Users\\lean2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\obj\\",
+        "projectPath": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
+        "packagesPath": "C:\\Users\\leito\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lean2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,25 +45,19 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-<<<<<<< HEAD
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.24, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.13, )"
+              "version": "[6.0.24, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.24, )"
-=======
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[7.0.13, )"
->>>>>>> 549320672e00e3f0116488caf7f84c60b51d855c
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -66,11 +65,7 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.13, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
-              "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[6.0.24, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -100,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

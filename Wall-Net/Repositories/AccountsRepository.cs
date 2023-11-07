@@ -17,7 +17,7 @@ namespace Wall_Net.Repositories
         }
         public async Task<Account> GetAccountById(int id) 
         {
-            return _dbContext.Accounts.FirstOrDefault(a => a.id == id);
+            return _dbContext.Accounts.FirstOrDefault(a => a.Id == id);
         }
         public async Task InsertAccount(Account account)
         {
@@ -31,7 +31,7 @@ namespace Wall_Net.Repositories
         }
         public async Task DeleteAccount(int id)
         {
-            var account = await _dbContext.Accounts.FirstOrDefaultAsync(p => p.id == id);
+            var account = await _dbContext.Accounts.FirstOrDefaultAsync(p => p.Id == id);
             if (account != null)
             {
                 _dbContext.Accounts.Remove(account);
