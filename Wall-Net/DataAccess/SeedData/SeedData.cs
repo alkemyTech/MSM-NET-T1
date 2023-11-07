@@ -1,17 +1,23 @@
-﻿using Wall_Net.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Wall_Net.Models;
 
 namespace Wall_Net.DataAccess.SeedData
 {
     public class SeedData
     {
-        public static List<Roles> GetRoles()
+        public static List<Account> SeedsAcounts()
         {
-            return new List<Roles>
+            return new List<Account>
             {
-                new Roles{Name="Admin", Description="Encargado de agregar y borrar usuarios"},
-                new Roles{Name="Regular", Description="Cliente nuevo"},
-                new Roles{Name="Admin", Description="Administrador de las transacciones"},
-                new Roles{Name="Regular", Description="Cliente antiguo"}
+                new Account { Id = 1, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 2, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 3, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 4, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 5, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 6, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 7, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
+                new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 }
             };
         }
     }
