@@ -32,7 +32,11 @@ namespace Wall_Net.Services
             return _rolesRepository.GetById(id);
         }
 
+<<<<<<< HEAD
         public void UpdateRoles(Roles rol)
+=======
+        public async Task UpdateRoles(Roles rol)
+>>>>>>> Agrega FixedTermDeposit
         {
             _rolesRepository.Update(rol);
         }

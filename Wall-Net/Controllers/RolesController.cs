@@ -50,8 +50,13 @@ namespace Wall_Net.Controllers
         }
 
         // PUT api/Roles
+<<<<<<< HEAD
         [HttpPut("{id}")]
         public IActionResult Put(Roles updateRol)
+=======
+        [HttpPut]
+        public async Task<IActionResult> Put(Roles updateRol)
+>>>>>>> Agrega FixedTermDeposit
         {
             var rol = _rolesServices.GetRolesById(updateRol.Id);
             if (rol == null)

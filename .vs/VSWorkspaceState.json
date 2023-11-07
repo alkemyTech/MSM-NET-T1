@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< HEAD
     "\\Wall-Net",
     "\\Wall-Net\\Controllers",
     "\\Wall-Net\\DataAccess",
@@ -10,5 +11,10 @@
     "\\Wall-Net\\Seeders",
     "\\Wall-Net\\Services"
   ],
+=======
+    "\\Wall-Net"
+  ],
+  "SelectedNode": "\\Wall-Net\\Wall-Net.sln",
+>>>>>>> Agrega FixedTermDeposit
   "PreviewInSolutionExplorer": false
 }
