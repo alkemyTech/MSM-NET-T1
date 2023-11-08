@@ -12,33 +12,37 @@ namespace Wall_Net.Services
             _rolesRepository = rolesRepository;
         }
 
-        public void AddRoles(Roles rol)
+        public async Task AddRoles(Roles rol)
         {
-             _rolesRepository.Add(rol);
+             await _rolesRepository.Add(rol);
         }
 
-        public void DeleteRoles(int id)
+        public async Task DeleteRoles(int id)
         {
-            _rolesRepository.Delete(id);
+            await _rolesRepository.Delete(id);
         }
 
-        public IEnumerable<Roles> GetAllRoles()
+        public async Task<IEnumerable<Roles>> GetAllRoles()
         {
-            return _rolesRepository.GetAll();
+            return  await _rolesRepository.GetAll();
         }
 
-        public Roles GetRolesById(int id)
+        public async Task<Roles> GetRolesById(int id)
         {
-            return _rolesRepository.GetById(id);
+            return await _rolesRepository.GetById(id);
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         public void UpdateRoles(Roles rol)
 =======
         public async Task UpdateRoles(Roles rol)
 >>>>>>> Agrega FixedTermDeposit
+=======
+        public async Task UpdateRoles(Roles rol)
+>>>>>>> 7ae75bb34c73a270af1cd199585890ab00a6d164
         {
-            _rolesRepository.Update(rol);
+            await _rolesRepository.Update(rol);
         }
     }
 }

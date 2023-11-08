@@ -4,10 +4,10 @@ namespace Wall_Net.Services
 {
     public interface IRolesServices
     {
-        Roles GetRolesById(int id);
-        IEnumerable<Roles> GetAllRoles();
-        void AddRoles(Roles rol);
-        void UpdateRoles(Roles rol);
-        void DeleteRoles(int id);
+        Task<Roles> GetRolesById(int id);
+        Task<IEnumerable<Roles>> GetAllRoles();
+        Task AddRoles(Roles rol);
+        Task UpdateRoles(Roles rol);
+        Task DeleteRoles(int id);
     }
 }
