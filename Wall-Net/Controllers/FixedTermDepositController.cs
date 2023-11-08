@@ -73,7 +73,7 @@ namespace Wall_Net.Controllers
             {
                 return NotFound();
             }
-            _FixedTernDepositServices.DeleteFixedTermDeposit(id);
+            await _FixedTernDepositServices.DeleteFixedTermDeposit(id);
             return NoContent();
         }
     }
