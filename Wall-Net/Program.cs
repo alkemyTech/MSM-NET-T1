@@ -11,7 +11,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddDbContext<WallNetDbContext>();
 
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
@@ -25,7 +24,6 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 
 builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
 builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
-
 
 var app = builder.Build();
 
