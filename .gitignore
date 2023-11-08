@@ -1,17 +1,10 @@
 ################################################################################
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Este archivo .gitignore ha sido creado automÃ¡ticamente por Microsoft(R) Visual Studio.
-=======
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
->>>>>>> Agrega .gitignore
-=======
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
->>>>>>> 7ae75bb34c73a270af1cd199585890ab00a6d164
+# Este archivo .gitignore ha sido creado automï¿½ticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
 /bin/Debug/net6.0
 /obj
+/Wall-Net/obj/Debug/net6.0
 /.vs/SDL-services/FileContentIndex
 /.vs
 /bin
@@ -21,12 +14,6 @@
 /SDL-TestProject/bin/
 /SDL-services/obj
 /SDL-TestProject/obj
-<<<<<<< HEAD
-<<<<<<< HEAD
 .suo
-=======
-.suo
->>>>>>> Agrega .gitignore
-=======
-.suo
->>>>>>> 7ae75bb34c73a270af1cd199585890ab00a6d164
+/Wall-Net/.vs
+/Wall-Net/obj
