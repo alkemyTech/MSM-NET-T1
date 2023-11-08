@@ -31,7 +31,6 @@ namespace Wall_Net.Services
         {
             return await _rolesRepository.GetById(id);
         }
-
         public async Task UpdateRoles(Roles rol)
         {
             await _rolesRepository.Update(rol);

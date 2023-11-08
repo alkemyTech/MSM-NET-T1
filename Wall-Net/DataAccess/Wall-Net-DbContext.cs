@@ -12,6 +12,7 @@ namespace Wall_Net.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Roles> roles { get; set; }
         public DbSet<Account> Accounts{ get; set; }
+        public DbSet<FixedTermDeposit> FixedTerms { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,6 +24,7 @@ namespace Wall_Net.DataAccess
             modelBuilder.Entity<User>().HasData(SeedData.SeedData.SeedsUsers());
             modelBuilder.Entity<Roles>().HasData(SeedData.SeedData.SeedsRoles());
             modelBuilder.Entity<Account>().HasData(SeedData.SeedData.SeedsAcounts());
+            modelBuilder.Entity<FixedTermDeposit>().HasData(SeedData.SeedData.SeedsFixed());
         }
 
 
