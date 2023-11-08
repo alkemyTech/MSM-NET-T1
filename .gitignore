@@ -1,5 +1,9 @@
 ################################################################################
+<<<<<<< HEAD
 # Este archivo .gitignore ha sido creado automÃ¡ticamente por Microsoft(R) Visual Studio.
+=======
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+>>>>>>> Agrega .gitignore
 ################################################################################
 
 /bin/Debug/net6.0
@@ -13,4 +17,8 @@
 /SDL-TestProject/bin/
 /SDL-services/obj
 /SDL-TestProject/obj
+<<<<<<< HEAD
 .suo
+=======
+.suo
+>>>>>>> Agrega .gitignore
