@@ -37,7 +37,7 @@ namespace Wall_Net.Repositories
 
         public async Task Delete(int id)
         {
-            var Roles = _dbContext.roles.FirstOrDefault(p => p.Id == id);
+            var Roles = await _dbContext.roles.FirstOrDefaultAsync(p => p.Id == id);
             if (Roles != null)
             {
                 _dbContext.roles.Remove(Roles);
