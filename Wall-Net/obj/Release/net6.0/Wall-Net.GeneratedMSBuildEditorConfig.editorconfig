@@ -11,6 +11,7 @@ build_property.RootNamespace = Wall_Net
 build_property.RootNamespace = Wall_Net
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\leito\OneDrive\Desktop\MSM-NET-T1\Wall-Net\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
@@ -30,4 +31,11 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\estudiante\Source\Repos\MSM-NET-T1\Wall-Net
 >>>>>>> Agrega .gitignore
+=======
+build_property.ProjectDir = C:\Users\estudiante\source\repos\MSM-NET-T1\Wall-Net\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\estudiante\source\repos\MSM-NET-T1\Wall-Net
+>>>>>>> parent of 7ae75bb (Agrega .gitignore)
 build_property._RazorSourceGeneratorDebug = 
