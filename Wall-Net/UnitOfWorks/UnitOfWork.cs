@@ -16,7 +16,7 @@ namespace Wall_Net.UnitOfWorks
 
         public IUserRepository UserRepository => _userRepository;
 
-        public void Commit()
+        public void Save()
         {
             _dbContext.SaveChanges();
         }

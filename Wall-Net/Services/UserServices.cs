@@ -38,7 +38,7 @@ namespace Wall_Net.Services
         }
         public void SaveChanges()
         {
-            _unitOfWork.Commit();
+            _unitOfWork.Save();
         }
     }
 }
