@@ -2369,23 +2369,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\leito\\.nuget\\packages\\": {},
+    "C:\\Users\\estudiante\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
+      "projectUniqueName": "C:\\Users\\estudiante\\Source\\Repos\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
       "projectName": "Wall-Net",
-      "projectPath": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
-      "packagesPath": "C:\\Users\\leito\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leito\\OneDrive\\Desktop\\MSM-NET-T1\\Wall-Net\\obj\\",
+      "projectPath": "C:\\Users\\estudiante\\Source\\Repos\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj",
+      "packagesPath": "C:\\Users\\estudiante\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\estudiante\\Source\\Repos\\MSM-NET-T1\\Wall-Net\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\leito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\estudiante\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
