@@ -60,14 +60,13 @@ namespace Wall_Net.Controllers
             }
             else if (updateRol.Name == "Admin" || updateRol.Name == "Regular")
             {
-                return BadRequest();
+                rol.Name = updateRol.Name;
+                rol.Description = updateRol.Description;
+
+                await _rolesServices.UpdateRoles(rol);
+                return NoContent();
             }
-
-            rol.Name = updateRol.Name;
-            rol.Description = updateRol.Description;
-
-            await _rolesServices.UpdateRoles(rol);
-            return NoContent();
+            return BadRequest();
         }
 
         // DELETE api/Roles/{id}
