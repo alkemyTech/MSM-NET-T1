@@ -15,7 +15,6 @@ namespace Wall_Net.DataAccess.SeedData
                 new Roles { Id = 4, Name = "Regular", Description = "Cliente antiguo" }
             };
         }
-<<<<<<< HEAD
         public static List<User> SeedsUsers()
         {
             return new List<User>
@@ -42,8 +41,6 @@ namespace Wall_Net.DataAccess.SeedData
                 new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 }
             };
         }
-=======
->>>>>>> 7ae75bb34c73a270af1cd199585890ab00a6d164
 
         public static List<FixedTermDeposit> SeedsFixed()
         {
