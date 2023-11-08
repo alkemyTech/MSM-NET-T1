@@ -20,16 +20,21 @@ namespace Wall_Net.DataAccess
         {
             optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
         }
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Semillas de usuarios
             modelBuilder.Entity<User>().HasData(UserSeed.GetUsers());
 
-           
-        }*/
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+            // Semillas de roles
+             modelBuilder.Entity<Roles>().HasData(RoleSeed.GetRoles());
+
+            // Semillas de cuentas
+            modelBuilder.Entity<Account>().HasData(AccountSeed.GetAccounts());
+        }
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().HasData(
@@ -71,7 +76,7 @@ namespace Wall_Net.DataAccess
                 new Account {Id=8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1},
                 new Account {Id=9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1}
             );
-        }
+        }*/
 
 
     }
