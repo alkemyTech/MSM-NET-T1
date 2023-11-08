@@ -1,0 +1,16 @@
+################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net6.0
+/obj
+/.vs/SDL-services/FileContentIndex
+/.vs
+/bin
+/Models/request
+/SDL-services/bin/
+/SDL-services/obj/
+/SDL-TestProject/bin/
+/SDL-services/obj
+/SDL-TestProject/obj
+.suo
