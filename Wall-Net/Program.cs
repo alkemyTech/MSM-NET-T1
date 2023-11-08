@@ -14,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
 builder.Services.AddScoped<IRolesServices, RolesServices>();
 
+builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
+builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

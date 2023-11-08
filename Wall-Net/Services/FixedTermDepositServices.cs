@@ -3,7 +3,7 @@ using Wall_Net.Repositories;
 
 namespace Wall_Net.Services
 {
-    public class FixedTermDepositServices
+    public class FixedTermDepositServices : IFixedTermDepositServices
     {
         private readonly IFixedTermDepositRepository _FixedTermDepositRepository;
 
