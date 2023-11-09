@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -16,6 +17,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             var users = _userServices.GetAllUsers();
