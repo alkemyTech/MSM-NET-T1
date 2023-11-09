@@ -6,23 +6,22 @@ namespace Wall_Net.Services
 {
     public class RolesServices : IRolesServices
     {
-        //private readonly IRolesRepository _rolesRepository;
         private readonly UnitOfWork _unitOfWork;
-        public RolesServices(/*IRolesRepository rolesRepository,*/ UnitOfWork unitOfWork)
+        public RolesServices( UnitOfWork unitOfWork )
         {
-            //_rolesRepository = rolesRepository;
             _unitOfWork = unitOfWork;
         }
 
         public async Task AddRoles(Roles rol)
         {
-            //await _rolesRepository.Add(rol);
-            await _unitOfWork.RolesRepository.Add(rol);
+            _unitOfWork.RolesRepository.Add(rol);
+            await _unitOfWork.Commit();
         }
 
         public async Task DeleteRoles(int id)
         {
-            await _unitOfWork.RolesRepository.Delete(id);
+            _unitOfWork.RolesRepository.Delete(id);
+            await _unitOfWork.Commit();
         }
 
         public async Task<IEnumerable<Roles>> GetAllRoles()
@@ -36,7 +35,12 @@ namespace Wall_Net.Services
         }
         public async Task UpdateRoles(Roles rol)
         {
-            await _unitOfWork.RolesRepository.Update(rol);
+            _unitOfWork.RolesRepository.Update(rol);
+            await _unitOfWork.Commit();
+        }
+        public async Task SaveChanges()
+        {
+            await _unitOfWork.Commit();
         }
     }
 }

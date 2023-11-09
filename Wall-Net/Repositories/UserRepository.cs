@@ -26,13 +26,13 @@ namespace Wall_Net.Repositories
         public async Task Add(User user)
         {
             _dbcontext.Users.Add(user);
-            await _dbcontext.SaveChangesAsync();
+            //await _dbcontext.SaveChangesAsync();
         }
 
         public async Task Update(User user)
         {
             _dbcontext.Users.Update(user);
-            await _dbcontext.SaveChangesAsync();
+           // await _dbcontext.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -41,7 +41,7 @@ namespace Wall_Net.Repositories
             if (user != null)
             {
                 _dbcontext.Users.Remove(user);
-                await _dbcontext.SaveChangesAsync();
+                //await _dbcontext.SaveChangesAsync();
             }
         }
     }

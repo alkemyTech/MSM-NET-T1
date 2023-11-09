@@ -26,13 +26,11 @@ namespace Wall_Net.Repositories
         public async Task Add(Roles Roles)
         {
                 _dbContext.roles.Add(Roles);
-                await _dbContext.SaveChangesAsync();
         }
 
         public async Task Update(Roles Roles)
         {
                 _dbContext.roles.Update(Roles);
-                await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -41,7 +39,6 @@ namespace Wall_Net.Repositories
             if (Roles != null)
             {
                 _dbContext.roles.Remove(Roles);
-                await _dbContext.SaveChangesAsync();
             }
         }
     }
