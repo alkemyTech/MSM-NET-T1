@@ -1,0 +1,12 @@
+################################################################################
+# Este archivo .gitignore ha sido creado autom�ticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net6.0
+/obj
+/Wall-Net/obj/Debug/net6.0
+/.vs
+/bin
+.suo
+/Wall-Net/.vs
+/Wall-Net/obj
