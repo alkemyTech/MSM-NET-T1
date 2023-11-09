@@ -46,6 +46,9 @@ builder.Services.AddScoped<IRolesServices, RolesServices>();
 builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
 builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
 
+builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
+builder.Services.AddScoped<IAccountServices, AccountServices>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,6 @@
-﻿using Wall_Net.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Wall_Net.DataAccess;
+using Wall_Net.Models;
 
 namespace Wall_Net.Repositories
 {

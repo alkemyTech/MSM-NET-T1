@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 
 namespace Wall_Net.Controllers
