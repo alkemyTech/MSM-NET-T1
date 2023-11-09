@@ -15,7 +15,7 @@ namespace Wall_Net.Repositories
         {
             return await _dbContext.Accounts.ToListAsync();
         }
-        public async Task<Account> GetAccountById(int id) 
+        public async Task<Account> GetAccountById(int id)
         {
             return _dbContext.Accounts.FirstOrDefault(a => a.Id == id);
         }

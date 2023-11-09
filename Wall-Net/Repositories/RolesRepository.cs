@@ -13,7 +13,7 @@ namespace Wall_Net.Repositories
             _dbContext = dbContext;
         }
 
-         public async Task<IEnumerable<Roles>> GetAll()
+        public async Task<IEnumerable<Roles>> GetAll()
         {
             return await _dbContext.roles.ToListAsync();
         }
@@ -25,12 +25,12 @@ namespace Wall_Net.Repositories
 
         public async Task Add(Roles Roles)
         {
-                _dbContext.roles.Add(Roles);
+            _dbContext.roles.Add(Roles);
         }
 
         public async Task Update(Roles Roles)
         {
-                _dbContext.roles.Update(Roles);
+            _dbContext.roles.Update(Roles);
         }
 
         public async Task Delete(int id)

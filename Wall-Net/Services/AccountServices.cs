@@ -29,20 +29,20 @@ namespace Wall_Net.Services
             await _unitOfWork.AccountsRepository.UpdateAccount(account);
             await _unitOfWork.Commit();
         }
-        public async Task Delete(int accountId) 
+        public async Task Delete(int accountId)
         {
             var account = _unitOfWork.AccountsRepository.GetAccountById(accountId);
-            if (account != null) 
+            if (account != null)
             {
                 await _unitOfWork.AccountsRepository.DeleteAccount(accountId);
                 await _unitOfWork.Commit();
             }
-           
+
         }
         public async Task SaveChanges()
         {
             await _unitOfWork.Commit();
         }
     }
-    
+
 }

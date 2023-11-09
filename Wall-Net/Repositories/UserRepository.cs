@@ -13,12 +13,12 @@ namespace Wall_Net.Repositories
             _dbcontext = dbcontext;
         }
 
-        public async Task <IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
             return await _dbcontext.Users.ToListAsync();
         }
 
-        public async Task <User> GetById(int id)
+        public async Task<User> GetById(int id)
         {
             return await _dbcontext.Users.FirstOrDefaultAsync(p => p.Id == id);
         }
@@ -32,7 +32,7 @@ namespace Wall_Net.Repositories
         public async Task Update(User user)
         {
             _dbcontext.Users.Update(user);
-           // await _dbcontext.SaveChangesAsync();
+            // await _dbcontext.SaveChangesAsync();
         }
 
         public async Task Delete(int id)

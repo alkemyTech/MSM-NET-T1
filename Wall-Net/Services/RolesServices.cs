@@ -7,7 +7,7 @@ namespace Wall_Net.Services
     public class RolesServices : IRolesServices
     {
         private readonly UnitOfWork _unitOfWork;
-        public RolesServices( UnitOfWork unitOfWork )
+        public RolesServices(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -26,7 +26,7 @@ namespace Wall_Net.Services
 
         public async Task<IEnumerable<Roles>> GetAllRoles()
         {
-            return  await _unitOfWork.RolesRepository.GetAll();
+            return await _unitOfWork.RolesRepository.GetAll();
         }
 
         public async Task<Roles> GetRolesById(int id)
