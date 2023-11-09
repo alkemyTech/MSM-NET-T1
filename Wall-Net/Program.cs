@@ -15,10 +15,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-<<<<<<< HEAD
-builder.Services.AddScoped<IRolesRepository, RolesRepository>();
-builder.Services.AddScoped<IRolesServices, RolesServices>();
-=======
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,7 +39,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
     .AddEnvironmentVariables();
 
 builder.Services.AddDbContext<WallNetDbContext>();
->>>>>>> origin/main
+
+builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+builder.Services.AddScoped<IRolesServices, RolesServices>();
 
 builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
 builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
