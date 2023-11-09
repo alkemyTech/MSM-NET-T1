@@ -5,11 +5,18 @@ namespace Wall_Net.DataAccess.SeedData
 {
     public class SeedData
     {
-<<<<<<< HEAD
-        public static List<Roles> SeedsRoles()
-=======
+
+       public static List<Roles> SeedsRoles()
+        {
+            return new List<Roles>
+            {
+                new Roles { Id = 1, Name = "Admin", Description = "Encargado de agregar y borrar usuarios" },
+                new Roles { Id = 2, Name = "Regular", Description = "Cliente nuevo" },
+                new Roles { Id = 3, Name = "Admin", Description = "Administrador de las transacciones" },
+                new Roles { Id = 4, Name = "Regular", Description = "Cliente antiguo" }
+            };
+        }
         public static List<Account> SeedsAcounts()
->>>>>>> origin/main
         {
             return new List<Account>
             {
