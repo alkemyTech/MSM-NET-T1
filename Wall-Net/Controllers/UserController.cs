@@ -17,7 +17,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = ("Admin"))]
         public IActionResult Get()
         {
             var users = _userServices.GetAllUsers();
