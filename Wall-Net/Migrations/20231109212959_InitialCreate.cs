@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Wall_Net.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,11 +18,30 @@ namespace Wall_Net.Migrations
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Money = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsBlocked = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    User_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FixedTerms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    user_id = table.Column<int>(type: "int", nullable: false),
+                    account_id = table.Column<int>(type: "int", nullable: false),
+                    amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    creation_date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    closing_date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    nominalRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    state = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FixedTerms", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,18 +78,29 @@ namespace Wall_Net.Migrations
 
             migrationBuilder.InsertData(
                 table: "Accounts",
-                columns: new[] { "Id", "CreationDate", "IsBlocked", "Money", "UserId" },
+                columns: new[] { "Id", "CreationDate", "IsBlocked", "Money", "User_Id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3507), false, 1000m, 1 },
-                    { 2, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3520), false, 1000m, 1 },
-                    { 3, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3521), false, 1000m, 1 },
-                    { 4, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3522), false, 1000m, 1 },
-                    { 5, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3523), false, 1000m, 1 },
-                    { 6, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3524), false, 1000m, 1 },
-                    { 7, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3525), false, 1000m, 1 },
-                    { 8, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3526), false, 1000m, 1 },
-                    { 9, new DateTime(2023, 11, 7, 16, 14, 43, 147, DateTimeKind.Local).AddTicks(3527), false, 1000m, 1 }
+                    { 1, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9854), false, 1000m, 1 },
+                    { 2, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9872), false, 1000m, 1 },
+                    { 3, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9874), false, 1000m, 1 },
+                    { 4, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9875), false, 1000m, 1 },
+                    { 5, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9876), false, 1000m, 1 },
+                    { 6, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9880), false, 1000m, 1 },
+                    { 7, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9881), false, 1000m, 1 },
+                    { 8, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9882), false, 1000m, 1 },
+                    { 9, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9883), false, 1000m, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FixedTerms",
+                columns: new[] { "Id", "account_id", "amount", "closing_date", "creation_date", "nominalRate", "state", "user_id" },
+                values: new object[,]
+                {
+                    { 1, 1, 100m, new DateTime(2001, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2001, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Inmovilizado", 1 },
+                    { 2, 2, 150m, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9956), new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 5m, "Activo", 2 },
+                    { 3, 3, 200m, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9957), new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Activo", 2 },
+                    { 4, 4, 250m, new DateTime(2008, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2007, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 17m, "Invomilizado", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -98,6 +128,9 @@ namespace Wall_Net.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Accounts");
+
+            migrationBuilder.DropTable(
+                name: "FixedTerms");
 
             migrationBuilder.DropTable(
                 name: "roles");
