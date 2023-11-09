@@ -19,17 +19,17 @@ namespace Wall_Net.Controllers
 
         // GET: api/Roles
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var roles=_rolesServices.GetAllRoles();
+            var roles= await _rolesServices.GetAllRoles();
             return Ok(roles);
         }
 
         // GET api/Roles/{id}
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var rol=_rolesServices.GetRolesById(id);
+            var rol= await _rolesServices.GetRolesById(id);
             if(rol != null)
             {
                 return Ok(rol);
@@ -39,49 +39,49 @@ namespace Wall_Net.Controllers
 
         // POST api/Roles
         [HttpPost]
-        public IActionResult Post(Roles rol)
+        public async Task<IActionResult> Post(Roles rol)
         {
             if(rol.Name == "Admin" || rol.Name == "Regular")
             {
-                _rolesServices.AddRoles(rol);
+                await _rolesServices.AddRoles(rol);
                 return CreatedAtAction(nameof(Get), new { Id = rol.Id }, rol);
             }
             return BadRequest();
         }
 
         // PUT api/Roles
-        [HttpPut("{id}")]
-        public IActionResult Put(Roles updateRol)
+        [HttpPut]
+        public async Task<IActionResult> Put(Roles updateRol)
         {
-            var rol = _rolesServices.GetRolesById(updateRol.Id);
+            var rol = await _rolesServices.GetRolesById(updateRol.Id);
             if (rol == null)
             {
                 return NotFound();
             }
             else if (updateRol.Name == "Admin" || updateRol.Name == "Regular")
             {
-                return BadRequest();
+
+                rol.Name = updateRol.Name;
+                rol.Description = updateRol.Description;
+
+                await _rolesServices.UpdateRoles(rol);
+                return NoContent();
             }
-
-            rol.Name = updateRol.Name;
-            rol.Description = updateRol.Description;
-
-            _rolesServices.UpdateRoles(rol);
-            return NoContent();
+            return BadRequest();
         }
 
         // DELETE api/Roles/{id}
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var rol = _rolesServices.GetRolesById(id);
+            var rol = await _rolesServices.GetRolesById(id);
 
             if(rol  == null)
             {
                 return NotFound();
             }
 
-            _rolesServices.DeleteRoles(id);
+            await _rolesServices.DeleteRoles(id);
             return NoContent();
         }
     }

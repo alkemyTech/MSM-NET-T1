@@ -7,18 +7,31 @@ namespace Wall_Net.UnitOfWorks
     {
         private readonly WallNetDbContext _dbContext;
         private readonly IUserRepository _userRepository;
+        private readonly IRolesRepository _rolesRepository;
+        private readonly IAccountsRepository _accountsRepository;
+        private readonly IFixedTermDepositRepository _fixedTermDepositRepository;
 
-        public UnitOfWork(WallNetDbContext dbContext, IUserRepository userRepository)
+        public UnitOfWork(WallNetDbContext dbContext, 
+            IUserRepository userRepository,
+            IRolesRepository rolesRepository,
+            IAccountsRepository accountsRepository,
+            IFixedTermDepositRepository fixedTermDepositRepository)
         {
             _dbContext = dbContext;
             _userRepository = userRepository;
+            _rolesRepository = rolesRepository;
+            _accountsRepository = accountsRepository;
+            _fixedTermDepositRepository = fixedTermDepositRepository;
         }
 
         public IUserRepository UserRepository => _userRepository;
+        public IRolesRepository RolesRepository => _rolesRepository;
+        public IAccountsRepository AccountsRepository => _accountsRepository;
+        public IFixedTermDepositRepository FixedTermDepositRepository => _fixedTermDepositRepository;
 
-        public void Save()
+        public async Task Commit()
         {
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

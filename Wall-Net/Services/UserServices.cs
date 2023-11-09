@@ -9,36 +9,37 @@ namespace Wall_Net.Services
         //private readonly IUserRepository _wallNetRepository;
         private readonly UnitOfWork _unitOfWork;
 
-        public UserServices(/*IUserRepository wallNetRepository*/ UnitOfWork unitOfWork)
+        public UserServices(/*IUserRepository wallNetRepository*/ 
+            UnitOfWork unitOfWork)
         {
             //_wallNetRepository = wallNetRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public async Task <IEnumerable<User>> GetAllUsers()
         {
             //return _wallNetRepository.GetAll();
-            return _unitOfWork.UserRepository.GetAll();
+            return await _unitOfWork.UserRepository.GetAll();
         }
-        public User GetUserById(int id)
+        public async Task <User> GetUserById(int id)
         {
-            return _unitOfWork.UserRepository.GetById(id);
+            return await _unitOfWork.UserRepository.GetById(id);
         }
-        public void AddUser(User user)
+        public async Task AddUser(User user)
         {
-            _unitOfWork.UserRepository.Add(user);
+            await _unitOfWork.UserRepository.Add(user);
         }
-        public void UpdateUser(User user)
+        public async Task UpdateUser(User user)
         {
-            _unitOfWork.UserRepository.Update(user);
+            await _unitOfWork.UserRepository.Update(user);
         }
-        public void DeleteUserbyId(int id)
+        public async Task DeleteUserbyId(int id)
         {
-            _unitOfWork.UserRepository.Delete(id);
+            await _unitOfWork.UserRepository.Delete(id);
         }
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
-            _unitOfWork.Save();
+            await _unitOfWork.Commit();
         }
     }
 }

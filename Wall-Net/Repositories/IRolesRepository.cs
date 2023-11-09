@@ -4,11 +4,11 @@ namespace Wall_Net.Repositories
 {
     public interface IRolesRepository
     {
-        Roles GetById (int id);
-        IEnumerable<Roles> GetAll();
-        void Add(Roles rol);
-        void Update(Roles rol);
-        void Delete(int id);
+        Task<Roles> GetById (int id);
+        Task<IEnumerable<Roles>> GetAll();
+        Task Add(Roles rol);
+        Task Update(Roles rol);
+        Task Delete(int id);
 
     }
 }
