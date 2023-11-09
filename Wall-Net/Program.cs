@@ -1,5 +1,4 @@
 using Wall_Net.DataAccess;
-using Microsoft.EntityFrameworkCore;
 using Wall_Net.Repositories;
 using Wall_Net.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -44,6 +43,11 @@ builder.Services.AddDbContext<WallNetDbContext>();
 builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
 builder.Services.AddScoped<IAccountServices, AccountServices>();
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserServices, UserServices>();
+
+builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
+builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
 
 var app = builder.Build();
 
