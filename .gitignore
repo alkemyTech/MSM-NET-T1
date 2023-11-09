@@ -1,23 +1,12 @@
 ################################################################################
-<<<<<<< HEAD
-# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
-=======
 # Este archivo .gitignore ha sido creado autom�ticamente por Microsoft(R) Visual Studio.
->>>>>>> origin/main
 ################################################################################
 
 /bin/Debug/net6.0
 /obj
-<<<<<<< HEAD
-=======
 /Wall-Net/obj/Debug/net6.0
->>>>>>> origin/main
 /.vs
 /bin
 .suo
 /Wall-Net/.vs
 /Wall-Net/obj
-<<<<<<< HEAD
-/Wall-Net/obj/Debug/net6.0
-=======
->>>>>>> origin/main
