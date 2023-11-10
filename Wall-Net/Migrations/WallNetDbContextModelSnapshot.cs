@@ -50,7 +50,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(8988),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9854),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -58,7 +58,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9003),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9872),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -66,7 +66,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9004),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9874),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -74,7 +74,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9005),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9875),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -82,7 +82,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9006),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9876),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -90,7 +90,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9009),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9880),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -98,7 +98,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9010),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9881),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -106,7 +106,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9011),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9882),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -114,7 +114,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9012),
+                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9883),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -172,7 +172,7 @@ namespace Wall_Net.Migrations
                             Id = 2,
                             account_id = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9038),
+                            closing_date = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9956),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
                             state = "Activo",
@@ -183,7 +183,7 @@ namespace Wall_Net.Migrations
                             Id = 3,
                             account_id = 3,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 9, 18, 47, 59, 749, DateTimeKind.Local).AddTicks(9039),
+                            closing_date = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9957),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
                             state = "Activo",

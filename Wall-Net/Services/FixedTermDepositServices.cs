@@ -1,40 +1,47 @@
 ﻿using Wall_Net.Models;
-using Wall_Net.Repositories;
+using Wall_Net.UnitOfWorks;
 
 namespace Wall_Net.Services
 {
     public class FixedTermDepositServices : IFixedTermDepositServices
     {
-        private readonly IFixedTermDepositRepository _FixedTermDepositRepository;
+        private readonly UnitOfWork _unitOfWork;
 
-        public FixedTermDepositServices(IFixedTermDepositRepository FixedTermDepositRepository)
+        public FixedTermDepositServices(UnitOfWork unitOfWork)
         {
-            _FixedTermDepositRepository = FixedTermDepositRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task AddFixedTermDeposit(FixedTermDeposit fixedTerm)
         {
-            await _FixedTermDepositRepository.Add(fixedTerm);
+            _unitOfWork.FixedTermDepositRepository.Add(fixedTerm);
+            await _unitOfWork.Commit();
         }
 
         public async Task DeleteFixedTermDeposit(int id)
         {
-            await _FixedTermDepositRepository.Delete(id);
+            _unitOfWork.FixedTermDepositRepository.Delete(id);
+            await _unitOfWork.Commit();
         }
 
         public async Task<IEnumerable<FixedTermDeposit>> GetAllFixedTermDeposit()
         {
-            return await _FixedTermDepositRepository.GetAll();
+            return await _unitOfWork.FixedTermDepositRepository.GetAll();
         }
 
         public async Task<FixedTermDeposit> GetFixedTermDepositById(int id)
         {
-            return await _FixedTermDepositRepository.GetById(id);
+            return await _unitOfWork.FixedTermDepositRepository.GetById(id);
         }
 
         public async Task UpdateFixedTermDeposit(FixedTermDeposit fixedTerm)
         {
-            await _FixedTermDepositRepository.Update(fixedTerm);
+            _unitOfWork.FixedTermDepositRepository.Update(fixedTerm);
+            await _unitOfWork.Commit();
+        }
+        public async Task SaveChanges()
+        {
+            await _unitOfWork.Commit();
         }
     }
 }

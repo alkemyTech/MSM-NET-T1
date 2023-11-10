@@ -26,13 +26,11 @@ namespace Wall_Net.Repositories
         public async Task Add(FixedTermDeposit FixedTermDeposit)
         {
             _dbContext.FixedTerms.Add(FixedTermDeposit);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Update(FixedTermDeposit FixedTermDeposit)
         {
             _dbContext.FixedTerms.Update(FixedTermDeposit);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -41,7 +39,6 @@ namespace Wall_Net.Repositories
             if (FixedTermDeposit != null)
             {
                 _dbContext.FixedTerms.Remove(FixedTermDeposit);
-                await _dbContext.SaveChangesAsync();
             }
         }
     }

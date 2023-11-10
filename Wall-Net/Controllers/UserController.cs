@@ -4,7 +4,7 @@ using Wall_Net.Models;
 using Wall_Net.Services;
 
 namespace Wall_Net.Controllers
-{
+{   
         [ApiController]
         [Route("api/[controller]")]
     public class UserController : Controller
@@ -17,17 +17,16 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public IActionResult Get()
+        public async Task <IActionResult> Get()
         {
-            var users = _userServices.GetAllUsers();
+            var users = await _userServices.GetAllUsers();
             return Ok(users);
         }
 
         [HttpGet("{Id}")]
-        public IActionResult Get(int Id)
+        public async Task <IActionResult> Get(int Id)
         {
-            var user = _userServices.GetUserById(Id);
+            var user = await _userServices.GetUserById(Id);
             if (user == null)
             {
                 return NotFound();
@@ -35,18 +34,19 @@ namespace Wall_Net.Controllers
             return Ok(user);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult Post(User user)
+        public async Task <IActionResult> Post(User user)
         {
-            _userServices.AddUser(user);
+            await _userServices.AddUser(user);
             return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
         }
 
-
+        [Authorize]
         [HttpPut("{Id}")]
-        public IActionResult Put(int Id, User updatedUser)
+        public async Task <IActionResult> Put(int Id, User updatedUser)
         {
-            var user = _userServices.GetUserById(Id);
+            var user = await _userServices.GetUserById(Id);
             if (user == null)
             {
                 return NotFound();
@@ -54,19 +54,20 @@ namespace Wall_Net.Controllers
             user.FirstName = updatedUser.FirstName;
             user.LastName = updatedUser.LastName;
             user.Points = updatedUser.Points;
-            _userServices.UpdateUser(user);
+            await _userServices.UpdateUser(user);
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{Id}")]
-        public IActionResult Delete(int Id)
+        public async Task <IActionResult> Delete(int Id)
         {
-            var user = _userServices.GetUserById(Id);
+            var user = await _userServices.GetUserById(Id);
             if (user == null)
             {
                 return NotFound();
             }
-            _userServices.DeleteUserbyId(Id);
+            await _userServices.DeleteUserbyId(Id);
             return NoContent();
         }
     }

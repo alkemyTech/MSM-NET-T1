@@ -5,6 +5,7 @@ namespace Wall_Net.DataAccess.SeedData
 {
     public class SeedData
     {
+
         public static List<Roles> SeedsRoles()
         {
             return new List<Roles>
@@ -13,17 +14,6 @@ namespace Wall_Net.DataAccess.SeedData
                 new Roles { Id = 2, Name = "Regular", Description = "Cliente nuevo" },
                 new Roles { Id = 3, Name = "Admin", Description = "Administrador de las transacciones" },
                 new Roles { Id = 4, Name = "Regular", Description = "Cliente antiguo" }
-            };
-        }
-        public static List<User> SeedsUsers()
-        {
-            return new List<User>
-            {
-                new User
-                {Id = 1, FirstName = "Leandro", LastName = "Mumbach" ,Email = "lean@email.com" ,Password = "123456", Points = 20, Rol_Id = 1,},
-                new User
-                {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,
-                } 
             };
         }
         public static List<Account> SeedsAcounts()
@@ -53,5 +43,29 @@ namespace Wall_Net.DataAccess.SeedData
         };
         }
 
+        public static List<User> SeedsUsers()
+        {
+            return new List<User>
+                {
+                new User
+                {Id = 1, FirstName = "Leandro", LastName = "Mumbach" ,Email = "lean@email.com" ,Password = "123456", Points = 20, Rol_Id = 1,},
+                new User
+                {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,
+                }
+            };
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+    

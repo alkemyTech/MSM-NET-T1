@@ -1,4 +1,4 @@
-﻿namespace Wall_Net.Models.DTOs
+﻿namespace Wall_Net.Models.DTO
 {
     public class LoginUser
     {

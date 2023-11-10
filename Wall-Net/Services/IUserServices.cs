@@ -4,10 +4,10 @@ namespace Wall_Net.Services
 {
     public interface IUserServices
     {
-        IEnumerable<User> GetAllUsers();
-        User GetUserById(int id);
-        void AddUser(User user);
-        void UpdateUser(User user);
-        void DeleteUserbyId(int id);
+        Task <IEnumerable<User>> GetAllUsers();
+        Task <User> GetUserById(int id);
+        Task AddUser(User user);
+        Task UpdateUser(User user);
+        Task DeleteUserbyId(int id);
     }
 }

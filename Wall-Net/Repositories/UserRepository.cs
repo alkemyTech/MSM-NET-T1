@@ -1,4 +1,5 @@
-﻿using Wall_Net.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using Wall_Net.DataAccess;
 using Wall_Net.Models;
 
 namespace Wall_Net.Repositories
@@ -12,35 +13,35 @@ namespace Wall_Net.Repositories
             _dbcontext = dbcontext;
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            return _dbcontext.Users.ToList();
+            return await _dbcontext.Users.ToListAsync();
         }
 
-        public User GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            return _dbcontext.Users.FirstOrDefault(p => p.Id == id);
+            return await _dbcontext.Users.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public void Add(User user)
+        public async Task Add(User user)
         {
             _dbcontext.Users.Add(user);
-            _dbcontext.SaveChanges();
+            //await _dbcontext.SaveChangesAsync();
         }
 
-        public void Update(User user)
+        public async Task Update(User user)
         {
             _dbcontext.Users.Update(user);
-            _dbcontext.SaveChanges();
+            // await _dbcontext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             var user = _dbcontext.Users.FirstOrDefault(p => p.Id == id);
             if (user != null)
             {
                 _dbcontext.Users.Remove(user);
-                _dbcontext.SaveChanges();
+                //await _dbcontext.SaveChangesAsync();
             }
         }
     }

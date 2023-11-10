@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Wall_Net.Models
+﻿namespace Wall_Net.Models
 {
     public class User
     {

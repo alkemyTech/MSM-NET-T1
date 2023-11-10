@@ -15,19 +15,17 @@ namespace Wall_Net.Repositories
         {
             return await _dbContext.Accounts.ToListAsync();
         }
-        public async Task<Account> GetAccountById(int id) 
+        public async Task<Account> GetAccountById(int id)
         {
             return _dbContext.Accounts.FirstOrDefault(a => a.Id == id);
         }
         public async Task InsertAccount(Account account)
         {
             _dbContext.Accounts.Add(account);
-            await _dbContext.SaveChangesAsync();
         }
         public async Task UpdateAccount(Account account)
         {
             _dbContext.Accounts.Update(account);
-            await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteAccount(int id)
         {
@@ -35,7 +33,6 @@ namespace Wall_Net.Repositories
             if (account != null)
             {
                 _dbContext.Accounts.Remove(account);
-                await _dbContext.SaveChangesAsync();
             }
         }
 

@@ -9,8 +9,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Wall_Net.DataAccess;
+using Wall_Net.Models.DTO;
 using Wall_Net.Models;
-using Wall_Net.Models.DTOs;
 using Wall_Net.Repositories;
 
 namespace Wall_Net.Controllers
@@ -42,7 +42,7 @@ namespace Wall_Net.Controllers
 
                 return Ok(token);
             }
-            
+
             return response;
         }
 
@@ -62,7 +62,7 @@ namespace Wall_Net.Controllers
         {
             var issuer = configuration["Jwt:Issuer"];
             var audience = configuration["Jwt:Audience"];
-            var key =  new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
             var signingCredentials = new SigningCredentials(
                                     key,
                                     SecurityAlgorithms.HmacSha512Signature
