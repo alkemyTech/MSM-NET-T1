@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -27,6 +28,7 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Get(int id)
         {
             var account = await _accountServices.GetById(id);
@@ -64,6 +66,24 @@ namespace Wall_Net.Controllers
             await _accountServices.Delete(id);
             return Ok();
         }
-        
+        //Bloqueo de cuenta
+        [Authorize]
+        [HttpPatch("user/block/{id}")]
+        public async Task<ActionResult> BlockAccount(int id)
+        {
+            var account = await _accountServices.GetById(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            else if (account.IsBlocked)
+            {
+                return BadRequest("La cuenta ya está bloqueada.");
+            }
+            account.IsBlocked = true;
+            await _accountServices.Update(account);
+
+            return Ok();
+        }
     }
 }

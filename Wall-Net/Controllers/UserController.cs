@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
 namespace Wall_Net.Controllers
-{
+{   
         [ApiController]
         [Route("api/[controller]")]
     public class UserController : Controller
@@ -33,6 +34,7 @@ namespace Wall_Net.Controllers
             return Ok(user);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task <IActionResult> Post(User user)
         {
@@ -40,7 +42,7 @@ namespace Wall_Net.Controllers
             return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
         }
 
-
+        [Authorize]
         [HttpPut("{Id}")]
         public async Task <IActionResult> Put(int Id, User updatedUser)
         {
@@ -56,6 +58,7 @@ namespace Wall_Net.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{Id}")]
         public async Task <IActionResult> Delete(int Id)
         {
