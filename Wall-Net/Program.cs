@@ -1,13 +1,11 @@
 using Wall_Net.DataAccess;
 using Wall_Net.Repositories;
 using Wall_Net.Services;
-<<<<<<< HEAD
-=======
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
->>>>>>> origin
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +16,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-<<<<<<< HEAD
-builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
-builder.Services.AddScoped<ITransactionService, TransactionService>();
-builder.Services.AddScoped<ICatalogueRepository,CatalogueRepository>();
-builder.Services.AddScoped<ICatalogueService, CatalogueService>();
-=======
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,7 +49,12 @@ builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>()
 
 builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
 builder.Services.AddScoped<IAccountServices, AccountServices>();
->>>>>>> origin
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+builder.Services.AddScoped<ICatalogueService, CatalogueService>();
 
 var app = builder.Build();
 
@@ -68,10 +65,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-<<<<<<< HEAD
+
 app.UseAuthorization();
 
-=======
+
 app.UseAuthentication();
 
 app.UseAuthorization();
@@ -80,7 +77,6 @@ IConfiguration configuration = app.Configuration;
 
 IWebHostEnvironment environment = app.Environment;
 
->>>>>>> origin
 app.MapControllers();
 
 app.Run();
