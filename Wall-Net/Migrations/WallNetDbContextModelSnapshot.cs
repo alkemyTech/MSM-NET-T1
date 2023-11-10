@@ -121,6 +121,61 @@ namespace Wall_Net.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wall_Net.Models.Catalogue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Points")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Catalogues");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Image = "imagen1.jpg",
+                            Points = 100m,
+                            ProductDescription = "Producto 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Image = "imagen2.jpg",
+                            Points = 90m,
+                            ProductDescription = "Producto 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Image = "imagen3.jpg",
+                            Points = 80m,
+                            ProductDescription = "Producto 3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Image = "imagen4.jpg",
+                            Points = 70m,
+                            ProductDescription = "Producto 4"
+                        });
+                });
+
             modelBuilder.Entity("Wall_Net.Models.FixedTermDeposit", b =>
                 {
                     b.Property<int>("Id")
