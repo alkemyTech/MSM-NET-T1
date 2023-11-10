@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -97,6 +98,27 @@ namespace Wall_Net.Controllers
             var jwtToken = tokenHandler.WriteToken(token);
 
             return jwtToken;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var currentUSer = GetCurrentUser();
+            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+        }
+        private User GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if(identity != null)
+            {
+                var userClaim = identity.Claims;
+                return new User
+                {
+                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                };
+            }
+            return null;
         }
     }
 }
