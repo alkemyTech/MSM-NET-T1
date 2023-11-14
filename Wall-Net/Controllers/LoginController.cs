@@ -31,9 +31,14 @@ namespace Wall_Net.Controllers
         [AllowAnonymous]
         [HttpPost]
         // POST api/Login
-        [HttpPost]
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
+            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+            if (account != null && account.IsBlocked) 
+            {
+                return Unauthorized("Su cuenta se encuentra bloqueada.");
+            }
+
             var user = Authenticate(userLogin);
             IActionResult response = Unauthorized();
 
