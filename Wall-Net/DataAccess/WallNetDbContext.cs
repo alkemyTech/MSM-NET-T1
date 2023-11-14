@@ -20,7 +20,7 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
+            optionsBuilder.UseSqlServer("Data Source=Pavi;Initial Catalog=WallNetDb;User ID=sa;Password=Root;Pooling=False;Trust Server Certificate=true");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

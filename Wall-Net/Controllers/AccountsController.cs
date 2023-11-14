@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -41,8 +42,16 @@ namespace Wall_Net.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Account account)
         {
-            await _accountServices.Insert(account);
-            return CreatedAtAction(nameof(Get), new { id = account.Id }, account);
+            var newAccount = _accountServices.GetById(account.User_Id);
+            if (newAccount != null) 
+            {
+                return BadRequest("Este ususario ya posee una cuenta");
+            }
+            else
+            {
+                await _accountServices.Insert(account);
+                return CreatedAtAction(nameof(Get), new { id = account.Id }, account);
+            }
         }
         [HttpPut]
         public async Task<IActionResult> Put(int id, [FromBody] Account updateAccount)
