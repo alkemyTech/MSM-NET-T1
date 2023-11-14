@@ -31,7 +31,6 @@ namespace Wall_Net.Controllers
         [AllowAnonymous]
         [HttpPost]
         // POST api/Login
-        [HttpPost]
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
             var user = Authenticate(userLogin);
