@@ -11,6 +11,7 @@ namespace Wall_Net.Models
         public decimal Money { get; set; }
         public bool IsBlocked { get; set; }
         public int User_Id { get; set; }
+
         [ForeignKey("User_Id")]
         public virtual User User { get; set; }
     }

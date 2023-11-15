@@ -28,7 +28,7 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Get(int id)
         {
             var account = await _accountServices.GetById(id);
@@ -67,7 +67,7 @@ namespace Wall_Net.Controllers
             return Ok();
         }
         //Bloqueo de cuenta
-        //[Authorize]
+        [Authorize]
         [HttpPatch("user/block/{id}")]
         public async Task<ActionResult> BlockAccount(int id)
         {

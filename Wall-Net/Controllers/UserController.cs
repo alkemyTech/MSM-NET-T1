@@ -17,6 +17,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
+        //[Authorize(Roles = "Admin")]
         public async Task <IActionResult> Get()
         {
             var users = await _userServices.GetAllUsers();
@@ -24,6 +25,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task <IActionResult> Get(int Id)
         {
             var user = await _userServices.GetUserById(Id);
@@ -34,10 +36,19 @@ namespace Wall_Net.Controllers
             return Ok(user);
         }
 
-        [Authorize]
         [HttpPost]
+        //[Authorize]
         public async Task <IActionResult> Post(User user)
         {
+            // Comprobar si el correo electrónico ya existe
+            var users = await _userServices.GetAllUsers();
+            foreach (var u in users)
+            {
+                if (u.Email == user.Email)
+                {
+                    return BadRequest("El correo electrónico ya existe.");
+                }
+            }
             await _userServices.AddUser(user);
             return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
         }

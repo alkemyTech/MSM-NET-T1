@@ -44,13 +44,15 @@ namespace Wall_Net.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("User_Id");
+
                     b.ToTable("Accounts");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6255),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(805),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -58,7 +60,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6268),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(819),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -66,7 +68,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6269),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(820),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -74,7 +76,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6270),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(821),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -82,7 +84,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6271),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(822),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -90,7 +92,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6275),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(825),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -98,7 +100,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6276),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(826),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -106,7 +108,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6277),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(827),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -114,7 +116,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6278),
+                            CreationDate = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(828),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -227,7 +229,7 @@ namespace Wall_Net.Migrations
                             Id = 2,
                             account_id = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6318),
+                            closing_date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(863),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
                             state = "Activo",
@@ -238,7 +240,7 @@ namespace Wall_Net.Migrations
                             Id = 3,
                             account_id = 3,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6320),
+                            closing_date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(864),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
                             state = "Activo",
@@ -346,7 +348,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6383),
+                            Date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(922),
                             Type = "topup",
                             UserId = 1
                         },
@@ -356,7 +358,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6387),
+                            Date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(925),
                             Type = "topup",
                             UserId = 1
                         },
@@ -366,7 +368,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6388),
+                            Date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(926),
                             Type = "topup",
                             UserId = 1
                         },
@@ -376,7 +378,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6389),
+                            Date = new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(927),
                             Type = "topup",
                             UserId = 1
                         });
@@ -437,6 +439,17 @@ namespace Wall_Net.Migrations
                             Points = 20,
                             Rol_Id = 1
                         });
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.Account", b =>
+                {
+                    b.HasOne("Wall_Net.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

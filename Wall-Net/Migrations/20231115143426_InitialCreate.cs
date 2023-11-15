@@ -10,22 +10,6 @@ namespace Wall_Net.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Accounts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Money = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsBlocked = table.Column<bool>(type: "bit", nullable: false),
-                    User_Id = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Accounts", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Catalogues",
                 columns: table => new
                 {
@@ -110,20 +94,26 @@ namespace Wall_Net.Migrations
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Accounts",
-                columns: new[] { "Id", "CreationDate", "IsBlocked", "Money", "User_Id" },
-                values: new object[,]
+            migrationBuilder.CreateTable(
+                name: "Accounts",
+                columns: table => new
                 {
-                    { 1, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6255), false, 1000m, 1 },
-                    { 2, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6268), false, 1000m, 1 },
-                    { 3, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6269), false, 1000m, 1 },
-                    { 4, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6270), false, 1000m, 1 },
-                    { 5, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6271), false, 1000m, 1 },
-                    { 6, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6275), false, 1000m, 1 },
-                    { 7, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6276), false, 1000m, 1 },
-                    { 8, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6277), false, 1000m, 1 },
-                    { 9, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6278), false, 1000m, 1 }
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Money = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsBlocked = table.Column<bool>(type: "bit", nullable: false),
+                    User_Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Accounts_Users_User_Id",
+                        column: x => x.User_Id,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -143,8 +133,8 @@ namespace Wall_Net.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 100m, new DateTime(2001, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2001, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Inmovilizado", 1 },
-                    { 2, 2, 150m, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6318), new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 5m, "Activo", 2 },
-                    { 3, 3, 200m, new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6320), new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Activo", 2 },
+                    { 2, 2, 150m, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(863), new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 5m, "Activo", 2 },
+                    { 3, 3, 200m, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(864), new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Activo", 2 },
                     { 4, 4, 250m, new DateTime(2008, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2007, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 17m, "Invomilizado", 1 }
                 });
 
@@ -153,10 +143,10 @@ namespace Wall_Net.Migrations
                 columns: new[] { "TransactionId", "AccountId", "Amount", "Concept", "Date", "ToAccountId", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6383), null, "topup", 1 },
-                    { 2, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6387), null, "topup", 1 },
-                    { 3, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6388), null, "topup", 1 },
-                    { 4, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 10, 20, 5, 22, 280, DateTimeKind.Local).AddTicks(6389), null, "topup", 1 }
+                    { 1, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(922), null, "topup", 1 },
+                    { 2, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(925), null, "topup", 1 },
+                    { 3, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(926), null, "topup", 1 },
+                    { 4, 1, 100.00m, "Ejemplo de transacción 1", new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(927), null, "topup", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -178,6 +168,27 @@ namespace Wall_Net.Migrations
                     { 3, "Administrador de las transacciones", "Admin" },
                     { 4, "Cliente antiguo", "Regular" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "CreationDate", "IsBlocked", "Money", "User_Id" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(805), false, 1000m, 1 },
+                    { 2, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(819), false, 1000m, 1 },
+                    { 3, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(820), false, 1000m, 1 },
+                    { 4, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(821), false, 1000m, 1 },
+                    { 5, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(822), false, 1000m, 1 },
+                    { 6, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(825), false, 1000m, 1 },
+                    { 7, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(826), false, 1000m, 1 },
+                    { 8, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(827), false, 1000m, 1 },
+                    { 9, new DateTime(2023, 11, 15, 11, 34, 26, 54, DateTimeKind.Local).AddTicks(828), false, 1000m, 1 }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Accounts_User_Id",
+                table: "Accounts",
+                column: "User_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
