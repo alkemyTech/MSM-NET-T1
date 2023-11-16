@@ -81,15 +81,15 @@ namespace Wall_Net.Migrations
                 columns: new[] { "Id", "CreationDate", "IsBlocked", "Money", "User_Id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9854), false, 1000m, 1 },
-                    { 2, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9872), false, 1000m, 1 },
-                    { 3, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9874), false, 1000m, 1 },
-                    { 4, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9875), false, 1000m, 1 },
-                    { 5, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9876), false, 1000m, 1 },
-                    { 6, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9880), false, 1000m, 1 },
-                    { 7, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9881), false, 1000m, 1 },
-                    { 8, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9882), false, 1000m, 1 },
-                    { 9, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9883), false, 1000m, 1 }
+                    { 1, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(1956), false, 1000m, 1 },
+                    { 2, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2008), false, 1000m, 2 },
+                    { 3, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2012), false, 1000m, 3 },
+                    { 4, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2016), false, 1000m, 4 },
+                    { 5, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2019), false, 1000m, 5 },
+                    { 6, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2038), false, 1000m, 6 },
+                    { 7, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2042), false, 1000m, 7 },
+                    { 8, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2045), false, 1000m, 8 },
+                    { 9, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2048), false, 1000m, 9 }
                 });
 
             migrationBuilder.InsertData(
@@ -98,8 +98,8 @@ namespace Wall_Net.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 100m, new DateTime(2001, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2001, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Inmovilizado", 1 },
-                    { 2, 2, 150m, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9956), new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 5m, "Activo", 2 },
-                    { 3, 3, 200m, new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9957), new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Activo", 2 },
+                    { 2, 2, 150m, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2353), new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 5m, "Activo", 2 },
+                    { 3, 3, 200m, new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2359), new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 12m, "Activo", 2 },
                     { 4, 4, 250m, new DateTime(2008, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2007, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 17m, "Invomilizado", 1 }
                 });
 

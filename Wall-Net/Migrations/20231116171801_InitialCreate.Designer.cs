@@ -12,7 +12,7 @@ using Wall_Net.DataAccess;
 namespace Wall_Net.Migrations
 {
     [DbContext(typeof(WallNetDbContext))]
-    [Migration("20231109212959_InitialCreate")]
+    [Migration("20231116171801_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9854),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(1956),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -60,66 +60,66 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9872),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2008),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 2
                         },
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9874),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2012),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 3
                         },
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9875),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2016),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 4
                         },
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9876),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2019),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 5
                         },
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9880),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2038),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 6
                         },
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9881),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2042),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 7
                         },
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9882),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2045),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 8
                         },
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9883),
+                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2048),
                             IsBlocked = false,
                             Money = 1000m,
-                            User_Id = 1
+                            User_Id = 9
                         });
                 });
 
@@ -174,7 +174,7 @@ namespace Wall_Net.Migrations
                             Id = 2,
                             account_id = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9956),
+                            closing_date = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2353),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
                             state = "Activo",
@@ -185,7 +185,7 @@ namespace Wall_Net.Migrations
                             Id = 3,
                             account_id = 3,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 9, 18, 29, 58, 756, DateTimeKind.Local).AddTicks(9957),
+                            closing_date = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2359),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
                             state = "Activo",
