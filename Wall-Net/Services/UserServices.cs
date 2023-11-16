@@ -1,4 +1,5 @@
-﻿using Wall_Net.Models;
+﻿using BCrypt.Net;
+using Wall_Net.Models;
 using Wall_Net.UnitOfWorks;
 
 namespace Wall_Net.Services
@@ -13,9 +14,9 @@ namespace Wall_Net.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task <IEnumerable<User>> GetAllUsers()
+        public async Task <IEnumerable<User>> GetAllUsers(int pageNumber, int pageSize)
         {
-            return await _unitOfWork.UserRepository.GetAll();
+            return await _unitOfWork.UserRepository.GetAll(pageNumber, pageSize);
         }
         public async Task <User> GetUserById(int id)
         {
@@ -23,6 +24,9 @@ namespace Wall_Net.Services
         }
         public async Task AddUser(User user)
         {
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Password = hashedPassword;
+
             _unitOfWork.UserRepository.Add(user);
             await _unitOfWork.Commit();
         }

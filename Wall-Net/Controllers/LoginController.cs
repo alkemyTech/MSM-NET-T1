@@ -13,6 +13,7 @@ using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 using Wall_Net.Models;
 using Wall_Net.Repositories;
+using BCrypt.Net;
 
 namespace Wall_Net.Controllers
 {
@@ -33,6 +34,12 @@ namespace Wall_Net.Controllers
         // POST api/Login
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
+            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+            if (account != null && account.IsBlocked) 
+            {
+                return Unauthorized("Su cuenta se encuentra bloqueada.");
+            }
+
             var user = Authenticate(userLogin);
             IActionResult response = Unauthorized();
 
@@ -48,12 +55,15 @@ namespace Wall_Net.Controllers
 
         private User Authenticate(LoginUser userLogin)
         {
-            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower()
-                                && user.Password == userLogin.Password);
+            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());                    
 
             if (currentUser != null)
             {
+                var passwordMatched = BCrypt.Net.BCrypt.Verify(userLogin.Password, currentUser.Password);
+                if (passwordMatched)
+                {
                 return currentUser;
+                }
             }
             return null;
         }

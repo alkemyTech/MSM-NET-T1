@@ -13,9 +13,14 @@ namespace Wall_Net.Repositories
             _dbcontext = dbcontext;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAll(int pageNumber, int pageSize)
         {
-            return await _dbcontext.Users.ToListAsync();
+            var usuariosPaginados = await _dbcontext.Users
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return usuariosPaginados;
         }
 
         public async Task<User> GetById(int id)
