@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,6 +13,7 @@ using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 using Wall_Net.Models;
 using Wall_Net.Repositories;
+using BCrypt.Net;
 
 namespace Wall_Net.Controllers
 {
@@ -30,9 +32,14 @@ namespace Wall_Net.Controllers
         [AllowAnonymous]
         [HttpPost]
         // POST api/Login
-        [HttpPost]
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
+            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+            if (account != null && account.IsBlocked) 
+            {
+                return Unauthorized("Su cuenta se encuentra bloqueada.");
+            }
+
             var user = Authenticate(userLogin);
             IActionResult response = Unauthorized();
 
@@ -48,12 +55,15 @@ namespace Wall_Net.Controllers
 
         private User Authenticate(LoginUser userLogin)
         {
-            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower()
-                                && user.Password == userLogin.Password);
+            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());                    
 
             if (currentUser != null)
             {
+                var passwordMatched = BCrypt.Net.BCrypt.Verify(userLogin.Password, currentUser.Password);
+                if (passwordMatched)
+                {
                 return currentUser;
+                }
             }
             return null;
         }
@@ -98,28 +108,6 @@ namespace Wall_Net.Controllers
             var jwtToken = tokenHandler.WriteToken(token);
 
             return jwtToken;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var currentUSer = GetCurrentUser();
-            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
-        }
-        private User GetCurrentUser()
-        {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            if (identity != null)
-            {
-                var userClaim = identity.Claims;
-                return new User
-                {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
-                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
-                };
-            }
-            return null;
         }
     }
 }

@@ -6,7 +6,7 @@ using Wall_Net.Services;
 namespace Wall_Net.Controllers
 {   
         [ApiController]
-        [Route("api/[controller]")]
+        [Route("/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;
@@ -17,13 +17,15 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
-        public async Task <IActionResult> Get()
+        [Authorize(Roles = "Admin")]
+        public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 10)
         {
-            var users = await _userServices.GetAllUsers();
+            var users = await _userServices.GetAllUsers(pageNumber, pageSize);
             return Ok(users);
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task <IActionResult> Get(int Id)
         {
             var user = await _userServices.GetUserById(Id);
@@ -34,16 +36,34 @@ namespace Wall_Net.Controllers
             return Ok(user);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public async Task <IActionResult> Post(User user)
         {
+            //Comprobar si los campos enviados son correectos
+            if (!ModelState.IsValid)
+            { 
+                return BadRequest("El usuario no se creo exitosamente."); 
+            }
+
+            // Comprobar si el correo electrónico ya existe
+            var users = await _userServices.GetAllUsers(1, 10);
+            foreach (var u in users)
+            {
+                if (u.Email == user.Email)
+                {
+                    return BadRequest("El correo electrónico ya existe.");
+                }
+            }
+
+            user.Rol_Id = 2;
+
             await _userServices.AddUser(user);
             return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
         }
 
-        [Authorize]
         [HttpPut("{Id}")]
+        [Authorize]
         public async Task <IActionResult> Put(int Id, User updatedUser)
         {
             var user = await _userServices.GetUserById(Id);
@@ -58,8 +78,8 @@ namespace Wall_Net.Controllers
             return NoContent();
         }
 
-        [Authorize]
         [HttpDelete("{Id}")]
+        [Authorize]
         public async Task <IActionResult> Delete(int Id)
         {
             var user = await _userServices.GetUserById(Id);

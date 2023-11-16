@@ -100,6 +100,12 @@ builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>()
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+builder.Services.AddScoped<ICatalogueService, CatalogueService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -108,6 +114,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseAuthentication();
 
