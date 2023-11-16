@@ -6,7 +6,7 @@ using Wall_Net.Services;
 namespace Wall_Net.Controllers
 {   
         [ApiController]
-        [Route("api/[controller]")]
+        [Route("/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;
@@ -18,7 +18,7 @@ namespace Wall_Net.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 2)
+        public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 10)
         {
             var users = await _userServices.GetAllUsers(pageNumber, pageSize);
             return Ok(users);
