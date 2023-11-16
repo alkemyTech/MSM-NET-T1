@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -11,18 +14,34 @@ namespace Wall_Net.Controllers
     public class RolesController : Controller
     {
         private readonly IRolesServices _rolesServices;
+        private readonly int records = 2;
 
         public RolesController(IRolesServices rolesServices)
         {
-            _rolesServices=rolesServices;
+            _rolesServices = rolesServices;
         }
 
-        // GET: api/Roles
+        
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromBody] int? page)
         {
-            var roles= await _rolesServices.GetAllRoles();
-            return Ok(roles);
+            var roles = await _rolesServices.GetAllRoles();
+
+            int _page = page ?? 1;
+            int total_roles = roles.Count();
+            int total_pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(total_roles / records)));
+
+            var allRoles = roles
+                .Skip((_page - 1) * records)
+                .Take(records)
+                .ToList();
+
+            return Ok(new
+            {
+                pages = total_pages,
+                roles = allRoles,
+                current_page = _page
+            });
         }
 
         // GET api/Roles/{id}
@@ -51,6 +70,7 @@ namespace Wall_Net.Controllers
 
         // PUT api/Roles
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Put(Roles updateRol)
         {
             var rol = await _rolesServices.GetRolesById(updateRol.Id);

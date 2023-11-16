@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Wall_Net.DataAccess;
 using Wall_Net.Models;
 
@@ -7,11 +8,17 @@ namespace Wall_Net.Repositories
     public class RolesRepository : IRolesRepository
     {
         private readonly WallNetDbContext _dbContext;
+        private readonly int records = 2;
 
         public RolesRepository(WallNetDbContext dbContext)
         {
             _dbContext = dbContext;
         }
+
+        //public async Task<IActionResult> GetAll([FromQuery] int? page)
+        //{
+            
+        //}
 
         public async Task<IEnumerable<Roles>> GetAll()
         {
