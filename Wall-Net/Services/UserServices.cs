@@ -14,9 +14,9 @@ namespace Wall_Net.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task <IEnumerable<User>> GetAllUsers()
+        public async Task <IEnumerable<User>> GetAllUsers(int pageNumber, int pageSize)
         {
-            return await _unitOfWork.UserRepository.GetAll();
+            return await _unitOfWork.UserRepository.GetAll(pageNumber, pageSize);
         }
         public async Task <User> GetUserById(int id)
         {

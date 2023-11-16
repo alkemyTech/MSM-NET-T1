@@ -18,9 +18,9 @@ namespace Wall_Net.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task <IActionResult> Get()
+        public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 2)
         {
-            var users = await _userServices.GetAllUsers();
+            var users = await _userServices.GetAllUsers(pageNumber, pageSize);
             return Ok(users);
         }
 
@@ -40,8 +40,14 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task <IActionResult> Post(User user)
         {
+            //Comprobar si los campos enviados son correectos
+            if (!ModelState.IsValid)
+            { 
+                return BadRequest("El usuario no se creo exitosamente."); 
+            }
+
             // Comprobar si el correo electrónico ya existe
-            var users = await _userServices.GetAllUsers();
+            var users = await _userServices.GetAllUsers(1, 10);
             foreach (var u in users)
             {
                 if (u.Email == user.Email)
