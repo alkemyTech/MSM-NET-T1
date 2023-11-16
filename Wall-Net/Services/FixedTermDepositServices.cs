@@ -12,9 +12,9 @@ namespace Wall_Net.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddFixedTermDeposit(FixedTermDeposit fixedTerm)
+        public async Task AddFixedTermDeposit(FixedTermDeposit fixedTerm, int idUser)
         {
-            _unitOfWork.FixedTermDepositRepository.Add(fixedTerm);
+            _unitOfWork.FixedTermDepositRepository.Add(fixedTerm,idUser);
             await _unitOfWork.Commit();
         }
 
@@ -29,12 +29,26 @@ namespace Wall_Net.Services
             return await _unitOfWork.FixedTermDepositRepository.GetAll();
         }
 
+        public async Task<IEnumerable<FixedTermDeposit>>GetAllById(int id)
+        {
+            return await _unitOfWork.FixedTermDepositRepository.GetAllById(id);
+        }
+
         public async Task<FixedTermDeposit> GetFixedTermDepositById(int id)
         {
             return await _unitOfWork.FixedTermDepositRepository.GetById(id);
         }
+        public async Task<FixedTermDeposit> GetFixedByUser(int idUser, int idFixed)
+        {
+            return await _unitOfWork.FixedTermDepositRepository.GetFixedByIdUser(idUser,idFixed);
+        }
 
         public async Task UpdateFixedTermDeposit(FixedTermDeposit fixedTerm)
+        {
+            _unitOfWork.FixedTermDepositRepository.Update(fixedTerm);
+            await _unitOfWork.Commit();
+        }
+        public async Task UpdateAccountMoney(FixedTermDeposit fixedTerm)
         {
             _unitOfWork.FixedTermDepositRepository.Update(fixedTerm);
             await _unitOfWork.Commit();

@@ -75,6 +75,7 @@ namespace Wall_Net.Controllers
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
+                    new Claim("Id", Convert.ToString(user.Id)),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.GivenName,user.FirstName),
@@ -97,6 +98,28 @@ namespace Wall_Net.Controllers
             var jwtToken = tokenHandler.WriteToken(token);
 
             return jwtToken;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var currentUSer = GetCurrentUser();
+            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+        }
+        private User GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                var userClaim = identity.Claims;
+                return new User
+                {
+                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                };
+            }
+            return null;
         }
     }
 }

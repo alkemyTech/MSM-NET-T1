@@ -50,8 +50,14 @@ namespace Wall_Net.DataAccess.SeedData
                 new User
                 {Id = 1, FirstName = "Leandro", LastName = "Mumbach" ,Email = "lean@email.com" ,Password = "123456", Points = 20, Rol_Id = 1,},
                 new User
-                {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,
-                }
+                {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
+                new User{Id = 3, FirstName = "Sandra", LastName = "Gonzalez", Email = "sandra@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
+                new User{Id = 4, FirstName = "Juan", LastName = "Gonzalez", Email = "juan@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
+                new User{Id = 5, FirstName = "Martin", LastName = "Gonzalez", Email = "martin@email.com", Password = "123456", Points = 20, Rol_Id = 2,},
+                new User{Id = 6, FirstName = "Fede", LastName = "Gonzalez", Email = "fede@email.com", Password = "123456", Points = 20, Rol_Id = 2,},
+                new User{Id = 7, FirstName = "Jose", LastName = "Gonzalez", Email = "jose@email.com", Password = "123456", Points = 20, Rol_Id = 2,},
+                new User{Id = 8, FirstName = "Mica", LastName = "Gonzalez", Email = "mica@email.com", Password = "123456", Points = 20, Rol_Id = 2,},
+                new User{Id = 9, FirstName = "Sofia", LastName = "Gonzalez", Email = "sofia@email.com", Password = "123456", Points = 20, Rol_Id = 2,}
             };
         }
     }

@@ -23,6 +23,7 @@ namespace Wall_Net.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Roles>().HasData(SeedData.SeedData.SeedsRoles());
             modelBuilder.Entity<Account>().HasData(SeedData.SeedData.SeedsAcounts());

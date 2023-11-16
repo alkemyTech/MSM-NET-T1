@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 using Wall_Net.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,22 +15,28 @@ namespace Wall_Net.Controllers
     public class FixedTermDepositController : Controller
     {
         private readonly IFixedTermDepositServices _FixedTernDepositServices;
+        public readonly IMapper _mapper;
 
-        public FixedTermDepositController(IFixedTermDepositServices FixedTernDepositServices)
+        public FixedTermDepositController(IFixedTermDepositServices FixedTernDepositServices, IMapper mapper)
         {
             _FixedTernDepositServices = FixedTernDepositServices;
+            _mapper = mapper;
         }
 
         // GET: api/FixedTermDepositController
         [HttpGet]
+       // [Authorize]
         public async Task<IActionResult> Get()
         {
             var fixeds = await _FixedTernDepositServices.GetAllFixedTermDeposit();
-            return Ok(fixeds);
+            var fixedDTO= _mapper.Map<List<FixedTermsDepositDTO>>(fixeds);
+            var ordenFechaFixed = fixedDTO.OrderBy(p => p.creation_date);
+            return Ok(ordenFechaFixed);
         }
 
         // GET api/FixedTermDepositController/{id}
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Get(int id)
         {
             var fixedTerm= await _FixedTernDepositServices.GetFixedTermDepositById(id);
@@ -37,35 +47,103 @@ namespace Wall_Net.Controllers
             return Ok(fixedTerm);
         }
 
+        [HttpGet("/Fixed/{idFixed}")]
+        public async Task<IActionResult> GetDetailsFixedById(int idFixed)
+        {
+            if(idUser() != 0)
+            {
+                var fixedTerms = await _FixedTernDepositServices.GetAllById(idUser());
+                var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(idFixed);
+                if (fixedTerms == null || fixedTerm==null)
+                {
+                    return NotFound();
+                }
+                else if (fixedTerms.Contains(fixedTerm))
+                {
+                    var fixedDTO = _mapper.Map<FixedTermsDepositDTO>(fixedTerm);
+                  //  var ordenFechaFixed = fixedDTO.OrderBy(p => p.closing_date);
+                    return Ok(fixedDTO);
+                }
+            }
+            return BadRequest("Usted no es un usuario autenticado o el plazo fijo no es correspondiente a usted");
+        }
+
+
+        // GET api/Fixed
+        [HttpGet("/Fixed/CurrentUser")]
+        public async Task<IActionResult> GetMyFixed()
+        {
+            if (idUser() != 0)
+            {
+            var fixedTerm = await _FixedTernDepositServices.GetAllById(idUser());
+            if (fixedTerm == null)
+            {
+                return NotFound();
+            }
+            var fixedDTO = _mapper.Map<List<FixedTermsDepositDTO>>(fixedTerm);
+            var ordenFechaFixed = fixedDTO.OrderBy(p => p.closing_date);
+            return Ok(ordenFechaFixed);
+            }
+            return BadRequest("Usted no es un usuario autenticado");
+
+        }
+
+        private int idUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+                {
+                var id = identity.FindFirst("Id");
+                var idFixed = int.TryParse(id.Value, out int userID);
+
+                return userID;
+                }
+            return 0;
+        }
+
         // POST api/FixedTermDepositController
         [HttpPost]
+        //[Authorize]
         public async Task<IActionResult> Post(FixedTermDeposit fixedTerm)
         {
-            await _FixedTernDepositServices.AddFixedTermDeposit(fixedTerm);
-            return CreatedAtAction(nameof(Get), new { Id = fixedTerm.Id }, fixedTerm);
+            if (ModelState.IsValid)
+            {
+                await _FixedTernDepositServices.AddFixedTermDeposit(fixedTerm,idUser());
+                _FixedTernDepositServices.UpdateAccountMoney(fixedTerm);
+                return CreatedAtAction(nameof(Get), new { Id = fixedTerm.Id }, fixedTerm);
+            }
+
+            return BadRequest();
         }
 
         // PUT api/FixedTermDepositController
         [HttpPut]
+        //[Authorize]
         public async Task<IActionResult> Put(FixedTermDeposit updateFixedTerm)
         {
-            var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(updateFixedTerm.Id);
-            if(fixedTerm == null)
+            if(ModelState.IsValid)
             {
-                return NotFound();
-            }
-            fixedTerm.amount = updateFixedTerm.amount;
-            fixedTerm.creation_date = updateFixedTerm.creation_date;
-            fixedTerm.closing_date= updateFixedTerm.closing_date;
-            fixedTerm.nominalRate= updateFixedTerm.nominalRate;
-            fixedTerm.state = updateFixedTerm.state;
+                var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(updateFixedTerm.Id);
+                if (fixedTerm == null)
+                {
+                    return NotFound();
+                }
+                fixedTerm.amount = updateFixedTerm.amount;
+                fixedTerm.creation_date = updateFixedTerm.creation_date;
+                fixedTerm.closing_date = updateFixedTerm.closing_date;
+                fixedTerm.nominalRate = updateFixedTerm.nominalRate;
+                fixedTerm.state = updateFixedTerm.state;
 
-            await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
-            return NoContent();
+                await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
+                return NoContent();
+            }
+            return BadRequest();
+            
         }
 
         // DELETE api/FixedTermDepositController/{id}
         [HttpDelete("{id}")]
+        //[Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(id);
