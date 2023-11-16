@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Wall_Net.DataAccess;
 using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 
 namespace Wall_Net.Repositories
 {
@@ -26,12 +27,12 @@ namespace Wall_Net.Repositories
         public async Task<IEnumerable<FixedTermDeposit>> GetAllById(int id)
         {
             var user= await _dbContext.Users
-                .Include(p => p.FixedTerms)
+                .Include(p => p.FixedTermDeposits)
                 .FirstOrDefaultAsync(p => p.Id == id);
-            var fixeds = user.FixedTerms;
+            var fixeds = user.FixedTermDeposits;
             return fixeds;
         }
-
+      
         public async Task<FixedTermDeposit> GetById(int id)
         {
             return await _dbContext.FixedTerms
@@ -43,35 +44,41 @@ namespace Wall_Net.Repositories
         public async Task<FixedTermDeposit> GetFixedByIdUser(int idUser,int idFixed)
         {
             var user = await _dbContext.Users
-                .Include(p => p.FixedTerms)
+                .Include(p => p.FixedTermDeposits)
                 .FirstOrDefaultAsync(p => p.Id == idUser);
-            var fixedTerms = user.FixedTerms;
+            var fixedTerms = user.FixedTermDeposits;
             var fTerm = fixedTerms.FirstOrDefault(p => p.Id == idFixed);
 
             return fTerm;
         }
         
-        public async Task Add(FixedTermDeposit FixedTermDeposit, int idUser)
+        public async Task Add(FixedTermsDepositDTO FixedTermDeposit, int idUser)
         {
-            FixedTermDeposit.Account= _dbContext.Accounts.FirstOrDefault(p => p.Id == FixedTermDeposit.AccountId);
+            var account= _dbContext.Accounts.FirstOrDefault(p => p.User_Id == idUser);
 
-            if (FixedTermDeposit.Account.Money >= FixedTermDeposit.amount)
+            if (account.Money >= FixedTermDeposit.amount)
             {
-                FixedTermDeposit.creation_date = DateTime.Now;
-                FixedTermDeposit.state = "Activo";
-                FixedTermDeposit.User= _dbContext.Users.FirstOrDefault(p => p.Id == FixedTermDeposit.UserId);
-                _dbContext.FixedTerms.Add(FixedTermDeposit);  
+                FixedTermDeposit fixedTerm = new FixedTermDeposit();
+
+                fixedTerm.UserId = idUser;
+                fixedTerm.User = _dbContext.Users.FirstOrDefault(p => p.Id == idUser);
+                fixedTerm.AccountId = account.Id;
+                fixedTerm.Account = account;
+                fixedTerm.creation_date = DateTime.Now;
+                fixedTerm.closing_date = FixedTermDeposit.closing_date;
+                fixedTerm.amount = FixedTermDeposit.amount;
+                fixedTerm.nominalRate = 10;
+                fixedTerm.state = "Activo";
+
+                fixedTerm.Account.Money -= fixedTerm.amount;
+
+                _dbContext.FixedTerms.Add(fixedTerm);  
             }
             
         }
-        public async Task UpdateAccount(FixedTermDeposit updateFixedTermDeposit)
-        {
-            updateFixedTermDeposit.Account.Money -= updateFixedTermDeposit.amount;
-            _dbContext.FixedTerms.Update(updateFixedTermDeposit);
-        }
+       
         public async Task Update(FixedTermDeposit updateFixedTermDeposit)
         {
-            updateFixedTermDeposit.Account.Money -= updateFixedTermDeposit.amount;
             _dbContext.FixedTerms.Update(updateFixedTermDeposit);
         }
 

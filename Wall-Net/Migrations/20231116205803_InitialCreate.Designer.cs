@@ -12,7 +12,7 @@ using Wall_Net.DataAccess;
 namespace Wall_Net.Migrations
 {
     [DbContext(typeof(WallNetDbContext))]
-    [Migration("20231116171801_InitialCreate")]
+    [Migration("20231116205803_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,13 +46,15 @@ namespace Wall_Net.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("User_Id");
+
                     b.ToTable("Accounts");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(1956),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8377),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -60,7 +62,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2008),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8419),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 2
@@ -68,7 +70,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2012),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8422),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 3
@@ -76,7 +78,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2016),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8425),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 4
@@ -84,7 +86,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2019),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8427),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 5
@@ -92,7 +94,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2038),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8433),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 6
@@ -100,7 +102,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2042),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8436),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 7
@@ -108,7 +110,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2045),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8439),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 8
@@ -116,7 +118,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2048),
+                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8442),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 9
@@ -131,7 +133,10 @@ namespace Wall_Net.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("account_id")
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("amount")
@@ -150,10 +155,11 @@ namespace Wall_Net.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("user_id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("FixedTerms");
 
@@ -161,46 +167,46 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 1,
-                            account_id = 1,
+                            AccountId = 1,
+                            UserId = 1,
                             amount = 100m,
                             closing_date = new DateTime(2001, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             creation_date = new DateTime(2001, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
-                            state = "Inmovilizado",
-                            user_id = 1
+                            state = "Inmovilizado"
                         },
                         new
                         {
                             Id = 2,
-                            account_id = 2,
+                            AccountId = 2,
+                            UserId = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2353),
+                            closing_date = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8795),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
-                            state = "Activo",
-                            user_id = 2
+                            state = "Activo"
                         },
                         new
                         {
                             Id = 3,
-                            account_id = 3,
+                            AccountId = 3,
+                            UserId = 2,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 16, 14, 18, 0, 441, DateTimeKind.Local).AddTicks(2359),
+                            closing_date = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8800),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
-                            state = "Activo",
-                            user_id = 2
+                            state = "Activo"
                         },
                         new
                         {
                             Id = 4,
-                            account_id = 4,
+                            AccountId = 4,
+                            UserId = 1,
                             amount = 250m,
                             closing_date = new DateTime(2008, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             creation_date = new DateTime(2007, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 17m,
-                            state = "Invomilizado",
-                            user_id = 1
+                            state = "Invomilizado"
                         });
                 });
 
@@ -305,7 +311,117 @@ namespace Wall_Net.Migrations
                             Password = "123456",
                             Points = 20,
                             Rol_Id = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "sandra@email.com",
+                            FirstName = "Sandra",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "juan@email.com",
+                            FirstName = "Juan",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "martin@email.com",
+                            FirstName = "Martin",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "fede@email.com",
+                            FirstName = "Fede",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Email = "jose@email.com",
+                            FirstName = "Jose",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Email = "mica@email.com",
+                            FirstName = "Mica",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Email = "sofia@email.com",
+                            FirstName = "Sofia",
+                            LastName = "Gonzalez",
+                            Password = "123456",
+                            Points = 20,
+                            Rol_Id = 2
                         });
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.Account", b =>
+                {
+                    b.HasOne("Wall_Net.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.FixedTermDeposit", b =>
+                {
+                    b.HasOne("Wall_Net.Models.Account", "Account")
+                        .WithMany("FixedTermDeposit")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wall_Net.Models.User", "User")
+                        .WithMany("FixedTermDeposits")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.Account", b =>
+                {
+                    b.Navigation("FixedTermDeposit");
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.User", b =>
+                {
+                    b.Navigation("FixedTermDeposits");
                 });
 #pragma warning restore 612, 618
         }

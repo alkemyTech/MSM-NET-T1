@@ -16,8 +16,7 @@ namespace Wall_Net.Repositories
         public async Task<IEnumerable<User>> GetAll()
         {
             return await _dbcontext.Users
-                .Include(p => p.FixedTerms)
-                .Include(p => p.account)
+                .Include(p => p.FixedTermDeposits)
                 .ToListAsync();
         }
 

@@ -4,25 +4,23 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using Wall_Net.Models;
 
 namespace Wall_Net.Models
 {
-    [Bind]
     public class FixedTermDeposit
     {
-        [Key,ScaffoldColumn(false)]
-         public int Id {  get; set; }
+        [Key]
+        public int Id {  get; set; }
 
-        [DisplayName("User")]
         public int UserId {  get; set; }
-        
-        [ForeignKey("UserId")]
+
+        [ForeignKey("UserId")] 
         public virtual User User { get; set; }
 
-        [DisplayName("Account")]
         public int AccountId { get; set; }
-        
-        [ForeignKey("AccountId")]
+
+        [ForeignKey("AccountId")] 
         public virtual Account Account { get; set; }
 
         //////
@@ -32,7 +30,7 @@ namespace Wall_Net.Models
 
         public DateTime creation_date {  get; set; }
 
-        [Range(typeof(DateTime),"now","9999-12-31",ErrorMessage ="Se solicita que ingrese una fecha para cerrar el plazo fijo")]
+        [Range(typeof(DateTime), "2000-12-31", "9999-12-31",ErrorMessage ="Se solicita que ingrese una fecha para cerrar el plazo fijo")]
         public DateTime closing_date {  get; set; }
 
         [Range(5,20,ErrorMessage ="Por favor ingrese un numero valido")]

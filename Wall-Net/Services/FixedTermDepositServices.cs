@@ -1,4 +1,5 @@
 ﻿using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 using Wall_Net.UnitOfWorks;
 
 namespace Wall_Net.Services
@@ -12,7 +13,7 @@ namespace Wall_Net.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddFixedTermDeposit(FixedTermDeposit fixedTerm, int idUser)
+        public async Task AddFixedTermDeposit(FixedTermsDepositDTO fixedTerm, int idUser)
         {
             _unitOfWork.FixedTermDepositRepository.Add(fixedTerm,idUser);
             await _unitOfWork.Commit();
@@ -48,11 +49,7 @@ namespace Wall_Net.Services
             _unitOfWork.FixedTermDepositRepository.Update(fixedTerm);
             await _unitOfWork.Commit();
         }
-        public async Task UpdateAccountMoney(FixedTermDeposit fixedTerm)
-        {
-            _unitOfWork.FixedTermDepositRepository.Update(fixedTerm);
-            await _unitOfWork.Commit();
-        }
+        
         public async Task SaveChanges()
         {
             await _unitOfWork.Commit();

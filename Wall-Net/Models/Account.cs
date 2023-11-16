@@ -10,11 +10,12 @@ namespace Wall_Net.Models
         public DateTime CreationDate { get; set; }
         public decimal Money { get; set; }
         public bool IsBlocked { get; set; }
+
         public int User_Id { get; set; }
-        
         [ForeignKey("User_Id")]
         public virtual User User { get; set; }
 
-        //public ICollection<FixedTermDeposit> FixedTermDeposit { get; set; }
+        [InverseProperty("Account")]
+        public virtual ICollection<FixedTermDeposit> FixedTermDeposit { get; set; }
     }
 }

@@ -14,7 +14,6 @@ namespace Wall_Net.Controllers
     public class RolesController : Controller
     {
         private readonly IRolesServices _rolesServices;
-        private readonly int records = 2;
 
         public RolesController(IRolesServices rolesServices)
         {
@@ -23,25 +22,10 @@ namespace Wall_Net.Controllers
 
         
         [HttpGet]
-        public async Task<IActionResult> Get([FromBody] int? page)
+        public async Task<IActionResult> Get()
         {
             var roles = await _rolesServices.GetAllRoles();
-
-            int _page = page ?? 1;
-            int total_roles = roles.Count();
-            int total_pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(total_roles / records)));
-
-            var allRoles = roles
-                .Skip((_page - 1) * records)
-                .Take(records)
-                .ToList();
-
-            return Ok(new
-            {
-                pages = total_pages,
-                roles = allRoles,
-                current_page = _page
-            });
+            return Ok(roles);
         }
 
         // GET api/Roles/{id}

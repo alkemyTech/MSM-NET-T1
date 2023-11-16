@@ -36,10 +36,10 @@ namespace Wall_Net.DataAccess.SeedData
         {
             return new List<FixedTermDeposit>
             {
-                new FixedTermDeposit{Id=1,user_id=1,account_id=1,amount=100,creation_date=new DateTime(2001,2,3),closing_date=new DateTime(2001,3,3),nominalRate=12,state="Inmovilizado"},
-                new FixedTermDeposit { Id =2, user_id =2, account_id =2, amount =150, creation_date = new DateTime(2001, 3, 4),closing_date=DateTime.Now, nominalRate =5, state ="Activo"},
-                new FixedTermDeposit { Id =3, user_id =2, account_id =3, amount =200, creation_date = new DateTime(2001, 5, 6),closing_date=DateTime.Now, nominalRate =12, state ="Activo"},
-                new FixedTermDeposit { Id =4, user_id =1, account_id =4, amount =250, creation_date = new DateTime(2007, 7, 7), closing_date = new DateTime(2008, 7, 7), nominalRate =17, state ="Invomilizado"}
+                new FixedTermDeposit{Id=1,UserId=1,AccountId=1,amount=100,creation_date=new DateTime(2001,2,3),closing_date=new DateTime(2001,3,3),nominalRate=12,state="Inmovilizado"},
+                new FixedTermDeposit { Id =2, UserId =2, AccountId =2, amount =150, creation_date = new DateTime(2001, 3, 4),closing_date=DateTime.Now, nominalRate =5, state ="Activo"},
+                new FixedTermDeposit { Id =3, UserId =2, AccountId =3, amount =200, creation_date = new DateTime(2001, 5, 6),closing_date=DateTime.Now, nominalRate =12, state ="Activo"},
+                new FixedTermDeposit { Id =4, UserId =1, AccountId =4, amount =250, creation_date = new DateTime(2007, 7, 7), closing_date = new DateTime(2008, 7, 7), nominalRate =17, state ="Invomilizado"}
         };
         }
 
@@ -49,8 +49,7 @@ namespace Wall_Net.DataAccess.SeedData
                 {
                 new User
                 {Id = 1, FirstName = "Leandro", LastName = "Mumbach" ,Email = "lean@email.com" ,Password = "123456", Points = 20, Rol_Id = 1,},
-                new User
-                {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
+                new User {Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
                 new User{Id = 3, FirstName = "Sandra", LastName = "Gonzalez", Email = "sandra@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
                 new User{Id = 4, FirstName = "Juan", LastName = "Gonzalez", Email = "juan@email.com", Password = "123456", Points = 20, Rol_Id = 1,},
                 new User{Id = 5, FirstName = "Martin", LastName = "Gonzalez", Email = "martin@email.com", Password = "123456", Points = 20, Rol_Id = 2,},
