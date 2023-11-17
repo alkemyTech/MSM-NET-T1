@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Wall_Net.DataAccess;
 using Wall_Net.Models;
 using Wall_Net.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Wall_Net.Repositories
 {
@@ -52,11 +53,11 @@ namespace Wall_Net.Repositories
             return fTerm;
         }
         
-        public async Task Add(FixedTermsDepositDTO FixedTermDeposit, int idUser)
+        public async Task<Boolean> Add(int monthFTD, int amount, int idUser)
         {
             var account= _dbContext.Accounts.FirstOrDefault(p => p.User_Id == idUser);
 
-            if (account.Money >= FixedTermDeposit.amount)
+            if (account.Money >= amount)
             {
                 FixedTermDeposit fixedTerm = new FixedTermDeposit();
 
@@ -65,15 +66,20 @@ namespace Wall_Net.Repositories
                 fixedTerm.AccountId = account.Id;
                 fixedTerm.Account = account;
                 fixedTerm.creation_date = DateTime.Now;
-                fixedTerm.closing_date = FixedTermDeposit.closing_date;
-                fixedTerm.amount = FixedTermDeposit.amount;
+                fixedTerm.closing_date = fixedTerm.creation_date.AddMonths(monthFTD);
+                fixedTerm.amount = amount;
                 fixedTerm.nominalRate = 10;
                 fixedTerm.state = "Activo";
 
                 fixedTerm.Account.Money -= fixedTerm.amount;
 
-                _dbContext.FixedTerms.Add(fixedTerm);  
+                _dbContext.FixedTerms.Add(fixedTerm);
+
+                return true;
             }
+
+            return false;
+
             
         }
        

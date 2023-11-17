@@ -52,7 +52,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8377),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8541),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 1
@@ -60,7 +60,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8419),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8563),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 2
@@ -68,7 +68,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8422),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8564),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 3
@@ -76,7 +76,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8425),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8566),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 4
@@ -84,7 +84,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8427),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8568),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 5
@@ -92,7 +92,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8433),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8572),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 6
@@ -100,7 +100,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8436),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8573),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 7
@@ -108,7 +108,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8439),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8575),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 8
@@ -116,11 +116,44 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8442),
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8577),
                             IsBlocked = false,
                             Money = 1000m,
                             User_Id = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreationDate = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8580),
+                            IsBlocked = false,
+                            Money = 1000m,
+                            User_Id = 10
                         });
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.Catalogue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Points")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Catalogues");
                 });
 
             modelBuilder.Entity("Wall_Net.Models.FixedTermDeposit", b =>
@@ -179,7 +212,7 @@ namespace Wall_Net.Migrations
                             AccountId = 2,
                             UserId = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8795),
+                            closing_date = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8628),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
                             state = "Activo"
@@ -190,7 +223,7 @@ namespace Wall_Net.Migrations
                             AccountId = 3,
                             UserId = 2,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 16, 17, 58, 2, 747, DateTimeKind.Local).AddTicks(8800),
+                            closing_date = new DateTime(2023, 11, 17, 12, 18, 46, 234, DateTimeKind.Local).AddTicks(8631),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
                             state = "Activo"
@@ -253,6 +286,42 @@ namespace Wall_Net.Migrations
                             Description = "Cliente antiguo",
                             Name = "Regular"
                         });
+                });
+
+            modelBuilder.Entity("Wall_Net.Models.Transaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"), 1L, 1);
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Concept")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ToAccountId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TransactionId");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Wall_Net.Models.User", b =>

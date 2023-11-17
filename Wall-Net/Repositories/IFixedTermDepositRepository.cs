@@ -9,7 +9,7 @@ namespace Wall_Net.Repositories
         Task<FixedTermDeposit> GetFixedByIdUser(int idUser, int idFixed);
         Task<IEnumerable<FixedTermDeposit>> GetAll();
         Task<IEnumerable<FixedTermDeposit>> GetAllById(int id);
-        Task Add(FixedTermsDepositDTO rol, int idUser);
+        Task<Boolean> Add(int monthFTD, int amount, int idUser);
         Task Update(FixedTermDeposit rol);
         Task Delete(int id);
     }

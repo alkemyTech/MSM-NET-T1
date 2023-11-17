@@ -14,7 +14,9 @@ namespace Wall_Net.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Roles> roles { get; set; }
         public DbSet<Account> Accounts{ get; set; }
-        public DbSet<FixedTermDeposit> FixedTerms { get; set; } 
+        public DbSet<FixedTermDeposit> FixedTerms { get; set; }
+        public DbSet<Catalogue> Catalogues { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

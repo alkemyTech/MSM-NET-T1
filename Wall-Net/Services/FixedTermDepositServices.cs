@@ -13,10 +13,11 @@ namespace Wall_Net.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddFixedTermDeposit(FixedTermsDepositDTO fixedTerm, int idUser)
+        public async Task<Boolean> AddFixedTermDeposit(int monthFTD, int amount, int idUser)
         {
-            _unitOfWork.FixedTermDepositRepository.Add(fixedTerm,idUser);
+            var boolean= await _unitOfWork.FixedTermDepositRepository.Add(monthFTD, amount, idUser);
             await _unitOfWork.Commit();
+            return boolean;
         }
 
         public async Task DeleteFixedTermDeposit(int id)

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Wall_Net.Models.DTO;
 

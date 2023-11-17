@@ -34,23 +34,30 @@ namespace Wall_Net.Controllers
         // POST api/Login
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
-            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
-            if (account != null && account.IsBlocked) 
+            try
             {
-                return Unauthorized("Su cuenta se encuentra bloqueada.");
+                var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+                if (account != null && account.IsBlocked)
+                {
+                    return Unauthorized("Su cuenta se encuentra bloqueada.");
+                }
+
+                var user = Authenticate(userLogin);
+                IActionResult response = Unauthorized();
+
+                if (user != null)
+                {
+                    var token = Generate(user);
+
+                    return Ok(token);
+                }
+
+                return response;
             }
-
-            var user = Authenticate(userLogin);
-            IActionResult response = Unauthorized();
-
-            if (user != null)
+            catch (Exception ex)
             {
-                var token = Generate(user);
-
-                return Ok(token);
+                return StatusCode(500, new { message = "Internal Server Error" });
             }
-
-            return response;
         }
 
         private User Authenticate(LoginUser userLogin)

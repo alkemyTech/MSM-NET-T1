@@ -28,7 +28,8 @@ namespace Wall_Net.DataAccess.SeedData
                 new Account { Id = 6, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 6 },
                 new Account { Id = 7, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 7 },
                 new Account { Id = 8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 8 },
-                new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 9 }
+                new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 9 },
+                new Account { Id = 10, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 10 }
             };
         }
 

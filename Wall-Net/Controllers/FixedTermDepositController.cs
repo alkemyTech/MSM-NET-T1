@@ -28,10 +28,17 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task<IActionResult> Get()
         {
-            var fixeds = await _FixedTernDepositServices.GetAllFixedTermDeposit();
-            var fixedDTO= _mapper.Map<List<FixedTermsDepositDTO>>(fixeds);
-            var ordenFechaFixed = fixedDTO.OrderBy(p => p.creation_date);
-            return Ok(ordenFechaFixed);
+            try
+            {
+                var fixeds = await _FixedTernDepositServices.GetAllFixedTermDeposit();
+                var fixedDTO = _mapper.Map<List<FixedTermsDepositDTO>>(fixeds);
+                var ordenFechaFixed = fixedDTO.OrderBy(p => p.creation_date);
+                return Ok(ordenFechaFixed);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // GET api/FixedTermDepositController/{id}
@@ -39,22 +46,30 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task<IActionResult> Get(int id)
         {
-            var fixedTerm= await _FixedTernDepositServices.GetFixedTermDepositById(id);
-            if (fixedTerm == null)
+            try
             {
-                return NotFound();
+                var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(id);
+                if (fixedTerm == null)
+                {
+                    return NotFound();
+                }
+                return Ok(fixedTerm);
             }
-            return Ok(fixedTerm);
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         [HttpGet("/Fixed/{idFixed}")]
         [Authorize]
         public async Task<IActionResult> GetDetailsFixedById(int idFixed)
         {
-              
+            try
+            {
                 var fixedTerms = await _FixedTernDepositServices.GetAllById(idUser());
                 var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(idFixed);
-                if (fixedTerms == null || fixedTerm==null)
+                if (fixedTerms == null || fixedTerm == null)
                 {
                     return NotFound("Usted no posee plazos fijo o el id no corresponde a ningun plazo fijo");
                 }
@@ -63,7 +78,12 @@ namespace Wall_Net.Controllers
                     var fixedDTO = _mapper.Map<FixedTermsDepositDTO>(fixedTerm);
                     return Ok(fixedDTO);
                 }
-            return NotFound("Usted no posee un plazo fijo correspondiente a este id");
+                return NotFound("Usted no posee un plazo fijo correspondiente a este id");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
 
@@ -73,6 +93,8 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task<IActionResult> GetMyFixed()
         {
+            try
+            {
                 var fixedTerm = await _FixedTernDepositServices.GetAllById(idUser());
                 if (fixedTerm == null)
                 {
@@ -81,22 +103,39 @@ namespace Wall_Net.Controllers
                 var fixedDTO = _mapper.Map<List<FixedTermsDepositDTO>>(fixedTerm);
                 var ordenFechaFixed = fixedDTO.OrderBy(p => p.closing_date);
                 return Ok(ordenFechaFixed);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // POST api/FixedTermDepositController
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Post(FixedTermsDepositDTO fixedDTO)
+        public async Task<IActionResult> Post(int mothFTD, int amount)
         {
-            if (ModelState.IsValid )
+            try
             {
-               
-                await _FixedTernDepositServices.AddFixedTermDeposit(fixedDTO,idUser());
-                return Ok("Su plazo fijo fue creado con exito");
-      
-            }
+                if (mothFTD>=1 && mothFTD<=12)
+                {
 
-            return BadRequest();
+                    var boolean= await _FixedTernDepositServices.AddFixedTermDeposit(mothFTD, amount, idUser());
+
+                    if (boolean)
+                    {
+                        return Ok("Su plazo fijo fue creado con éxito");
+                    }
+                    return BadRequest("Su monto es superior al monto que posee en su cuenta");
+
+                }
+
+                return BadRequest("La cantidad de meses ingresados para el plazo fijo, no es valido.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // PUT api/FixedTermDepositController
@@ -104,24 +143,30 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task<IActionResult> Put(FixedTermDeposit updateFixedTerm)
         {
-            if(ModelState.IsValid)
+            try
             {
-                var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(updateFixedTerm.Id);
-                if (fixedTerm == null)
+                if (ModelState.IsValid)
                 {
-                    return NotFound();
-                }
-                fixedTerm.amount = updateFixedTerm.amount;
-                fixedTerm.creation_date = updateFixedTerm.creation_date;
-                fixedTerm.closing_date = updateFixedTerm.closing_date;
-                fixedTerm.nominalRate = updateFixedTerm.nominalRate;
-                fixedTerm.state = updateFixedTerm.state;
+                    var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(updateFixedTerm.Id);
+                    if (fixedTerm == null)
+                    {
+                        return NotFound();
+                    }
+                    fixedTerm.amount = updateFixedTerm.amount;
+                    fixedTerm.creation_date = updateFixedTerm.creation_date;
+                    fixedTerm.closing_date = updateFixedTerm.closing_date;
+                    fixedTerm.nominalRate = updateFixedTerm.nominalRate;
+                    fixedTerm.state = updateFixedTerm.state;
 
-                await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
-                return NoContent();
+                    await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
+                    return NoContent();
+                }
+                return BadRequest();
             }
-            return BadRequest();
-            
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // DELETE api/FixedTermDepositController/{id}
@@ -129,13 +174,20 @@ namespace Wall_Net.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(id);
-            if( fixedTerm == null)
+            try
             {
-                return NotFound();
+                var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(id);
+                if (fixedTerm == null)
+                {
+                    return NotFound();
+                }
+                await _FixedTernDepositServices.DeleteFixedTermDeposit(id);
+                return NoContent();
             }
-            await _FixedTernDepositServices.DeleteFixedTermDeposit(id);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
 

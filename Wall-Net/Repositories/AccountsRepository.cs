@@ -22,10 +22,15 @@ namespace Wall_Net.Repositories
         }
         public async Task InsertAccount(Account account)
         {
+            var userRelacionado = _dbContext.Users.FirstOrDefault(p => p.Id == account.User_Id);
+            account.User = userRelacionado;
             _dbContext.Accounts.Add(account);
         }
         public async Task UpdateAccount(Account account)
         {
+
+            var userRelacionado = _dbContext.Users.FirstOrDefault(p => p.Id == account.User_Id);
+            account.User = userRelacionado;
             _dbContext.Accounts.Update(account);
         }
         public async Task DeleteAccount(int id)

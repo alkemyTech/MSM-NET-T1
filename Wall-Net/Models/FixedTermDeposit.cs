@@ -28,13 +28,16 @@ namespace Wall_Net.Models
         [RegularExpression("([1-9][0-9]*)", ErrorMessage ="Se solicita monto para iniciar el plazo fijo")]
         public decimal amount {  get; set; }
 
+        [Range(typeof(DateTime), "0001-01-01", "closing_date", ErrorMessage = "Se solicita que ingrese una fecha para cerrar el plazo fijo")]
         public DateTime creation_date {  get; set; }
 
-        [Range(typeof(DateTime), "2000-12-31", "9999-12-31",ErrorMessage ="Se solicita que ingrese una fecha para cerrar el plazo fijo")]
+        [Range(typeof(DateTime), "creation_date", "9999-12-31",ErrorMessage ="Se solicita que ingrese una fecha para cerrar el plazo fijo")]
         public DateTime closing_date {  get; set; }
 
         [Range(5,20,ErrorMessage ="Por favor ingrese un numero valido")]
-        public decimal nominalRate { get; set; } = 10;
+        public decimal nominalRate { get; set; }
+
+        [Required(ErrorMessage = "El campo Estado es obligatorio.")]
         public string state {  get; set; }
     }
 }
