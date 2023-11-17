@@ -14,5 +14,8 @@ namespace Wall_Net.Models
         public int User_Id { get; set; }
         [ForeignKey("User_Id")]
         public virtual User? User { get; set; }
+
+        [InverseProperty("Account")]
+        public virtual ICollection<Transaction>? Transactions { get; set; } = new List<Transaction>();
     }
 }

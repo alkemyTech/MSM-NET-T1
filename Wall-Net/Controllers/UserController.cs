@@ -34,7 +34,6 @@ namespace Wall_Net.Controllers
             return Ok(user);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task <IActionResult> Post(User user)
         {

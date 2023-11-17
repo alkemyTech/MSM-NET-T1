@@ -17,12 +17,15 @@ namespace Wall_Net.Repositories
         }
         public async Task<Account> GetAccountById(int id)
         {
-            return _dbContext.Accounts.Include(p => p.User)
+            return _dbContext.Accounts
+                .Include(p => p.User)
+                .Include(t => t.Transactions)
                 .FirstOrDefault(a => a.Id == id);
         }
         public async Task<Account> GetAccountByUserId(int userId)
         {
-            return await _dbContext.Accounts.FirstOrDefaultAsync(a => a.User_Id == userId);   
+            return await _dbContext.Accounts.Include(u=>u.User)
+                .FirstOrDefaultAsync(a => a.User_Id == userId);   
             
         }
         public async Task InsertAccount(Account account)

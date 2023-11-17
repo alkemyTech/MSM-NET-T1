@@ -13,15 +13,9 @@ namespace Wall_Net.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IAccountServices _accountServices;
-        private readonly ITransactionService _transactionService;
-        private readonly IUserServices _userServices;
-        public AccountsController(IAccountServices accountServices, ITransactionService transactionService, IUserServices userServices)
+        public AccountsController(IAccountServices accountServices)
         {
             _accountServices = accountServices;
-
-            _transactionService = transactionService;
-
-            _userServices = userServices;
         }
         [HttpGet]
         //[Authorize(Roles = "Admin")]
@@ -96,40 +90,85 @@ namespace Wall_Net.Controllers
         [HttpPost("Deposito/{id}")]
         public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
         {
-            var currentUser = GetCurrentUserId();
-            int idCurrent = currentUser.Id;
-
-            if (id == idCurrent) 
-            {
-                var eAccount = await _accountServices.GetByUserId(id);
-                if (eAccount != null)
+            try { 
+                var currentUser = GetCurrentUserId();
+                int idCurrent = currentUser.Id;
+                if (id == idCurrent) 
                 {
-                    eAccount.Money += account.Money;
-                    await _accountServices.Update(eAccount);
-                    var transaction = new Transaction
-                        {
-                            Amount = account.Money,
-                            AccountId = eAccount.Id,
-                            Concept = "Deposito",
-                            Type = "topup",
-                            UserId = currentUser.Id,
-                        };
-                    await _transactionService.AddTransactionAsync(transaction);
-                    var user = await _userServices.GetUserById(id);
-                    if (user != null)
+                    var eAccount = await _accountServices.GetByUserId(id);
+                    if (eAccount != null)
                     {
+                        eAccount.Money += account.Money;
+                        //await _accountServices.Update(eAccount);
+                        var transaction = new Transaction
+                            {
+                                Amount = account.Money,
+                                AccountId = eAccount.Id,
+                                Concept = "Deposito",
+                                Type = "topup",
+                                UserId = currentUser.Id,
+                            };
+                        eAccount.Transactions.Add(transaction);
                         decimal points = account.Money * 2 / 100;
-                        user.Points += points;
-
-                        await _userServices.UpdateUser(user);
+                        eAccount.User.Points += points;
+                        await _accountServices.Update(eAccount);
                     }
+                    return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
                 }
-                return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
-               
+                else
+                {
+                    return StatusCode(400, new { message = "El Id ingresado no corresponde a su cuenta" });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode(400, new { message = "" });
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
+        }
+        [HttpPost("Transferencia/{id}")]
+        public async Task<IActionResult> Transferencia(int id, [FromBody] Account account)
+        {
+            try { 
+                var currentUser = GetCurrentUserId();
+                var sendAccount = await _accountServices.GetByUserId(currentUser.Id);
+
+
+
+                    var recAccount = await _accountServices.GetByUserId(id);
+                    if (recAccount != null)
+                    {
+                        if(sendAccount.Money > 100)
+                        {
+                            var montoTransferido = account.Money;
+                            sendAccount.Money -= montoTransferido;
+                            recAccount.Money += montoTransferido;
+                            await _accountServices.Update(recAccount);
+                        }
+                        else 
+                        {
+                            return BadRequest("Tu Saldo es insuficiente");
+                        }
+                        
+                        //await _accountServices.Update(eAccount);
+                        var transaction = new Transaction
+                            {
+                                Amount = account.Money,
+                                AccountId = currentUser.Id,
+                                Concept = "Transferencia",
+                                Type = "topup",
+                                UserId = currentUser.Id,
+                                ToAccountId = recAccount.Id,
+                            };
+                        sendAccount.Transactions.Add(transaction);
+                        decimal points = account.Money * 3 / 100;
+                        sendAccount.User.Points += points;
+                        await _accountServices.Update(sendAccount);
+                    }
+                    return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
             }
         }
         [HttpPut]
