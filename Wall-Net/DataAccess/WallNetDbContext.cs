@@ -27,9 +27,9 @@ namespace Wall_Net.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Roles>().HasData(SeedData.SeedData.SeedsRoles());
-            modelBuilder.Entity<Account>().HasData(SeedData.SeedData.SeedsAcounts());
             modelBuilder.Entity<FixedTermDeposit>().HasData(SeedData.SeedData.SeedsFixed());
             modelBuilder.Entity<User>().HasData(SeedData.SeedData.SeedsUsers());
+            modelBuilder.Entity<Account>().HasData(SeedData.SeedData.SeedsAcounts());
             modelBuilder.Entity<Catalogue>().HasData(SeedData.SeedData.SeedsCatalogue());
             modelBuilder.Entity<Transaction>().HasData(SeedData.SeedData.SeedsTransaction());
         }

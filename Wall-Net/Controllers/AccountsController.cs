@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Security.Principal;
+using Wall_Net.DataAccess;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -11,25 +13,57 @@ namespace Wall_Net.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IAccountServices _accountServices;
-        public AccountsController(IAccountServices accountServices)
+        private readonly ITransactionService _transactionService;
+        private readonly IUserServices _userServices;
+        public AccountsController(IAccountServices accountServices, ITransactionService transactionService, IUserServices userServices)
         {
             _accountServices = accountServices;
+
+            _transactionService = transactionService;
+
+            _userServices = userServices;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
-            if (accounts == null)
+            
+            if (accounts != null)
             {
-                return NotFound("No se encontraron cuentas");
+                int cantidadRegistros = 5;
+                var data = await Paginacion<Account>.CrearPaginacion(accounts, numpag ?? 1, cantidadRegistros);
+
+                if (numpag.HasValue && (numpag < 1 || numpag > data.PaginasTotales))
+                {
+                    var pagNoEncontrada = new
+                    {
+                        Status = NotFound(),
+                        message = "Página no encontrada",
+                    };
+                    return BadRequest(pagNoEncontrada);
+                }
+               
+                string url = $"{Request.Scheme}://{Request.Host}{Request.Path}";
+                string pagSig = data.PaginaInicio < data.PaginasTotales ? $"{url}?numpag={data.PaginaInicio + 1}" : null;
+                string pagAnt = data.PaginaInicio > 1 ? $"{url}?numpag={data.PaginaInicio - 1}" : null;
+                var respuesta = new
+                {
+                    Status = Ok(),
+                    PaginaSiguiente = pagSig,
+                    PaginaAnterior = pagAnt,
+                    Response = data
+                };
+
+                return Ok(respuesta);
             }
             else
             {
-                return Ok(accounts);
+                return NotFound("No se encontraron cuentas");
             }
         }
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int id)
         {
             var account = await _accountServices.GetById(id);
@@ -40,17 +74,62 @@ namespace Wall_Net.Controllers
             return Ok(account);
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Account account)
+        public async Task<IActionResult> Post()
         {
-            var newAccount = _accountServices.GetById(account.User_Id);
-            if (newAccount != null) 
+            var currentUser = GetCurrentUserId();
+            int id = currentUser.Id;
+
+            var eAccount = await _accountServices.GetByUserId(id);
+            if (eAccount != null)
             {
-                return BadRequest("Este ususario ya posee una cuenta");
+                return BadRequest("Este usuario ya posee una cuenta");
+            }
+            var newAccount = new Account
+            {
+                Money = 0,  // Inicializar el campo Money con cero.
+                User_Id = currentUser.Id  // Asignar el ID del usuario actual.
+            };
+            await _accountServices.Insert(newAccount);
+            return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
+            
+        }
+        [HttpPost("Deposito/{id}")]
+        public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
+        {
+            var currentUser = GetCurrentUserId();
+            int idCurrent = currentUser.Id;
+
+            if (id == idCurrent) 
+            {
+                var eAccount = await _accountServices.GetByUserId(id);
+                if (eAccount != null)
+                {
+                    eAccount.Money += account.Money;
+                    await _accountServices.Update(eAccount);
+                    var transaction = new Transaction
+                        {
+                            Amount = account.Money,
+                            AccountId = eAccount.Id,
+                            Concept = "Deposito",
+                            Type = "topup",
+                            UserId = currentUser.Id,
+                        };
+                    await _transactionService.AddTransactionAsync(transaction);
+                    var user = await _userServices.GetUserById(id);
+                    if (user != null)
+                    {
+                        decimal points = account.Money * 2 / 100;
+                        user.Points += points;
+
+                        await _userServices.UpdateUser(user);
+                    }
+                }
+                return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
+               
             }
             else
             {
-                await _accountServices.Insert(account);
-                return CreatedAtAction(nameof(Get), new { id = account.Id }, account);
+                return StatusCode(400, new { message = "" });
             }
         }
         [HttpPut]
@@ -61,6 +140,7 @@ namespace Wall_Net.Controllers
             {
                 return NotFound();
             }
+            updateAccount.Money = account.Money;
             await _accountServices.Update(account);
             return Ok();
         }
@@ -75,6 +155,7 @@ namespace Wall_Net.Controllers
             await _accountServices.Delete(id);
             return Ok();
         }
+        
         //Bloqueo de cuenta
         [Authorize]
         [HttpPatch("user/block/{id}")]
@@ -94,5 +175,23 @@ namespace Wall_Net.Controllers
 
             return Ok();
         }
+        private User GetCurrentUserId()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                var userIdClaim = identity.FindFirst("Id");
+
+                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    return new User
+                    {
+                        Id = userId
+                    };
+                }
+            }
+            return null;
+        }
+
     }
 }

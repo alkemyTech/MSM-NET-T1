@@ -13,6 +13,7 @@ using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 using Wall_Net.Models;
 using Wall_Net.Repositories;
+using System.Net.WebSockets;
 
 namespace Wall_Net.Controllers
 {
@@ -72,10 +73,12 @@ namespace Wall_Net.Controllers
             //Rol del usuario
             var rol = _dbContext.roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
+            var id = user.Id;
 
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
+                    new Claim("Id",Convert.ToString(id)),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.GivenName,user.FirstName),
