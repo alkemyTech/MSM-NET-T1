@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Wall_Net.Models;
 using Wall_Net.Services;
 
@@ -14,75 +17,111 @@ namespace Wall_Net.Controllers
 
         public RolesController(IRolesServices rolesServices)
         {
-            _rolesServices=rolesServices;
+            _rolesServices = rolesServices;
         }
 
-        // GET: api/Roles
+        
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var roles= await _rolesServices.GetAllRoles();
-            return Ok(roles);
+            try
+            {
+                var roles = await _rolesServices.GetAllRoles();
+                return Ok(roles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // GET api/Roles/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var rol= await _rolesServices.GetRolesById(id);
-            if(rol != null)
+            try
             {
-                return Ok(rol);
+                var rol = await _rolesServices.GetRolesById(id);
+                if (rol != null)
+                {
+                    return Ok(rol);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // POST api/Roles
         [HttpPost]
         public async Task<IActionResult> Post(Roles rol)
         {
-            if(rol.Name == "Admin" || rol.Name == "Regular")
+            try
             {
-                await _rolesServices.AddRoles(rol);
-                return CreatedAtAction(nameof(Get), new { Id = rol.Id }, rol);
+                if (rol.Name == "Admin" || rol.Name == "Regular")
+                {
+                    await _rolesServices.AddRoles(rol);
+                    return CreatedAtAction(nameof(Get), new { Id = rol.Id }, rol);
+                }
+                return BadRequest();
             }
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
 
         // PUT api/Roles
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Put(Roles updateRol)
         {
-            var rol = await _rolesServices.GetRolesById(updateRol.Id);
-            if (rol == null)
+            try
             {
-                return NotFound();
+                var rol = await _rolesServices.GetRolesById(updateRol.Id);
+                if (rol == null)
+                {
+                    return NotFound();
+                }
+                else if (updateRol.Name == "Admin" || updateRol.Name == "Regular")
+                {
+
+                    rol.Name = updateRol.Name;
+                    rol.Description = updateRol.Description;
+
+                    await _rolesServices.UpdateRoles(rol);
+                    return NoContent();
+                }
+                return BadRequest();
             }
-            else if (updateRol.Name == "Admin" || updateRol.Name == "Regular")
+            catch (Exception ex)
             {
-
-                rol.Name = updateRol.Name;
-                rol.Description = updateRol.Description;
-
-                await _rolesServices.UpdateRoles(rol);
-                return NoContent();
+                return StatusCode(500, new { message = "Internal Server Error" });
             }
-            return BadRequest();
         }
 
         // DELETE api/Roles/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var rol = await _rolesServices.GetRolesById(id);
-
-            if(rol  == null)
+            try
             {
-                return NotFound();
-            }
+                var rol = await _rolesServices.GetRolesById(id);
 
-            await _rolesServices.DeleteRoles(id);
-            return NoContent();
+                if (rol == null)
+                {
+                    return NotFound();
+                }
+
+                await _rolesServices.DeleteRoles(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
         }
     }
 }

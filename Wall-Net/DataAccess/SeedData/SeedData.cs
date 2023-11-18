@@ -20,15 +20,16 @@ namespace Wall_Net.DataAccess.SeedData
         {
             return new List<Account>
             {
-                new Account { Id = 1, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 1 },
-                new Account { Id = 2, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 2 },
-                new Account { Id = 3, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 3 },
-                new Account { Id = 4, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 4 },
-                new Account { Id = 5, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 5 },
-                new Account { Id = 6, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 6 },
-                new Account { Id = 7, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 7 },
-                new Account { Id = 8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 8 },
-                new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, User_Id = 9 }
+                new Account { Id = 1, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 1 },
+                new Account { Id = 2, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 2 },
+                new Account { Id = 3, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 3 },
+                new Account { Id = 4, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 4 },
+                new Account { Id = 5, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 5 },
+                new Account { Id = 6, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 6 },
+                new Account { Id = 7, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 7 },
+                new Account { Id = 8, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 8 },
+                new Account { Id = 9, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 9 },
+                new Account { Id = 10, CreationDate = DateTime.Now, Money = 1000, IsBlocked = false, UserId = 10 }
             };
         }
 
@@ -36,10 +37,10 @@ namespace Wall_Net.DataAccess.SeedData
         {
             return new List<FixedTermDeposit>
             {
-                new FixedTermDeposit{Id=1,user_id=1,account_id=1,amount=100,creation_date=new DateTime(2001,2,3),closing_date=new DateTime(2001,3,3),nominalRate=12,state="Inmovilizado"},
-                new FixedTermDeposit { Id =2, user_id =2, account_id =2, amount =150, creation_date = new DateTime(2001, 3, 4),closing_date=DateTime.Now, nominalRate =5, state ="Activo"},
-                new FixedTermDeposit { Id =3, user_id =2, account_id =3, amount =200, creation_date = new DateTime(2001, 5, 6),closing_date=DateTime.Now, nominalRate =12, state ="Activo"},
-                new FixedTermDeposit { Id =4, user_id =1, account_id =4, amount =250, creation_date = new DateTime(2007, 7, 7), closing_date = new DateTime(2008, 7, 7), nominalRate =17, state ="Invomilizado"}
+                new FixedTermDeposit{Id=1,UserId=1,AccountId=1,amount=100,creation_date=new DateTime(2001,2,3),closing_date=new DateTime(2001,3,3),nominalRate=12,state="Inmovilizado"},
+                new FixedTermDeposit { Id =2, UserId =2, AccountId =2, amount =150, creation_date = new DateTime(2001, 3, 4),closing_date=DateTime.Now, nominalRate =5, state ="Activo"},
+                new FixedTermDeposit { Id =3, UserId =2, AccountId =3, amount =200, creation_date = new DateTime(2001, 5, 6),closing_date=DateTime.Now, nominalRate =12, state ="Activo"},
+                new FixedTermDeposit { Id =4, UserId =1, AccountId =4, amount =250, creation_date = new DateTime(2007, 7, 7), closing_date = new DateTime(2008, 7, 7), nominalRate =17, state ="Invomilizado"}
         };
         }
 

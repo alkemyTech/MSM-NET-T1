@@ -22,7 +22,7 @@ namespace Wall_Net.Controllers
         public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
-            
+
             if (accounts != null)
             {
                 int cantidadRegistros = 5;
@@ -37,7 +37,7 @@ namespace Wall_Net.Controllers
                     };
                     return BadRequest(pagNoEncontrada);
                 }
-               
+
                 string url = $"{Request.Scheme}://{Request.Host}{Request.Path}";
                 string pagSig = data.PaginaInicio < data.PaginasTotales ? $"{url}?numpag={data.PaginaInicio + 1}" : null;
                 string pagAnt = data.PaginaInicio > 1 ? $"{url}?numpag={data.PaginaInicio - 1}" : null;
@@ -81,19 +81,20 @@ namespace Wall_Net.Controllers
             var newAccount = new Account
             {
                 Money = 0,  // Inicializar el campo Money con cero.
-                User_Id = currentUser.Id  // Asignar el ID del usuario actual.
+                UserId = currentUser.Id  // Asignar el ID del usuario actual.
             };
             await _accountServices.Insert(newAccount);
             return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
-            
+
         }
         [HttpPost("Deposito/{id}")]
         public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
         {
-            try { 
+            try
+            {
                 var currentUser = GetCurrentUserId();
                 int idCurrent = currentUser.Id;
-                if (id == idCurrent) 
+                if (id == idCurrent)
                 {
                     var eAccount = await _accountServices.GetByUserId(id);
                     if (eAccount != null)
@@ -101,13 +102,13 @@ namespace Wall_Net.Controllers
                         eAccount.Money += account.Money;
                         //await _accountServices.Update(eAccount);
                         var transaction = new Transaction
-                            {
-                                Amount = account.Money,
-                                AccountId = eAccount.Id,
-                                Concept = "Deposito",
-                                Type = "topup",
-                                UserId = currentUser.Id,
-                            };
+                        {
+                            Amount = account.Money,
+                            AccountId = eAccount.Id,
+                            Concept = "Deposito",
+                            Type = "topup",
+                            UserId = currentUser.Id,
+                        };
                         eAccount.Transactions.Add(transaction);
                         decimal points = account.Money * 2 / 100;
                         eAccount.User.Points += points;
@@ -128,43 +129,44 @@ namespace Wall_Net.Controllers
         [HttpPost("Transferencia/{id}")]
         public async Task<IActionResult> Transferencia(int id, [FromBody] Account account)
         {
-            try { 
+            try
+            {
                 var currentUser = GetCurrentUserId();
                 var sendAccount = await _accountServices.GetByUserId(currentUser.Id);
 
 
 
-                    var recAccount = await _accountServices.GetByUserId(id);
-                    if (recAccount != null)
+                var recAccount = await _accountServices.GetByUserId(id);
+                if (recAccount != null)
+                {
+                    if (sendAccount.Money > 100)
                     {
-                        if(sendAccount.Money > 100)
-                        {
-                            var montoTransferido = account.Money;
-                            sendAccount.Money -= montoTransferido;
-                            recAccount.Money += montoTransferido;
-                            await _accountServices.Update(recAccount);
-                        }
-                        else 
-                        {
-                            return BadRequest("Tu Saldo es insuficiente");
-                        }
-                        
-                        //await _accountServices.Update(eAccount);
-                        var transaction = new Transaction
-                            {
-                                Amount = account.Money,
-                                AccountId = currentUser.Id,
-                                Concept = "Transferencia",
-                                Type = "topup",
-                                UserId = currentUser.Id,
-                                ToAccountId = recAccount.Id,
-                            };
-                        sendAccount.Transactions.Add(transaction);
-                        decimal points = account.Money * 3 / 100;
-                        sendAccount.User.Points += points;
-                        await _accountServices.Update(sendAccount);
+                        var montoTransferido = account.Money;
+                        sendAccount.Money -= montoTransferido;
+                        recAccount.Money += montoTransferido;
+                        await _accountServices.Update(recAccount);
                     }
-                    return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
+                    else
+                    {
+                        return BadRequest("Tu Saldo es insuficiente");
+                    }
+
+                    //await _accountServices.Update(eAccount);
+                    var transaction = new Transaction
+                    {
+                        Amount = account.Money,
+                        AccountId = currentUser.Id,
+                        Concept = "Transferencia",
+                        Type = "topup",
+                        UserId = currentUser.Id,
+                        ToAccountId = recAccount.Id,
+                    };
+                    sendAccount.Transactions.Add(transaction);
+                    decimal points = account.Money * 3 / 100;
+                    sendAccount.User.Points += points;
+                    await _accountServices.Update(sendAccount);
+                }
+                return StatusCode(201, new { message = "El deposito se genero satisfactoriamente" });
             }
             catch (Exception ex)
             {
@@ -184,7 +186,7 @@ namespace Wall_Net.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id) 
+        public async Task<IActionResult> Delete(int id)
         {
             var account = await _accountServices.GetById(id);
             if (account == null)
@@ -194,7 +196,7 @@ namespace Wall_Net.Controllers
             await _accountServices.Delete(id);
             return Ok();
         }
-        
+
         //Bloqueo de cuenta
         [Authorize]
         [HttpPatch("user/block/{id}")]

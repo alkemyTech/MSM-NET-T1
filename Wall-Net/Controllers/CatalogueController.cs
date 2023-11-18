@@ -18,81 +18,116 @@ public class CatalogueController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Catalogue>>> GetCatalogue()
     {
-        return await _context.Catalogues.ToListAsync();
+        try
+        {
+            return await _context.Catalogues.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     // GET: api/catalogue/1
     [HttpGet("{id}")]
     public async Task<ActionResult<Catalogue>> GetCatalogue(int id)
     {
-        var catalogueItem = await _context.Catalogues.FindAsync(id);
-
-        if (catalogueItem == null)
+        try
         {
-            return NotFound();
-        }
+            var catalogueItem = await _context.Catalogues.FindAsync(id);
 
-        return catalogueItem;
+            if (catalogueItem == null)
+            {
+                return NotFound();
+            }
+
+            return catalogueItem;
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     // POST: api/catalogue
     [HttpPost]
     public async Task<ActionResult<Catalogue>> PostCatalogue(Catalogue catalogue)
     {
-        _context.Catalogues.Add(catalogue);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Catalogues.Add(catalogue);
+            await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetCatalogue", new { id = catalogue.Id }, catalogue);
+            return CreatedAtAction("GetCatalogue", new { id = catalogue.Id }, catalogue);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     // PUT: api/catalogue/1
     [HttpPut("{id}")]
     public async Task<IActionResult> PutCatalogue(int id, Catalogue catalogue)
     {
-        if (id != catalogue.Id)
-        {
-            return BadRequest();
-        }
-
-        _context.Entry(catalogue).State = EntityState.Modified;
-
         try
         {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!CatalogueExists(id))
+            if (id != catalogue.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
-            else
-            {
-                throw;
-            }
-        }
 
-        return NoContent();
+            _context.Entry(catalogue).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CatalogueExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     // DELETE: api/catalogue/1
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCatalogue(int id)
     {
-        var catalogueItem = await _context.Catalogues.FindAsync(id);
-        if (catalogueItem == null)
+        try
         {
-            return NotFound();
+            var catalogueItem = await _context.Catalogues.FindAsync(id);
+            if (catalogueItem == null)
+            {
+                return NotFound();
+            }
+
+            _context.Catalogues.Remove(catalogueItem);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
-
-        _context.Catalogues.Remove(catalogueItem);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     private bool CatalogueExists(int id)
     {
-        return _context.Catalogues.Any(e => e.Id == id);
+            return _context.Catalogues.Any(e => e.Id == id);   
     }
 }

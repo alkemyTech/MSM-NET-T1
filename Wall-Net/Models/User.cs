@@ -1,4 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using StackExchange.Redis;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Wall_Net.Models.DTO;
 
 namespace Wall_Net.Models
 {
@@ -12,5 +19,8 @@ namespace Wall_Net.Models
         public string Password { get; set; }
         public decimal Points { get; set; }
         public int Rol_Id { get; set; }
+        [JsonIgnore]
+        [InverseProperty("User")]
+        public virtual ICollection<FixedTermDeposit> FixedTermDeposits { get; } = new List<FixedTermDeposit>();
     }
 }

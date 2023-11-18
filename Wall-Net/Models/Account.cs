@@ -11,10 +11,16 @@ namespace Wall_Net.Models
         public DateTime CreationDate { get; set; }
         public decimal Money { get; set; }
         public bool IsBlocked { get; set; }
-        public int User_Id { get; set; }
-        [ForeignKey("User_Id")]
+        
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual User? User { get; set; }
 
+        [JsonIgnore]
+        [InverseProperty("Account")]
+        public virtual ICollection<FixedTermDeposit>? FixedTermDeposit { get; set; }
+        [JsonIgnore]
         [InverseProperty("Account")]
         public virtual ICollection<Transaction>? Transactions { get; set; } = new List<Transaction>();
     }
