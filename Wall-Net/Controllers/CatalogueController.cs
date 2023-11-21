@@ -18,7 +18,8 @@ public class CatalogueController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Catalogue>>> GetCatalogue()
     {
-        return await _context.Catalogues.ToListAsync();
+        var catalogueItems = await _context.Catalogues.OrderByDescending(c => c.Points).ToListAsync();
+        return catalogueItems;
     }
 
     // GET: api/catalogue/1

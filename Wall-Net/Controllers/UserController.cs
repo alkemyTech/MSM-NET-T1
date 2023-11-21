@@ -37,7 +37,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task <IActionResult> Post(User user)
         {
             //Comprobar si los campos enviados son correectos
