@@ -7,12 +7,21 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Any;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.PropertyNamingPolicy = null; // prevent camel case
+});
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -89,7 +98,7 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
 builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
 
-
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
@@ -105,10 +114,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
-app.UseAuthorization();
-
 
 app.UseAuthentication();
 

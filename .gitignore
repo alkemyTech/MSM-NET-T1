@@ -11,3 +11,5 @@
 .suo
 /Wall-Net/.vs
 /Wall-Net/obj
+/Wall-Net/Migrations
+/Wall-Net/DataAccess/WallNetDbContext.cs
