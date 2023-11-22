@@ -18,7 +18,6 @@ public class CatalogueController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Catalogue>>> GetCatalogue()
     {
-<<<<<<< HEAD
         try
         {
             return await _context.Catalogues.ToListAsync();
@@ -27,10 +26,6 @@ public class CatalogueController : ControllerBase
         {
             return StatusCode(500, new { message = "Internal Server Error" });
         }
-=======
-        var catalogueItems = await _context.Catalogues.OrderByDescending(c => c.Points).ToListAsync();
-        return catalogueItems;
->>>>>>> 0c2bf99fb9b59d35d6b91d2baf17b39ce87a882b
     }
 
     // GET: api/catalogue/1
