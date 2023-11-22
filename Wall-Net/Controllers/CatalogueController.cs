@@ -20,7 +20,8 @@ public class CatalogueController : ControllerBase
     {
         try
         {
-            return await _context.Catalogues.ToListAsync();
+            var catalogueItems = await _context.Catalogues.OrderByDescending(c => c.Points).ToListAsync();
+            return catalogueItems;
         }
         catch (Exception ex)
         {
