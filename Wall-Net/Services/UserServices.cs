@@ -1,5 +1,4 @@
-﻿using BCrypt.Net;
-using Wall_Net.Models;
+﻿using Wall_Net.Models;
 using Wall_Net.UnitOfWorks;
 
 namespace Wall_Net.Services
@@ -18,7 +17,7 @@ namespace Wall_Net.Services
         {
             return await _unitOfWork.UserRepository.GetAll(pageNumber, pageSize);
         }
-        public async Task <User> GetUserById(int id)
+        public async Task<User> GetUserById(int id)
         {
             return await _unitOfWork.UserRepository.GetById(id);
         }

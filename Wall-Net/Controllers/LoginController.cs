@@ -35,7 +35,7 @@ namespace Wall_Net.Controllers
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
             var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
-            if (account != null && account.IsBlocked) 
+            if (account != null && account.IsBlocked)
             {
                 return Unauthorized("Su cuenta se encuentra bloqueada.");
             }
@@ -55,14 +55,14 @@ namespace Wall_Net.Controllers
 
         private User Authenticate(LoginUser userLogin)
         {
-            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());                    
+            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());
 
             if (currentUser != null)
             {
                 var passwordMatched = BCrypt.Net.BCrypt.Verify(userLogin.Password, currentUser.Password);
                 if (passwordMatched)
                 {
-                return currentUser;
+                    return currentUser;
                 }
             }
             return null;
@@ -117,7 +117,7 @@ namespace Wall_Net.Controllers
         private User GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            if(identity != null)
+            if (identity != null)
             {
                 var userClaim = identity.Claims;
                 return new User

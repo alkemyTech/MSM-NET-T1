@@ -1,12 +1,15 @@
 ﻿using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 
 namespace Wall_Net.Repositories
 {
     public interface IFixedTermDepositRepository
     {
         Task<FixedTermDeposit> GetById(int id);
+        Task<FixedTermDeposit> GetFixedByIdUser(int idUser, int idFixed);
         Task<IEnumerable<FixedTermDeposit>> GetAll();
-        Task Add(FixedTermDeposit rol);
+        Task<IEnumerable<FixedTermDeposit>> GetAllById(int id);
+        Task<Boolean> Add(int monthFTD, int amount, int idUser);
         Task Update(FixedTermDeposit rol);
         Task Delete(int id);
     }
