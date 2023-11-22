@@ -13,6 +13,9 @@ namespace Wall_Net.Models
         public bool IsBlocked { get; set; }
         
         public int UserId { get; set; }
+        /*[ForeignKey("UserId")]
+        public virtual User User { get; set; }*/
+
         [ForeignKey("UserId")]
         [JsonIgnore]
         public virtual User? User { get; set; }

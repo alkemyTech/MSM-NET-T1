@@ -13,7 +13,7 @@ using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 using Wall_Net.Models;
 using Wall_Net.Repositories;
-using System.Net.WebSockets;
+using BCrypt.Net;
 
 namespace Wall_Net.Controllers
 {
@@ -32,43 +32,38 @@ namespace Wall_Net.Controllers
         [AllowAnonymous]
         [HttpPost]
         // POST api/Login
-        [HttpPost]
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
-            try
+            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+            if (account != null && account.IsBlocked)
             {
-                var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
-                if (account != null && account.IsBlocked)
-                {
-                    return Unauthorized("Su cuenta se encuentra bloqueada.");
-                }
-
-                var user = Authenticate(userLogin);
-                IActionResult response = Unauthorized();
-
-                if (user != null)
-                {
-                    var token = Generate(user);
-
-                    return Ok(token);
-                }
-
-                return response;
+                return Unauthorized("Su cuenta se encuentra bloqueada.");
             }
-            catch (Exception ex)
+
+            var user = Authenticate(userLogin);
+            IActionResult response = Unauthorized();
+
+            if (user != null)
             {
-                return StatusCode(500, new { message = "Internal Server Error" });
+                var token = Generate(user);
+
+                return Ok(token);
             }
+
+            return response;
         }
 
         private User Authenticate(LoginUser userLogin)
         {
-            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower()
-                                && user.Password == userLogin.Password);
+            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());
 
             if (currentUser != null)
             {
-                return currentUser;
+                var passwordMatched = BCrypt.Net.BCrypt.Verify(userLogin.Password, currentUser.Password);
+                if (passwordMatched)
+                {
+                    return currentUser;
+                }
             }
             return null;
         }
@@ -86,12 +81,10 @@ namespace Wall_Net.Controllers
             //Rol del usuario
             var rol = _dbContext.roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
-            var id = user.Id;
 
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
-                    new Claim("Id", Convert.ToString(user.Id)),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.GivenName,user.FirstName),
@@ -114,6 +107,27 @@ namespace Wall_Net.Controllers
             var jwtToken = tokenHandler.WriteToken(token);
 
             return jwtToken;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var currentUSer = GetCurrentUser();
+            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+        }
+        private User GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                var userClaim = identity.Claims;
+                return new User
+                {
+                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                };
+            }
+            return null;
         }
     }
 }
