@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Wall-Net-Front.props" />
+</Project>
