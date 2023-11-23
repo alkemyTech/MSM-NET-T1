@@ -16,7 +16,7 @@ namespace Wall_Net.Controllers
             _userServices = userServices;
         }
 
-        [HttpGet("{pageNumber}/{pageSize}")]
+        [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 10)
         {
@@ -32,6 +32,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize]
         public async Task <IActionResult> Get(int Id)
         {
             try

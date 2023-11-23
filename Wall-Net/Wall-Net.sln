@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wall-Net", "Wall-Net.csproj", "{976A8916-C628-4226-8303-6EA2FDB7E333}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wall-Net-Front", "..\Wall-Net-Front\Wall-Net-Front.csproj", "{D55E4372-4347-48DB-90B8-958EBFBEE237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{976A8916-C628-4226-8303-6EA2FDB7E333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{976A8916-C628-4226-8303-6EA2FDB7E333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{976A8916-C628-4226-8303-6EA2FDB7E333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55E4372-4347-48DB-90B8-958EBFBEE237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55E4372-4347-48DB-90B8-958EBFBEE237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55E4372-4347-48DB-90B8-958EBFBEE237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55E4372-4347-48DB-90B8-958EBFBEE237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
