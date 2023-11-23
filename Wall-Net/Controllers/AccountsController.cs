@@ -18,7 +18,7 @@ namespace Wall_Net.Controllers
             _accountServices = accountServices;
         }
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
@@ -215,6 +215,24 @@ namespace Wall_Net.Controllers
             await _accountServices.Update(account);
 
             return Ok();
+        }
+        //Desbloqueo de cuenta
+        [HttpPatch("user/unlock/{id}")]
+        public async Task<ActionResult> UnlockAccount(int id)
+        {
+            var account = await _accountServices.GetById(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            else if (!account.IsBlocked)
+            {
+                return BadRequest("La cuenta no se encuentra bloqueada.");
+            }
+            account.IsBlocked = false;
+            await _accountServices.Update(account);
+
+            return Ok("La cuenta se ha desbloqueado");
         }
         private User GetCurrentUserId()
         {

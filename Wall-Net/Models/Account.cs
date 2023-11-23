@@ -11,10 +11,7 @@ namespace Wall_Net.Models
         public DateTime CreationDate { get; set; }
         public decimal Money { get; set; }
         public bool IsBlocked { get; set; }
-        
         public int UserId { get; set; }
-        /*[ForeignKey("UserId")]
-        public virtual User User { get; set; }*/
 
         [ForeignKey("UserId")]
         [JsonIgnore]
@@ -23,6 +20,7 @@ namespace Wall_Net.Models
         [JsonIgnore]
         [InverseProperty("Account")]
         public virtual ICollection<FixedTermDeposit>? FixedTermDeposit { get; set; }
+
         [JsonIgnore]
         [InverseProperty("Account")]
         public virtual ICollection<Transaction>? Transactions { get; set; } = new List<Transaction>();
