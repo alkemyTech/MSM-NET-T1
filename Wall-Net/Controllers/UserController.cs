@@ -17,7 +17,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task <IActionResult> Get(int pageNumber = 1, int pageSize = 10)
         {
             try
@@ -32,7 +32,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpGet("{Id}")]
-        [Authorize]
+        //[Authorize]
         public async Task <IActionResult> Get(int Id)
         {
             try
@@ -83,7 +83,7 @@ namespace Wall_Net.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("{Id}")]
         public async Task <IActionResult> Put(int Id, User updatedUser)
         {
@@ -106,7 +106,7 @@ namespace Wall_Net.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{Id}")]
         public async Task <IActionResult> Delete(int Id)
         {
