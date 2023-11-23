@@ -7,4 +7,12 @@
     <RootNamespace>Wall_Net_Front</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wall-Net\Wall-Net.csproj" />
+  </ItemGroup>
+
 </Project>

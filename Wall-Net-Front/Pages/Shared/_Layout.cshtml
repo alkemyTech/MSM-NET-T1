@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Wall_Net_Front</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Wall_Net_Front.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -25,9 +25,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        
                     </ul>
+                    <div id="contenido">
+                        <a class="nav-link text-dark" onclick="cerrarSesion()">Cerrar Sesión</a>
+                    </div>
+                    <div id="botonSesion">
+                        <a class="nav-link text-dark" onclick="iniciarSesion()">Iniciar Sesión</a>
+                    </div>
+
                 </div>
             </div>
+            
         </nav>
     </header>
     <div class="container">
@@ -42,9 +51,15 @@
         </div>
     </footer>
 
+    <script>
+        var token = '@TempData["authToken"]';
+    </script>
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sessionStorage.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
