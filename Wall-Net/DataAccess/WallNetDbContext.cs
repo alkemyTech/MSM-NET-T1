@@ -2,6 +2,7 @@
 using System.Reflection.Metadata;
 using System;
 using Wall_Net.Models;
+using Amazon.Auth.AccessControlPolicy;
 
 namespace Wall_Net.DataAccess
 {
@@ -20,7 +21,7 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=Pavi;Initial Catalog=WallNetDb;User ID=sa;Password=Root;Pooling=False;Trust Server Certificate=true");
+            optionsBuilder.UseSqlServer("Data Source = Pavi; Initial Catalog = WallNetDb; User ID = sa; Password = Root; Pooling = False; Trust Server Certificate = true");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

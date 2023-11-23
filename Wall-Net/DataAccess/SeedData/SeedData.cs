@@ -48,21 +48,21 @@ namespace Wall_Net.DataAccess.SeedData
         {
             return new List<User>
                 {
-                new User { Id = 1, FirstName = "Leandro", LastName = "Mumbach", Email = "lean@email.com", Password = "123456", Points = 20, Rol_Id = 1 },
-                new User { Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = "123456", Points = 20, Rol_Id = 1 },
-                new User { Id = 3, FirstName = "Ana", LastName = "Lopez", Email = "ana@email.com", Password = "123456", Points = 25, Rol_Id = 2 },
-                new User { Id = 4, FirstName = "Carlos", LastName = "Martinez", Email = "carlos@email.com", Password = "123456", Points = 18, Rol_Id = 1 },
-                new User { Id = 5, FirstName = "Maria", LastName = "Rodriguez", Email = "maria@email.com", Password = "123456", Points = 22, Rol_Id = 2 },
-                new User { Id = 6, FirstName = "Juan", LastName = "Perez", Email = "juan@email.com", Password = "123456", Points = 19, Rol_Id = 1 },
-                new User { Id = 7, FirstName = "Laura", LastName = "Fernandez", Email = "laura@email.com", Password = "123456", Points = 24, Rol_Id = 2 },
-                new User { Id = 8, FirstName = "Diego", LastName = "Gomez", Email = "diego@email.com", Password = "123456", Points = 21, Rol_Id = 1 },
-                new User { Id = 9, FirstName = "Carmen", LastName = "Ruiz", Email = "carmen@email.com", Password = "123456", Points = 20, Rol_Id = 2 },
-                new User { Id = 10, FirstName = "Sergio", LastName = "Lopez", Email = "sergio@email.com", Password = "123456", Points = 23, Rol_Id = 1 },
-                new User { Id = 11, FirstName = "Luisa", LastName = "Garcia", Email = "luisa@email.com", Password = "123456", Points = 19, Rol_Id = 2 },
-                new User { Id = 12, FirstName = "Alejandro", LastName = "Sanchez", Email = "alejandro@email.com", Password = "123456", Points = 18, Rol_Id = 1 },
-                new User { Id = 13, FirstName = "Martina", LastName = "Hernandez", Email = "martina@email.com", Password = "123456", Points = 22, Rol_Id = 2 },
-                new User { Id = 14, FirstName = "Roberto", LastName = "Diaz", Email = "roberto@email.com", Password = "123456", Points = 25, Rol_Id = 1 },
-                new User { Id = 15, FirstName = "Isabel", LastName = "Flores", Email = "isabel@email.com", Password = "123456", Points = 20, Rol_Id = 2 },
+                new User { Id = 1, FirstName = "Leandro", LastName = "Mumbach", Email = "lean@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 20, Rol_Id = 1 },
+                new User { Id = 2, FirstName = "Pepe", LastName = "Gonzalez", Email = "pepe@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 20, Rol_Id = 1 },
+                new User { Id = 3, FirstName = "Ana", LastName = "Lopez", Email = "ana@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 25, Rol_Id = 2 },
+                new User { Id = 4, FirstName = "Carlos", LastName = "Martinez", Email = "carlos@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 18, Rol_Id = 1 },
+                new User { Id = 5, FirstName = "Maria", LastName = "Rodriguez", Email = "maria@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 22, Rol_Id = 2 },
+                new User { Id = 6, FirstName = "Juan", LastName = "Perez", Email = "juan@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 19, Rol_Id = 1 },
+                new User { Id = 7, FirstName = "Laura", LastName = "Fernandez", Email = "laura@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 24, Rol_Id = 2 },
+                new User { Id = 8, FirstName = "Diego", LastName = "Gomez", Email = "diego@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 21, Rol_Id = 1 },
+                new User { Id = 9, FirstName = "Carmen", LastName = "Ruiz", Email = "carmen@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 20, Rol_Id = 2 },
+                new User { Id = 10, FirstName = "Sergio", LastName = "Lopez", Email = "sergio@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 23, Rol_Id = 1 },
+                new User { Id = 11, FirstName = "Luisa", LastName = "Garcia", Email = "luisa@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 19, Rol_Id = 2 },
+                new User { Id = 12, FirstName = "Alejandro", LastName = "Sanchez", Email = "alejandro@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 18, Rol_Id = 1 },
+                new User { Id = 13, FirstName = "Martina", LastName = "Hernandez", Email = "martina@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 22, Rol_Id = 2 },
+                new User { Id = 14, FirstName = "Roberto", LastName = "Diaz", Email = "roberto@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 25, Rol_Id = 1 },
+                new User { Id = 15, FirstName = "Isabel", LastName = "Flores", Email = "isabel@email.com", Password = BCrypt.Net.BCrypt.HashPassword("123456"), Points = 20, Rol_Id = 2 },
                 };
         }
         public static List<Transaction> SeedsTransaction()
