@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wall-Net", "Wall-Net.csproj", "{976A8916-C628-4226-8303-6EA2FDB7E333}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wall-Net-Front", "..\Wall-Net-Front\Wall-Net-Front.csproj", "{D55E4372-4347-48DB-90B8-958EBFBEE237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wall-Net-Front", "..\Wall-Net-Front\Wall-Net-Front.csproj", "{D55E4372-4347-48DB-90B8-958EBFBEE237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

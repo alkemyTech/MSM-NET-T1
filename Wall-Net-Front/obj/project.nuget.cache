@@ -1,8 +1,30 @@
 {
   "version": 2,
-  "dgSpecHash": "JGgzVsxKExWgpHPkF8GdGvVCZO/0u9NVZoKMZLzX7dBkxDSedL5wsus5pzMqWx0bGxEljWt7OxknYn2fhv6JBA==",
+  "dgSpecHash": "YmCLMQ7L0Gk+g4zYoBlNojfguW1m9cax+zjJM2I7mvsj62rvleTyFHjp2jsyULL3hHPOeh5D1v6tfkz5uo6pMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\Wall-Net-Front.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\Wall-Net-Front.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\estudiante\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.25\\microsoft.aspnetcore.authorization.6.0.25.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.25\\microsoft.aspnetcore.components.6.0.25.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.25\\microsoft.aspnetcore.components.analyzers.6.0.25.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.25\\microsoft.aspnetcore.components.authorization.6.0.25.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.12\\microsoft.aspnetcore.components.forms.6.0.12.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.12\\microsoft.aspnetcore.components.web.6.0.12.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.25\\microsoft.aspnetcore.metadata.6.0.25.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.1\\microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.4\\microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.3\\microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.3\\microsoft.identitymodel.logging.7.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.3\\microsoft.identitymodel.tokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\microsoft.jsinterop\\6.0.12\\microsoft.jsinterop.6.0.12.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.3\\system.identitymodel.tokens.jwt.7.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\estudiante\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,6 +1,34 @@
-﻿@page
+﻿@page "/Login"
+@using Microsoft.AspNetCore.Components.Authorization;
+@using Microsoft.AspNetCore.Components;
 @model Wall_Net_Front.Pages.LoginModel
+@inject AuthenticationStateProvider autenticacionProvider
+@inject NavigationManager navManager
+
 @{
+
 }
 
 <h1>Login</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Inicio de Sesión</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="login.Email">Email:</label>
+                    <input asp-for="login.Email" name="email" type="text" class="form-control" id="email" placeholder="Email de usuario">
+                </div>
+                <div class="form-group">
+                    <label asp-for="login.Password">Contraseña:</label>
+                    <input asp-for="login.Password" type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
+                </div>
+                <div class="mt-2">
+                    <button asp-handler="post" type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

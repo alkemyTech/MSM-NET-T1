@@ -1,0 +1,61 @@
+﻿@page
+@model Wall_Net_Front.Pages.FixedTermDeposit.FixedTermDepositModel
+@{
+    ViewData["Title"] = "FixedTermDeposit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Amount</th>
+                        <th>Creation Date</th>
+                        <th>Closing Date</th>
+                        <th>Nominal Rate</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.FixedTermList != null)
+                    {
+                        @foreach (var item in Model.FixedTermList)
+                        {
+                            <tr>
+                                <th>@item.Id</th>
+                                <th>@item.amount</th>
+                                <th>@item.creation_date</th>
+                                <th>@item.closing_date</th>
+                                <th>@item.nominalRate</th>
+                                <th>@item.state</th>
+                                <th>
+                                    <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el proyecto?')">Borrar</button>
+                                    <a asp-page="/FixedTermDeposit/FixedTermDepositDetail" asp-route-id="@item.Id" class="btn btn-primary">Ver detalles</a>
+                                </th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>

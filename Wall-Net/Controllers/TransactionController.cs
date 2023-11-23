@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 using Wall_Net.Services;
+using static StackExchange.Redis.Role;
 
 [Route("api/transactions")]
 [ApiController]
 public class TransactionController : ControllerBase
 {
     private readonly ITransactionService _transactionService;
+    public readonly IMapper _mapper;
 
-    public TransactionController(ITransactionService transactionService)
+    public TransactionController(ITransactionService transactionService, IMapper mapper)
     {
         _transactionService = transactionService;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -19,7 +24,8 @@ public class TransactionController : ControllerBase
         try
         {
             var transactions = await _transactionService.GetAllTransactionsAsync();
-            return Ok(transactions);
+            var transactionsDTO = _mapper.Map<List<TransactionDTO>>(transactions);
+            return Ok(transactionsDTO);
         }
         catch (Exception ex)
         {
