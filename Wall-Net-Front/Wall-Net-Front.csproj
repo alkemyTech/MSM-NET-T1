@@ -7,4 +7,8 @@
     <RootNamespace>Wall_Net_Front</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Wall-Net\Wall-Net.csproj" />
+  </ItemGroup>
+
 </Project>
