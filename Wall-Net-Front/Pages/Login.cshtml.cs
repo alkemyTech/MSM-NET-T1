@@ -3,75 +3,52 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Session;
-using System.IdentityModel.Tokens.Jwt;
-using Wall_Net_Front.Extensiones;
-using Wall_Net_Front.Pages.Models;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace Wall_Net_Front.Pages
 {
     public class LoginModel : PageModel
     {
-        private AuthenticationStateProvider _autenticacionProvider { get; set; } = default!;
-        private NavigationManager _navManager { get; set; } = default!;
-
-        public LoginModel(AuthenticationStateProvider autenticacionProvider, NavigationManager navManager)
+        public string AuthToken { get; set; }
+        public async Task<IActionResult> OnPostAsync()
         {
-            _autenticacionProvider = autenticacionProvider;
-            _navManager = navManager;
-        }
-
-        public LoginDTO login = new LoginDTO();
-
-        public void OnGet()
-        {
-        }
-
-        public async Task OnPost()
-        {
+            // Captura los valores de usuario y contraseña desde la solicitud POST
             string email = Request.Form["email"];
             string password = Request.Form["password"];
 
-            login.Email = email;
-            login.Password = password;
+            Console.WriteLine(email + " " + password);
+
+            var data = new
+            {
+                email = email,
+                password = password
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
 
             using (var httpClient = new HttpClient())
             {
 
-                var response = await httpClient.PostAsJsonAsync("http://localhost:5270/api/Login", login);
+                var response = await httpClient.PostAsync("http://localhost:5270/api/Login", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    var token = await response.Content.ReadAsStringAsync();
-
-                    var handler = new JwtSecurityTokenHandler();
-                    var jwtSecurityToken = handler.ReadJwtToken(token);
-
-
-                    var nameToken = jwtSecurityToken.Claims.First(claim => claim.Type == "nameid").Value;
-                    var emailToken= jwtSecurityToken.Claims.First(claim => claim.Type == "email").Value;
-                    var rolToken = jwtSecurityToken.Claims.First(claim => claim.Type == "role").Value;
-
-                    var sesionUsuario = new SessionDTO();
-
-                    sesionUsuario.Name = nameToken;
-                    sesionUsuario.Email = emailToken;
-                    sesionUsuario.Rol = rolToken;
-
-                    var autenticacionExt = (AutenticacionExtencion) _autenticacionProvider;
-
-                    autenticacionExt.ActualizarEstadoAutenticacion(sesionUsuario);
-                    
-
-                    _navManager.NavigateTo("/Index");
-                   
+                    string AuthToken = await response.Content.ReadAsStringAsync();
+                    TempData["authToken"] = AuthToken; // Guarda el token en ViewData
+                    Console.WriteLine("Token generado y asignado: " + AuthToken); // Agrega esta línea para depurar
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthToken);
+                    return RedirectToPage("/Index");
                 }
                 else
                 {
-                    _navManager.NavigateTo("/Login");
+                    return Page();
+
                 }
 
             }
         }
+
 
     }
 }

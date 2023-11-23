@@ -1,34 +1,27 @@
-﻿@page "/Login"
-@using Microsoft.AspNetCore.Components.Authorization;
-@using Microsoft.AspNetCore.Components;
+﻿@page
 @model Wall_Net_Front.Pages.LoginModel
-@inject AuthenticationStateProvider autenticacionProvider
-@inject NavigationManager navManager
-
 @{
-
+    ViewData["Title"] = "Login page";
+    Layout = "_LoginLayout";
 }
 
-<h1>Login</h1>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="text-center">Inicio de Sesión</h2>
-            <form method="post">
-                <div class="form-group">
-                    <label asp-for="login.Email">Email:</label>
-                    <input asp-for="login.Email" name="email" type="text" class="form-control" id="email" placeholder="Email de usuario">
-                </div>
-                <div class="form-group">
-                    <label asp-for="login.Password">Contraseña:</label>
-                    <input asp-for="login.Password" type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
-                </div>
-                <div class="mt-2">
-                    <button asp-handler="post" type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                </div>
-            </form>
+<div class="login">
+    <form class="formLogin" method="post">
+        <h1 class="titulo display-4">Wall-Net</h1>
+        <div class="form-floating mb-3" style="width: 80%;">
+            <input type="text" class="form-control" style="width:100%" id="email" name="email" placeholder="name@example.com">
+            <label for="email">Ingrese su email</label>
         </div>
-    </div>
+        <div class="form-floating" style="width: 80%;">
+            <input type="password" class="form-control" style="width:100%" id="password" name="password" placeholder="Password">
+            <label for="password">Password</label>
+        </div>
+        <div class="iniciarSesion">
+            <button id="login" class="btn-success" style="border-radius:5px; padding:5px; background-color:#981f67" type="submit">Iniciar Sesión</button>
+        </div>
+    </form>
 </div>
-
+<video class="videoLogin" muted autoplay loop>
+    <source src="~/videos/videoback.mp4" type="video/mp4" />
+</video>
+<div class="capa"></div>

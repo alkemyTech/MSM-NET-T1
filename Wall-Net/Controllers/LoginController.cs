@@ -109,25 +109,38 @@ namespace Wall_Net.Controllers
             return jwtToken;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<User>> Get()
         {
-            var currentUSer = GetCurrentUser();
-            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+            var currentUser = GetCurrentUser();
+
+            if (currentUser != null)
+            {
+                return Ok(currentUser);
+            }
+            else
+            {
+                // Cambia esto según tus requisitos. En este caso, devuelvo Unauthorized para un usuario no autenticado.
+                return Unauthorized();
+            }
         }
+
         private User GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
+
             if (identity != null)
             {
                 var userClaim = identity.Claims;
                 return new User
                 {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
                     Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
                     LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
                 };
             }
+
             return null;
         }
+
     }
 }
