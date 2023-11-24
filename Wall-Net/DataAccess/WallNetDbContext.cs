@@ -12,7 +12,7 @@ namespace Wall_Net.DataAccess
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Roles> roles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
         public DbSet<Account> Accounts{ get; set; }
         public DbSet<FixedTermDeposit> FixedTerms { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
@@ -20,7 +20,7 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-48IVMU9;Initial Catalog=WallNet-DB;Persist Security Info=True;Trusted_Connection=True;MultipleActiveResultSets=true;Trust Server Certificate=true;");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
