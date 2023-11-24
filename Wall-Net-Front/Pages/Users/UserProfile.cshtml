@@ -3,3 +3,170 @@
 @{
 }
 <h1>Perfil</h1>
+
+
+@*Agrega validación, campo no vacio*@
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*Se envia Id oculto
+<input type="hidden" asp-for="User.Id" />*@
+
+<form method="post">
+    <input type="hidden" asp-for="User.Id" />
+    
+@* FRON USER *@
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 mb-2">
+                <label asp-for="User.FirstName">Nombre</label>
+                <input asp-for="User.FirstName" class="form-control" />
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 mb-2">
+                <label asp-for="User.LastName">Apellido</label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 mb-2">
+                <label asp-for="User.Email"></label>
+                <div class="form-control" readonly>@Model.User.Email</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 mb-2">
+                <label asp-for="User.Points">Puntos</label>
+                <div class="form-control" readonly>@Model.User.Points</div>
+            </div>
+        </div>
+    </div>
+
+@* FRONT ACCOUNT *@
+    <div class="informacion-cuenta">
+        <h2>Información de la cuenta</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.CreationDate">Fecha de creación de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.CreationDate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.Money">Saldo cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.Money</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@* FRONT FIXED TERM DEPOSIT*@
+    <div class="informacion-plazo-fijo">
+        <h2>Información del plazo fijo</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="informacion-transacciones">
+    <h2>Historial de transacciones</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Concepto</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* @{ for transaccion in transacciones  *@
+            <tr>
+                <td>{{ transaccion.fecha }}</td>
+                <td>{{ transaccion.cantidad }}</td>
+                <td>{{ transaccion.concepto }}</td>
+                <td>{{ transaccion.tipo }}</td>
+            </tr>
+            @* } *@
+        </tbody>
+    </table>
+</div>
