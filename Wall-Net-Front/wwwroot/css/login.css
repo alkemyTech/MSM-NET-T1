@@ -1,0 +1,207 @@
+﻿﻿* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-image: url('../images/backlogin2.jpg');
+    background-size: 100vw 100vh;
+    background-position-x: center;
+    background-position-y: center;
+    padding: 25px 0;
+    align-items: center;
+    border-radius: 15px;
+    min-width: 350px;
+    height: 80vh;
+    margin-top: 10vh;
+    z-index: 1
+}
+
+.iniciarSesion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+.titulo {
+    width: 100%;
+    text-align: center
+}
+.videoLogin {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+}
+
+
+@media (min-width: 768px) {
+    .login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        position: relative;
+        width: 100%;
+    }
+
+    .formLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-image: url('../images/backlogin2.jpg');
+        background-size: 100vw 100vh;
+        background-position-x: center;
+        background-position-y: center;
+        padding: 25px 0;
+        align-items: center;
+        margin: 0;
+        border-radius: unset;
+        width: 35vw;
+        height: 100vh;
+        z-index: 1
+    }
+
+    .iniciarSesion {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%
+    }
+
+    .titulo {
+        width: 100%;
+        text-align: center
+    }
+    .videoLogin {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        object-fit: cover
+    }
+
+    .capa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: 0.5;
+        mix-blend-mode: overlay;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .login {
+        display: flex;
+        background: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        height: 100vh;
+        position: relative;
+        width: 100vw;
+    }
+
+    .formLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-image: url(../images/backlogin2.jpg);
+        background-size: 100vw 100vh;
+        background-position-x: center;
+        background-position-y: center;
+        padding: 25px 0;
+        align-items: center;
+        margin: 0;
+        border: none;
+        width: 35vw;
+        height: 100vh;
+        z-index: 1;
+    }
+    h1 {
+        color:white;
+        position:absolute;
+        z-index:1;
+        top:5rem
+    }
+    .InputsLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 5rem;
+        margin-bottom: 7rem;
+    }
+
+
+
+    .iniciarSesion {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%
+    }
+
+    .titulo {
+        width: 100%;
+        text-align: center
+    }
+    .videoLogin {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 65%;
+        height: 100%;
+        object-fit: cover
+    }
+
+    .capa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: 0.5;
+        mix-blend-mode: overlay;
+    }
+}

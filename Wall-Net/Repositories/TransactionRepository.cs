@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 using Wall_Net.DataAccess;
 using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 
 namespace Wall_Net.Repositories;
 public class TransactionRepository : ITransactionRepository
@@ -29,13 +31,15 @@ public class TransactionRepository : ITransactionRepository
     public async Task AddTransactionAsync(Transaction transaction)
     {
         _context.Transactions.Add(transaction);
-        await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateTransactionAsync(Transaction transaction)
+    public async Task UpdateTransactionAsync(TransactionDTO transaction)
     {
-        _context.Entry(transaction).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
+        var transacion = await _context.Transactions.FindAsync(transaction.TransactionId);
+        transacion.Amount=transaction.Amount;
+        transacion.Concept = transaction.Concept;
+        transacion.Type = transaction.Type;
+        _context.Transactions.Update(transacion);
     }
 
     public async Task DeleteTransactionAsync(int id)
@@ -44,8 +48,17 @@ public class TransactionRepository : ITransactionRepository
         if (transaction != null)
         {
             _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task<IEnumerable<Transaction>> GetAllTransactionById(int id)
+    {
+
+        var account = await _context.Accounts
+               .Include(p => p.Transactions)
+               .FirstOrDefaultAsync(p => p.UserId == id);
+        var transactions = account.Transactions;
+        return transactions;
     }
     public async Task ObtenerIdUsuarioActual(int id)
     {

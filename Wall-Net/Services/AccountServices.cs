@@ -1,4 +1,5 @@
 ﻿using Wall_Net.Models;
+using Wall_Net.Repositories;
 using Wall_Net.UnitOfWorks;
 
 namespace Wall_Net.Services
@@ -6,10 +7,12 @@ namespace Wall_Net.Services
     public class AccountServices : IAccountServices
     {
         private readonly UnitOfWork _unitOfWork;
+        private readonly IAccountsRepository _accountsRepository;
 
-        public AccountServices(UnitOfWork unitOfWork)
+        public AccountServices(UnitOfWork unitOfWork, IAccountsRepository accountsRepository)
         {
             _unitOfWork = unitOfWork;
+            _accountsRepository = accountsRepository;
         }
         public async Task<IEnumerable<Account>> GetAll()
         {
@@ -18,6 +21,10 @@ namespace Wall_Net.Services
         public async Task<Account> GetById(int id)
         {
             return await _unitOfWork.AccountsRepository.GetAccountById(id);
+        }
+        public async Task<Account> GetByUserId(int id)
+        {
+            return await _unitOfWork.AccountsRepository.GetAccountByUserId(id);
         }
         public async Task Insert(Account account)
         {

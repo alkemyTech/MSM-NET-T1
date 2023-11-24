@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Wall_Net.Models
 {
@@ -16,8 +17,13 @@ namespace Wall_Net.Models
         public string Type { get; set; } // tipo de transacción - debe ser 'topup' o 'payment'
 
         public int AccountId { get; set; } // Id de cuenta
+        [ForeignKey("AccountId")]
+        public virtual Account Account { get; set; }
 
         public int UserId { get; set; } // Id de usuario
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+
 
         public int? ToAccountId { get; set; }
 

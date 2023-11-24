@@ -1,0 +1,81 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Wall_Net_Front
+build_property.RootNamespace = Wall_Net_Front
+build_property.ProjectDir = C:\Users\leito\OneDrive\Desktop\MSM-NET-T1\Wall-Net-Front\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\leito\OneDrive\Desktop\MSM-NET-T1\Wall-Net-Front
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Catalogues/Catalogue.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ3Vlc1xDYXRhbG9ndWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Catalogues/CatalogueDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ3Vlc1xDYXRhbG9ndWVEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/FixedTermDeposit/FixedTermDeposit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRml4ZWRUZXJtRGVwb3NpdFxGaXhlZFRlcm1EZXBvc2l0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/FixedTermDeposit/FixedTermDepositDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRml4ZWRUZXJtRGVwb3NpdFxGaXhlZFRlcm1EZXBvc2l0RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_LoginStatusPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblN0YXR1c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Transactions/Transaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25zXFRyYW5zYWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Users/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcTGlzdFVzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hvhnrko9t8
+
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-2t4h3phl2c

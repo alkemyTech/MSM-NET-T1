@@ -13,6 +13,7 @@ using Wall_Net.DataAccess;
 using Wall_Net.Models.DTO;
 using Wall_Net.Models;
 using Wall_Net.Repositories;
+using BCrypt.Net;
 
 namespace Wall_Net.Controllers
 {
@@ -31,9 +32,14 @@ namespace Wall_Net.Controllers
         [AllowAnonymous]
         [HttpPost]
         // POST api/Login
-        [HttpPost]
         public IActionResult Login([FromBody] LoginUser userLogin)
         {
+            var account = _dbContext.Accounts.FirstOrDefault(account => account.User.Email == userLogin.Email);
+            if (account != null && account.IsBlocked)
+            {
+                return Unauthorized("Su cuenta se encuentra bloqueada.");
+            }
+
             var user = Authenticate(userLogin);
             IActionResult response = Unauthorized();
 
@@ -49,12 +55,15 @@ namespace Wall_Net.Controllers
 
         private User Authenticate(LoginUser userLogin)
         {
-            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower()
-                                && user.Password == userLogin.Password);
+            var currentUser = _dbContext.Users.FirstOrDefault(user => user.Email.ToLower() == userLogin.Email.ToLower());
 
             if (currentUser != null)
             {
-                return currentUser;
+                var passwordMatched = BCrypt.Net.BCrypt.Verify(userLogin.Password, currentUser.Password);
+                if (passwordMatched)
+                {
+                    return currentUser;
+                }
             }
             return null;
         }
@@ -73,6 +82,8 @@ namespace Wall_Net.Controllers
             var rol = _dbContext.Roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
 
+            var id = user.Id;
+
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
@@ -81,7 +92,8 @@ namespace Wall_Net.Controllers
                     new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.Surname, user.LastName),
                     new Claim(ClaimTypes.Role,rol.Name),
-                    new Claim("Points",Convert.ToString(points))
+                    new Claim("Points",Convert.ToString(points)),
+                    new Claim("Id",Convert.ToString(id))
                     });
 
             //Crea el token
@@ -100,25 +112,38 @@ namespace Wall_Net.Controllers
             return jwtToken;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<User>> Get()
         {
-            var currentUSer = GetCurrentUser();
-            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+            var currentUser = GetCurrentUser();
+
+            if (currentUser != null)
+            {
+                return Ok(currentUser);
+            }
+            else
+            {
+                // Cambia esto según tus requisitos. En este caso, devuelvo Unauthorized para un usuario no autenticado.
+                return Unauthorized();
+            }
         }
+
         private User GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            if(identity != null)
+
+            if (identity != null)
             {
                 var userClaim = identity.Claims;
                 return new User
                 {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
                     Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
                     LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
                 };
             }
+
             return null;
         }
+
     }
 }

@@ -1,38 +1,81 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Wall_Net.Models;
+using Wall_Net.Models.DTO;
 using Wall_Net.Services;
+using static StackExchange.Redis.Role;
 
 [Route("api/transactions")]
 [ApiController]
 public class TransactionController : ControllerBase
 {
     private readonly ITransactionService _transactionService;
+    public readonly IMapper _mapper;
 
-    public TransactionController(ITransactionService transactionService)
+    public TransactionController(ITransactionService transactionService, IMapper mapper)
     {
         _transactionService = transactionService;
+        _mapper = mapper;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllTransactions(int pageNumber = 1, int pageSize = 10)
     {
-        var transactions = await _transactionService.GetAllTransactionsAsync(pageNumber, pageSize);
-        return Ok(transactions);
+        try
+        {
+            var transactions = await _transactionService.GetAllTransactionsAsync(pageNumber , pageSize);
+            var transactionsDTO = _mapper.Map<List<TransactionDTO>>(transactions);
+            return Ok(transactionsDTO);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
+    }
+
+    [HttpGet("Transaction/AllTransaction")]
+    [Authorize]
+    public async Task<IActionResult> GetAllMyTransaction()
+    {
+        try
+        {
+            var transaction = await _transactionService.GetAllById(idUser());
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            var transactionDTO = _mapper.Map<List<TransactionDTO>>(transaction);
+            return Ok(transactionDTO);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTransaction(int id)
     {
-        var transaction = await _transactionService.GetTransactionByIdAsync(id);
 
-        if (transaction == null)
+        try
         {
-            return NotFound();
-        }
+            var transaction = await _transactionService.GetTransactionByIdAsync(id);
 
-        return Ok(transaction);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(transaction);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
+ 
 
     // Listar transacciones por fecha
     [HttpGet("transactions")]
@@ -81,58 +124,79 @@ public class TransactionController : ControllerBase
         return Ok(transaction);
     }
 
-
-    [HttpPost("transactions")]
+    [HttpPost]
     public async Task<IActionResult> CreateTransaction([FromBody] Transaction transaction)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        if (transaction == null)
-        {
-            return BadRequest("Invalid transaction data");
-        }
         try
         {
-            await _transactionService.CreateTransactionAsync(transaction);
+            if (transaction == null)
+            {
+                return BadRequest("Invalid transaction data");
+            }
+
+            await _transactionService.AddTransactionAsync(transaction);
+
             return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
         }
         catch (Exception ex)
         {
-            // Manejo de errores
-            return StatusCode(500, "Error al guardar la transacción: " + ex.Message);
+            return StatusCode(500, new { message = "Internal Server Error" });
         }
     }
 
-
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTransaction(int id, [FromBody] Transaction transaction)
+    public async Task<IActionResult> UpdateTransaction(int id, TransactionDTO transaction)
     {
-        var existingTransaction = await _transactionService.GetTransactionByIdAsync(id);
-
-        if (existingTransaction == null)
+        try
         {
-            return NotFound();
+            var existingTransaction = await _transactionService.GetTransactionByIdAsync(id);
+
+            if (existingTransaction == null)
+            {
+                return NotFound();
+            }
+
+            await _transactionService.UpdateTransactionAsync(transaction);
+
+            return NoContent();
         }
-
-        await _transactionService.UpdateTransactionAsync(transaction);
-
-        return NoContent();
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTransaction(int id)
     {
-        var transaction = await _transactionService.GetTransactionByIdAsync(id);
-
-        if (transaction == null)
+        try
         {
-            return NotFound();
+            var transaction = await _transactionService.GetTransactionByIdAsync(id);
+
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            await _transactionService.DeleteTransactionAsync(id);
+
+            return NoContent();
         }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
+    }
+    private int idUser()
+    {
+        var identity = HttpContext.User.Identity as ClaimsIdentity;
+        if (identity != null)
+        {
+            var id = identity.FindFirst("Id");
+            var idFixed = int.TryParse(id.Value, out int userID);
 
-        await _transactionService.DeleteTransactionAsync(id);
-
-        return NoContent();
+            return userID;
+        }
+        return 0;
     }
 }
