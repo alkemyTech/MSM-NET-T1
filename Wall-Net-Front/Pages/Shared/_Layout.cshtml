@@ -22,6 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
@@ -35,14 +36,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">FixedTermDeposit</a>
                         </li>
                         
+=======
+>>>>>>> 6b8c947dd2758f1a50713aa067c2a3b4b2602734
                     </ul>
-                    <div id="contenido">
-                        <a class="nav-link text-dark" onclick="cerrarSesion()">Cerrar Sesión</a>
+                    <div>
+                        <partial name="_LoginStatusPartial" />
                     </div>
-                    <div id="botonSesion">
-                        <a class="nav-link text-dark" onclick="iniciarSesion()">Iniciar Sesión</a>
-                    </div>
-
                 </div>
             </div>
             
@@ -60,15 +59,15 @@
         </div>
     </footer>
 
-    <script>
+    @* <script>
         var token = '@TempData["authToken"]';
-    </script>
+    </script> *@
     
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/sessionStorage.js" asp-append-version="true"></script>
+    @* <script src="~/js/sessionStorage.js" asp-append-version="true"></script> *@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

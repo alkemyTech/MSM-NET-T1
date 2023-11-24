@@ -12,6 +12,13 @@ namespace Wall_Net_Front.Pages
 {
     public class LoginModel : PageModel
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public LoginModel(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         public string AuthToken { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -34,12 +41,15 @@ namespace Wall_Net_Front.Pages
                 var response = await httpClient.PostAsync("http://localhost:5270/api/Login", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    string AuthToken = await response.Content.ReadAsStringAsync();
-                    TempData["authToken"] = AuthToken; // Guarda el token en ViewData
-                    Console.WriteLine("Token generado y asignado: " + AuthToken); // Agrega esta línea para depurar
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthToken);
+                    string authToken = await response.Content.ReadAsStringAsync();
+                    TempData["authToken"] = authToken; // Guarda el token en TempData
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                    string sessionToken = authToken;
+                    _httpContextAccessor.HttpContext.Session.SetString("NewSession", sessionToken);
+                    Console.WriteLine("Token guardado en variable local: " + sessionToken);
                     return RedirectToPage("/Index");
                 }
+
                 else
                 {
                     return Page();
@@ -47,6 +57,7 @@ namespace Wall_Net_Front.Pages
                 }
 
             }
+
         }
 
 
