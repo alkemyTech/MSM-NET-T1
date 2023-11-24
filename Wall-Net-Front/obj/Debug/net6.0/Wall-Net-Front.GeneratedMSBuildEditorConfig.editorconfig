@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_LoginStatusPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblN0YXR1c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -55,7 +59,3 @@ build_metadata.AdditionalFiles.CssScope = b-hvhnrko9t8
 [C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-2t4h3phl2c
-
-[C:/Users/leito/OneDrive/Desktop/MSM-NET-T1/Wall-Net-Front/Pages/Shared/_LoguedLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2d1ZWRMYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-rivd8apm3l

@@ -22,18 +22,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        
                     </ul>
-                    <div id="contenido">
-                        <a class="nav-link text-dark" onclick="cerrarSesion()">Cerrar Sesión</a>
+                    <div>
+                        <partial name="_LoginStatusPartial" />
                     </div>
-                    <div id="botonSesion">
-                        <a class="nav-link text-dark" onclick="iniciarSesion()">Iniciar Sesión</a>
-                    </div>
-
                 </div>
             </div>
             
@@ -51,15 +43,15 @@
         </div>
     </footer>
 
-    <script>
+    @* <script>
         var token = '@TempData["authToken"]';
-    </script>
+    </script> *@
     
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/sessionStorage.js" asp-append-version="true"></script>
+    @* <script src="~/js/sessionStorage.js" asp-append-version="true"></script> *@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
