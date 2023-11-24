@@ -1,0 +1,34 @@
+﻿@page
+@model Wall_Net_Front.Pages.FixedTermDeposit.FixedTermDepositDetailModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Amount</th>
+                        <th>Creation Date</th>
+                        <th>Closing Date</th>
+                        <th>Nominal Rate</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th>@Model.fixedTerm.Id</th>
+                        <th>@Model.fixedTerm.amount</th>
+                        <th>@Model.fixedTerm.creation_date</th>
+                        <th>@Model.fixedTerm.closing_date</th>
+                        <th>@Model.fixedTerm.nominalRate</th>
+                        <th>@Model.fixedTerm.state</th>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+

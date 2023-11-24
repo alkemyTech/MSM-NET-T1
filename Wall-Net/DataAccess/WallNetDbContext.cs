@@ -21,7 +21,7 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = Pavi; Initial Catalog = WallNetDb; User ID = sa; Password = Root; Pooling = False; Trust Server Certificate = true");
+            optionsBuilder.UseSqlServer("Data Source=MILI\\SQLEXPRESS;Initial Catalog=Wall-Net;Integrated Security=True;Connect Timeout=30");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -82,6 +82,8 @@ namespace Wall_Net.Controllers
             var rol = _dbContext.roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
 
+            var id = user.Id;
+
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
@@ -90,7 +92,8 @@ namespace Wall_Net.Controllers
                     new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.Surname, user.LastName),
                     new Claim(ClaimTypes.Role,rol.Name),
-                    new Claim("Points",Convert.ToString(points))
+                    new Claim("Points",Convert.ToString(points)),
+                    new Claim("Id",Convert.ToString(id))
                     });
 
             //Crea el token

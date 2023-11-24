@@ -85,11 +85,8 @@ namespace Wall_Net.Controllers
                 return StatusCode(500, new { message = "Internal Server Error" });
             }
         }
-
-
-        // GET api/Fixed
         
-        [HttpGet("/Fixed/AllMyFixed")]
+        [HttpGet("FixedTermDeposit/AllFixed")]
         [Authorize]
         public async Task<IActionResult> GetMyFixed()
         {
@@ -139,24 +136,22 @@ namespace Wall_Net.Controllers
         }
 
         // PUT api/FixedTermDepositController
-        [HttpPut]
+        [HttpPut("{Id}")]
         [Authorize]
-        public async Task<IActionResult> Put(FixedTermDeposit updateFixedTerm)
+        public async Task<IActionResult> Put(int Id)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(updateFixedTerm.Id);
+                    var fixedTerm = await _FixedTernDepositServices.GetFixedTermDepositById(Id);
                     if (fixedTerm == null)
                     {
                         return NotFound();
                     }
-                    fixedTerm.amount = updateFixedTerm.amount;
-                    fixedTerm.creation_date = updateFixedTerm.creation_date;
-                    fixedTerm.closing_date = updateFixedTerm.closing_date;
-                    fixedTerm.nominalRate = updateFixedTerm.nominalRate;
-                    fixedTerm.state = updateFixedTerm.state;
+                    fixedTerm.closing_date = DateTime.Now;
+                    fixedTerm.state = "Cerrado";
+                    fixedTerm.Account.Money += fixedTerm.amount;
 
                     await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
                     return NoContent();
