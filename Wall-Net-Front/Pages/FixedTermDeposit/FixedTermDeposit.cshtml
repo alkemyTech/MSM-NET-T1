@@ -30,9 +30,6 @@
                     <tr>
                         <th>Id</th>
                         <th>Amount</th>
-                        <th>Creation Date</th>
-                        <th>Closing Date</th>
-                        <th>Nominal Rate</th>
                         <th>State</th>
                     </tr>
                 </thead>
@@ -44,12 +41,9 @@
                             <tr>
                                 <th>@item.Id</th>
                                 <th>@item.amount</th>
-                                <th>@item.creation_date</th>
-                                <th>@item.closing_date</th>
-                                <th>@item.nominalRate</th>
                                 <th>@item.state</th>
                                 <th>
-                                    <button asp-page-handler="Put" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el proyecto?')">Cerrar</button>
+                                    <button asp-page-handler="Put" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro de cerrar el proyecto?')">Cerrar</button>
                                     <a asp-page="/FixedTermDeposit/FixedTermDepositDetail" asp-route-id="@item.Id" class="btn btn-primary">Ver detalles</a>
                                 </th>
                             </tr>

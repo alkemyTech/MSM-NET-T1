@@ -44,10 +44,6 @@
                                 <th>@item.Concept</th>
                                 <th>@item.Date</th>
                                 <th>@item.Type</th>
-                                <th>
-                                    <button asp-page-handler="Delete" asp-route-id="@item.TransactionId" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el proyecto?')">Borrar</button>
-                                    <a asp-page="/Transaction/TransactionDetail" asp-route-id="@item.TransactionId" class="btn btn-primary">Ver detalles</a>
-                                </th>
                             </tr>
                         }
                     

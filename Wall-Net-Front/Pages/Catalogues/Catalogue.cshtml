@@ -29,8 +29,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Descripcion</th>
-                        <th>Image</th>
+                            <th>Image</th>
                             <th>Points</th>
                         </tr>
                     </thead>
@@ -41,11 +40,9 @@
                         {
                             <tr>
                                 <th>@item.Id</th>
-                                <th>@item.ProductDescription</th>
                                 <th>@item.Image</th>
                                 <th>@item.Points</th>
                                 <th>
-                                    <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro de borrar el proyecto?')">Borrar</button>
                                     <a asp-page="/Catalogues/CatalogueDetail" asp-route-id="@item.Id"  class="btn btn-primary">Ver detalles</a>
                                 </th>
                             </tr>
