@@ -17,16 +17,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-image: url('../images/material-747112_1920.jpg');
+    background-image: url('../images/backlogin2.jpg');
     background-size: 100vw 100vh;
     background-position-x: center;
     background-position-y: center;
     padding: 25px 0;
     align-items: center;
     border-radius: 15px;
-    min-width: 350px ;
+    min-width: 350px;
     height: 80vh;
-    margin-top:10vh;
+    margin-top: 10vh;
     z-index: 1
 }
 
@@ -78,7 +78,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        background-image: url('../images/material-747112_1920.jpg');
+        background-image: url('../images/backlogin2.jpg');
         background-size: 100vw 100vh;
         background-position-x: center;
         background-position-y: center;
@@ -141,19 +141,36 @@
     .formLogin {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        background-image: url('../images/material-747112_1920.jpg');
+        justify-content: center;
+        background-image: url(../images/backlogin2.jpg);
         background-size: 100vw 100vh;
         background-position-x: center;
         background-position-y: center;
         padding: 25px 0;
         align-items: center;
-        margin:0;
+        margin: 0;
         border: none;
         width: 35vw;
         height: 100vh;
-        z-index:1
+        z-index: 1;
     }
+    h1 {
+        color:white;
+        position:absolute;
+        z-index:1;
+        top:5rem
+    }
+    .InputsLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 5rem;
+        margin-bottom: 7rem;
+    }
+
+
 
     .iniciarSesion {
         display: flex;

@@ -43,4 +43,14 @@ public class TransactionRepository : ITransactionRepository
             await _context.SaveChangesAsync();
         }
     }
+
+    public async Task<IEnumerable<Transaction>> GetAllTransactionById(int id)
+    {
+
+        var account = await _context.Accounts
+               .Include(p => p.Transactions)
+               .FirstOrDefaultAsync(p => p.UserId == id);
+        var transactions = account.Transactions;
+        return transactions;
+    }
 }

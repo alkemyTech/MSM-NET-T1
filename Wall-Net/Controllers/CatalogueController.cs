@@ -2,46 +2,44 @@
 using Microsoft.EntityFrameworkCore;
 using Wall_Net.Models;
 using Wall_Net.DataAccess;
+using Wall_Net.Services;
 
 [Route("api/catalogue")]
 [ApiController]
 public class CatalogueController : ControllerBase
 {
     private readonly WallNetDbContext _context;
+    private readonly ICatalogueService _catalogueService;
 
-    public CatalogueController(WallNetDbContext context)
+    public CatalogueController(ICatalogueService catalogueService)
     {
-        _context = context;
+        _catalogueService = catalogueService;
     }
 
     // GET: api/catalogue
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Catalogue>>> GetCatalogue()
+    public async Task<IActionResult> Get()
     {
         try
         {
-            return await _context.Catalogues.ToListAsync();
+            var catalogues= await _catalogueService.GetAllCatalogueItems();
+            return Ok(catalogues);
         }
         catch (Exception ex)
         {
             return StatusCode(500, new { message = "Internal Server Error" });
         }
     }
-
-    // GET: api/catalogue/1
+    
+    // GET: api/catalogue/{id}
     [HttpGet("{id}")]
-    public async Task<ActionResult<Catalogue>> GetCatalogue(int id)
+    public async Task<IActionResult> Get(int id)
     {
         try
         {
-            var catalogueItem = await _context.Catalogues.FindAsync(id);
+            var catalogueItem = await _catalogueService.GetCatalogueItemById(id);
 
-            if (catalogueItem == null)
-            {
-                return NotFound();
-            }
-
-            return catalogueItem;
+            return Ok(catalogueItem);
         }
         catch (Exception ex)
         {
@@ -49,6 +47,7 @@ public class CatalogueController : ControllerBase
         }
     }
 
+    /*
     // POST: api/catalogue
     [HttpPost]
     public async Task<ActionResult<Catalogue>> PostCatalogue(Catalogue catalogue)
@@ -129,5 +128,5 @@ public class CatalogueController : ControllerBase
     private bool CatalogueExists(int id)
     {
             return _context.Catalogues.Any(e => e.Id == id);   
-    }
+    }*/
 }

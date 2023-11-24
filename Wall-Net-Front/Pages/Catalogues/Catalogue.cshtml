@@ -1,0 +1,55 @@
+﻿@page "/Catalogue"
+@model CatalogueModel
+@{
+    ViewData["Title"] = "Catalogue";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+            <form method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.catalogueList != null)
+                    {
+                        @foreach (var item in Model.catalogueList)
+                        {
+                            <tr>
+                                <th>@item.Id</th>
+                                <th>@item.Image</th>
+                                <th>@item.Points</th>
+                                <th>
+                                    <a asp-page="/Catalogues/CatalogueDetail" asp-route-id="@item.Id"  class="btn btn-primary">Ver detalles</a>
+                                </th>
+                            </tr>
+                            }
+                     }
+                    </tbody>
+                </table>
+            </form>
+</div>
+    
