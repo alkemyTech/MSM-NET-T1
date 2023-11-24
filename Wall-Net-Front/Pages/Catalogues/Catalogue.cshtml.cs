@@ -29,10 +29,6 @@ namespace Wall_Net_Front.Pages.Catalogues
                 }
             }
         }
-        //public async Task OnPostFormulario(int id, string image)
-        //{
-        //    return RedirectToAction("Destino", new { Campo1 = id, Campo2 = image});
-        //}
 
     }
 }

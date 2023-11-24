@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "hV4D1SNlq+MjqDb9yze1hVinBkU4OdKRUyyrVkWjNDA=",
+  "Hash": "aGfzu8NqZHDdyIUzlbZCnPMzgdwHz1e034EU0zN76l8=",
   "Source": "Wall-Net-Front",
   "BasePath": "_content/Wall-Net-Front",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net\\Wall-Net.csproj",
+      "Version": 2,
+      "Source": "Wall-Net",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [
     {
       "Name": "Wall-Net-Front\\wwwroot",
@@ -51,6 +63,23 @@
       "OriginalItemSpec": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Wall-Net-Front.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\css\\login.css",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
       "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\css\\site.css",
       "SourceId": "Wall-Net-Front",
       "SourceType": "Discovered",
@@ -83,6 +112,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\images\\material-747112_1920.jpg",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "images/material-747112_1920.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\material-747112_1920.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\js\\sessionStorage.js",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "js/sessionStorage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\sessionStorage.js"
     },
     {
       "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\js\\site.js",
@@ -1069,6 +1132,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\videos\\videoBack.mp4",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "videos/videoBack.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\videos\\videoBack.mp4"
     }
   ]
 }

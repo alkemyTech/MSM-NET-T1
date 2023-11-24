@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Wall_Net.Models;
 using Wall_Net.Models.DTO;
 using Wall_Net.Services;
@@ -26,6 +28,26 @@ public class TransactionController : ControllerBase
             var transactions = await _transactionService.GetAllTransactionsAsync();
             var transactionsDTO = _mapper.Map<List<TransactionDTO>>(transactions);
             return Ok(transactionsDTO);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal Server Error" });
+        }
+    }
+
+    [HttpGet("Transaction/AllTransaction")]
+    [Authorize]
+    public async Task<IActionResult> GetAllMyTransaction()
+    {
+        try
+        {
+            var transaction = await _transactionService.GetAllById(idUser());
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            var transactionDTO = _mapper.Map<List<TransactionDTO>>(transaction);
+            return Ok(transactionDTO);
         }
         catch (Exception ex)
         {
@@ -116,5 +138,17 @@ public class TransactionController : ControllerBase
         {
             return StatusCode(500, new { message = "Internal Server Error" });
         }
+    }
+    private int idUser()
+    {
+        var identity = HttpContext.User.Identity as ClaimsIdentity;
+        if (identity != null)
+        {
+            var id = identity.FindFirst("Id");
+            var idFixed = int.TryParse(id.Value, out int userID);
+
+            return userID;
+        }
+        return 0;
     }
 }

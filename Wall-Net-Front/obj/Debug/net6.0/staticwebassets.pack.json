@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\Wall-Net-Front.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\images\\material-747112_1920.jpg",
+      "PackagePath": "staticwebassets\\images\\material-747112_1920.jpg"
+    },
+    {
+      "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\js\\sessionStorage.js",
+      "PackagePath": "staticwebassets\\js\\sessionStorage.js"
     },
     {
       "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\js\\site.js",
@@ -243,6 +255,10 @@
     {
       "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\videos\\videoBack.mp4",
+      "PackagePath": "staticwebassets\\videos\\videoBack.mp4"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Wall-Net-Front.Microsoft.AspNetCore.StaticWebAssets.props",
