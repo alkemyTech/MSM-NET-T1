@@ -43,7 +43,7 @@ namespace Wall_Net.Controllers
 
         // GET api/FixedTermDepositController/{id}
         [HttpGet("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Get(int id)
         {
             try

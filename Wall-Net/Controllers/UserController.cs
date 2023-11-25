@@ -96,7 +96,7 @@ namespace Wall_Net.Controllers
                 }
                 user.FirstName = updatedUser.FirstName;
                 user.LastName = updatedUser.LastName;
-                user.Points = updatedUser.Points;
+                //user.Points = updatedUser.Points;
                 await _userServices.UpdateUser(user);
                 return NoContent();
             }
