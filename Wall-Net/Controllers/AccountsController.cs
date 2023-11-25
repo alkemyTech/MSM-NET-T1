@@ -18,7 +18,7 @@ namespace Wall_Net.Controllers
             _accountServices = accountServices;
         }
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
@@ -57,7 +57,7 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize/*(Roles = "Admin")*/]
         public async Task<IActionResult> Get(int id)
         {
             var account = await _accountServices.GetById(id);
@@ -81,7 +81,8 @@ namespace Wall_Net.Controllers
             var newAccount = new Account
             {
                 Money = 0,  // Inicializar el campo Money con cero.
-                UserId = currentUser.Id  // Asignar el ID del usuario actual.
+                UserId = currentUser.Id,  // Asignar el ID del usuario actual.
+                CreationDate= DateTime.Now
             };
             await _accountServices.Insert(newAccount);
             return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
@@ -198,7 +199,7 @@ namespace Wall_Net.Controllers
         }
 
         //Bloqueo de cuenta
-        //[Authorize]
+        [Authorize]
         [HttpPatch("user/block/{id}")]
         public async Task<ActionResult> BlockAccount(int id)
         {

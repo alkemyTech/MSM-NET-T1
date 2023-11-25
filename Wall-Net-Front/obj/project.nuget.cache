@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dXS3HidRO3sqIRK8mNwqS0cRQyDtivbIhyzK644vc+78t4enj4RKjiK0GcJ+cF2gm1MVBD0PhGCkW/bxihzlzw==",
+  "dgSpecHash": "oFaYxbFEd1M9jLG/ZAbyzY+CN6rCOSFlH02bJcHxqzQoZagwu0wCqWW22e/bQZnNMbCnpl2tMAPM1VPvrTRfMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\Wall-Net-Front.csproj",
   "expectedPackageFiles": [
@@ -18,9 +18,11 @@
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.24\\microsoft.entityframeworkcore.6.0.24.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.24\\microsoft.entityframeworkcore.abstractions.6.0.24.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.24\\microsoft.entityframeworkcore.analyzers.6.0.24.nupkg.sha512",
+    "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.autohistory\\3.1.1\\microsoft.entityframeworkcore.autohistory.3.1.1.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\6.0.24\\microsoft.entityframeworkcore.inmemory.6.0.24.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.24\\microsoft.entityframeworkcore.relational.6.0.24.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.24\\microsoft.entityframeworkcore.sqlserver.6.0.24.nupkg.sha512",
+    "C:\\Users\\lean2\\.nuget\\packages\\microsoft.entityframeworkcore.unitofwork\\3.1.0\\microsoft.entityframeworkcore.unitofwork.3.1.0.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
@@ -42,7 +44,7 @@
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\lean2\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\lean2\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\lean2\\.nuget\\packages\\stackexchange.redis\\2.7.4\\stackexchange.redis.2.7.4.nupkg.sha512",

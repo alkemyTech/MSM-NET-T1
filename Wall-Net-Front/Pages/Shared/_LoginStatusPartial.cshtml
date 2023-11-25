@@ -1,0 +1,13 @@
+﻿
+@{
+    bool session = ViewData["token"] != null && ViewData["token"].ToString().ToLower() == "true";
+
+    if (session != true)
+    {
+        <a class="nav-link text-dark" asp-page="/Login">Iniciar Sesión</a>
+    }
+    else
+    {
+        <a asp-page="/Index" asp-page-handler="">Cerrar Sesion</a>
+    }
+}

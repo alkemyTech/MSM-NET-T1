@@ -79,18 +79,22 @@ namespace Wall_Net.Controllers
                                 );
 
             //Rol del usuario
-            var rol = _dbContext.roles.FirstOrDefault(p => p.Id == user.Rol_Id);
+            var rol = _dbContext.Roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
+
+            var id = user.Id;
 
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.Surname, user.LastName),
                     new Claim(ClaimTypes.Role,rol.Name),
-                    new Claim("Points",Convert.ToString(points))
+                    new Claim("Points",Convert.ToString(points)),
+                    new Claim("Id",Convert.ToString(id))
                     });
 
             //Crea el token
@@ -108,26 +112,38 @@ namespace Wall_Net.Controllers
 
             return jwtToken;
         }
+        
+        
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<User>> Get()
         {
-            var currentUSer = GetCurrentUser();
-            return Ok($"Hola {currentUSer.FirstName}, tu email es {currentUSer.Email}");
+            var currentUser = GetCurrentUser();
+
+            if (currentUser != null)
+            {
+                return Ok(currentUser);
+            }
+            else
+            {
+                // Cambia esto según tus requisitos. En este caso, devuelvo Unauthorized para un usuario no autenticado.
+                return Unauthorized();
+            }
         }
+
         private User GetCurrentUser()
         {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            if (identity != null)
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userIdClaim != null)
             {
-                var userClaim = identity.Claims;
-                return new User
-                {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
-                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
-                };
+                var userIdValue = int.Parse(userIdClaim.Value);
+                var user = _dbContext.Users.FirstOrDefault(u => u.Id == userIdValue);
+
+                return user; // Devuelve directamente el usuario obtenido de la base de datos
             }
+
             return null;
         }
+
     }
 }

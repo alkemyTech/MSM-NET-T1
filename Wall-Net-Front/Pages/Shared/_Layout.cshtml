@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Wall_Net_Front</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Wall_Net_Front.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -31,9 +31,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Users/UserProfile">Mi Perfil</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Catalogues/Catalogue">Catalogue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Transactions/Transaction">Transaction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">FixedTermDeposit</a>
+                        </li>
                     </ul>
+                    <div>
+                        <partial name="_LoginStatusPartial" />
+                    </div>
                 </div>
             </div>
+            
         </nav>
     </header>
     <div class="container">
@@ -48,9 +61,15 @@
         </div>
     </footer>
 
+    @* <script>
+        var token = '@TempData["authToken"]';
+    </script> *@
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @* <script src="~/js/sessionStorage.js" asp-append-version="true"></script> *@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

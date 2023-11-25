@@ -15,12 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 
-
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services.AddControllers();
+/*builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
     options.JsonSerializerOptions.PropertyNamingPolicy = null; // prevent camel case
-});
+});*/
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -39,6 +39,7 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT",
         Scheme = "Bearer"
     });
+
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -95,8 +96,9 @@ builder.Services.AddScoped<IAccountServices, AccountServices>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 
-builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
-builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
+
+builder.Services.AddScoped<IFixedTermDepositRepository, FixedTermDepositRepository>();
+builder.Services.AddScoped<IFixedTermDepositServices, FixedTermDepositServices>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

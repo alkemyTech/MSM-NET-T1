@@ -2,6 +2,7 @@
 using System.Reflection.Metadata;
 using System;
 using Wall_Net.Models;
+using Amazon.Auth.AccessControlPolicy;
 
 namespace Wall_Net.DataAccess
 {
@@ -12,16 +13,17 @@ namespace Wall_Net.DataAccess
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Account> Accounts{ get; set; }
         public DbSet<Roles> roles { get; set; }
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<FixedTermDeposit> FixedTerms { get; set; }
         public DbSet<Catalogue> Catalogues { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
 
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

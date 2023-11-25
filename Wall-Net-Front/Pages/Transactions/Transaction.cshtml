@@ -1,0 +1,53 @@
+﻿@page "/Transaction"
+@model Wall_Net_Front.Pages.Transactions.TransactionModel
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ingresar ID" aria-label="Ingresar ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Amount</th>
+                        <th>Concept</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach (var item in Model.transactionList)
+                        {
+                            <tr>
+                                <th>@item.TransactionId</th>
+                                <th>@item.Amount</th>
+                                <th>@item.Concept</th>
+                                <th>@item.Date</th>
+                                <th>@item.Type</th>
+                            </tr>
+                        }
+                    
+                </tbody>
+            </table>
+        </form>
+    </div>

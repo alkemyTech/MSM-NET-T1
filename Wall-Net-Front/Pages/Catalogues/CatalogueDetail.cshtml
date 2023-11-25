@@ -1,0 +1,31 @@
+﻿@page "/CatalogueDetail"
+@model Wall_Net_Front.Pages.Catalogues.CatalogueDetailModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Image</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <th>@Model.catalogue.Id</th>
+                            <th>@Model.catalogue.ProductDescription</th>
+                            <th>@Model.catalogue.Image</th>
+                            <th>@Model.catalogue.Points</th>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </form>
+    </div>
+

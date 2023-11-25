@@ -7,57 +7,59 @@
 
 @*Agrega validación, campo no vacio*@
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*Se envia Id oculto
-<input type="hidden" asp-for="User.Id" />*@
+@*Se envia Id oculto*@
+<input type="hidden" asp-for="User.Id" />
 
 <form method="post">
     <input type="hidden" asp-for="User.Id" />
     
 @* FRON USER *@
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-6 mb-2">
-                <label asp-for="User.FirstName">Nombre</label>
-                <div class="input-group"> 
-                    <input asp-for="User.FirstName" class="form-control" />
-                    <div class="input-group-append">
-                        <input type="submit" value="Editar" class="btn btn-success form-control" />
+    <div class="informacion-perfil">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="User.FirstName">Nombre</label>
+                    <div class="input-group"> 
+                        <input asp-for="User.FirstName" class="form-control" />
+                        <div class="input-group-append">
+                            <input type="submit" value="Editar" class="btn btn-success form-control" />
+                        </div>
                     </div>
+                    <span asp-validation-for="User.FirstName" class="text-danger"></span>
                 </div>
-                <span asp-validation-for="User.FirstName" class="text-danger"></span>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-6 mb-2">
-                <label asp-for="User.LastName">Apellido</label>
-                <div class="input-group">
-                    <input asp-for="User.LastName" class="form-control" />
-                    <div class="input-group-append">
-                        <input type="submit" value="Editar" class="btn btn-success form-control" />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="User.LastName">Apellido</label>
+                    <div class="input-group">
+                        <input asp-for="User.LastName" class="form-control" />
+                        <div class="input-group-append">
+                            <input type="submit" value="Editar" class="btn btn-success form-control" />
+                        </div>
                     </div>
+                    <span asp-validation-for="User.LastName" class="text-danger"></span>
                 </div>
-                <span asp-validation-for="User.LastName" class="text-danger"></span>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-6 mb-2">
-                <label asp-for="User.Email"></label>
-                <div class="form-control" readonly>@Model.User.Email</div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="User.Email"></label>
+                    <div class="form-control" readonly>@Model.User.Email</div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-6 mb-2">
-                <label asp-for="User.Points">Puntos</label>
-                <div class="form-control" readonly>@Model.User.Points</div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <label asp-for="User.Points">Puntos</label>
+                    <div class="form-control" readonly>@Model.User.Points</div>
+                </div>
             </div>
         </div>
     </div>
@@ -95,52 +97,57 @@
 
 @* FRONT FIXED TERM DEPOSIT*@
     <div class="informacion-plazo-fijo">
+
+        @foreach (var item in Model.FixedTermDeposit)
+        {
         <h2>Información del plazo fijo</h2>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="FixedTermDeposit.amount">Importe</label>
-                    <div class="form-control" readonly>@Model.FixedTermDeposit.amount</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="FixedTermDeposit.creation_date">Fecha de creación</label>
-                    <div class="form-control" readonly>@Model.FixedTermDeposit.creation_date</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 mb-2">
+                        <label asp-for="@item.creation_date">Fecha de creación</label>
+                        <div class="form-control" readonly>@item.creation_date</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="FixedTermDeposit.closing_date">Fecha de cierre</label>
-                    <div class="form-control" readonly>@Model.FixedTermDeposit.closing_date</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 mb-2">
+                        <label asp-for="@item.amount">Importe</label>
+                        <div class="form-control" readonly>@item.amount</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="FixedTermDeposit.nominalRate">Tasa de interés</label>
-                    <div class="form-control" readonly>@Model.FixedTermDeposit.nominalRate</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 mb-2">
+                        <label asp-for="@item.closing_date">Fecha de cierre</label>
+                        <div class="form-control" readonly>@item.closing_date</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="FixedTermDeposit.state">Estado</label>
-                    <div class="form-control" readonly>@Model.FixedTermDeposit.state</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 mb-2">
+                        <label asp-for="@item.nominalRate">Tasa de interés</label>
+                        <div class="form-control" readonly>@item.nominalRate</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 mb-2">
+                        <label asp-for="@item.state">Estado</label>
+                        <div class="form-control" readonly>@item.state</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div> 
 
 @* FRONT TRANSACTIONS*@
     <div class="informacion-transacciones">
@@ -151,19 +158,21 @@
                     <th class="text-center">Monto</th>
                     <th class="text-center">Observación</th>
                     <th class="text-center">Fecha</th>
-                    <th class="text-center">tipo de transacción</th>
+                    <th class="text-center">Tipo de transacción</th>
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach (var item in Model.Transaction)
+                {
                     <tr>
-                        <td class="text-center">@Model.Transaction.Amount</td>
-                        <td class="text-center">@Model.Transaction.Concept</td>
-                        <td class="text-center">@Model.Transaction.Date</td>
-                        <td class="text-center">@Model.Transaction.Type</td>
+                        <th>@item.Amount</th>
+                        <th>@item.Concept</th>
+                        <th>@item.Date</th>
+                        <th>@item.Type</th>
                     </tr>
-                
+                }
             </tbody>
         </table>
     </div>
+
 </form>

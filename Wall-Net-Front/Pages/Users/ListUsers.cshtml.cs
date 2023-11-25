@@ -1,12 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using Wall_Net.Models;
 
 namespace Wall_Net_Front.Pages.Users
 {
     public class ListUsersModel : PageModel
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public ListUsersModel (IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         public List<User> Users { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
@@ -18,6 +26,9 @@ namespace Wall_Net_Front.Pages.Users
         {
             using (var httpClient = new HttpClient())
             {
+                var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                 var response = await httpClient.GetAsync($"http://localhost:5270/api/User?pageNumber={pageNumber}&pageSize={pageSize}");
                 var content = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)

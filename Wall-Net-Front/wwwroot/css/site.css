@@ -14,5 +14,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
