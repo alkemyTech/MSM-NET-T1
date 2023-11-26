@@ -1,0 +1,18 @@
+﻿@page
+@using Wall_Net.Models;
+@model HomeModel
+@{
+    ViewData["Title"] = "Home page";
+    var currentUser = ViewData["currentUser"] as User;
+}
+
+<div class="text-center">
+    @if (ViewData["currentUser"] != null)
+    {
+        <h1 class="display-4">Hola @currentUser.FirstName! Bienvenido a Wall-Net!!!</h1>
+    }
+    else
+    {
+        <p>Error al recuperar los datos del usuario.</p>
+    }
+</div>

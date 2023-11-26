@@ -1,31 +1,67 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.Http.Headers;
+using Newtonsoft.Json;
 using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace Wall_Net_Front.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public IndexModel(ILogger<IndexModel> logger, IHttpContextAccessor httpContextAccessor)
+        public IndexModel(IHttpContextAccessor httpContextAccessor)
         {
-            _logger = logger;
             _httpContextAccessor = httpContextAccessor;
+
+
+            _httpContextAccessor.HttpContext.Session.Clear();
+
         }
 
-        public void OnGet()
+        public string AuthToken { get; set; }
+        public async Task<IActionResult> OnPostAsync()
         {
+            // Captura los valores de usuario y contraseña desde la solicitud POST
+            string email = Request.Form["email"];
+            string password = Request.Form["password"];
+
+            Console.WriteLine(email + " " + password);
+
+            var data = new
+            {
+                email = email,
+                password = password
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
             using (var httpClient = new HttpClient())
             {
-                string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessionToken);
-                bool token = sessionToken != null;
-                ViewData["token"] = token;
+
+                var response = await httpClient.PostAsync("http://localhost:5270/api/Login", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    string authToken = await response.Content.ReadAsStringAsync();
+                    TempData["authToken"] = authToken; // Guarda el token en TempData
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                    string sessionToken = authToken;
+                    _httpContextAccessor.HttpContext.Session.SetString("NewSession", sessionToken);
+                    Console.WriteLine("Token guardado en variable local: " + sessionToken);
+                    return RedirectToPage("/Home");
+                }
+
+                else
+                {
+                    return Page();
+
+                }
+
             }
+
         }
 
     }

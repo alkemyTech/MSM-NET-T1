@@ -14,6 +14,7 @@
 /Wall-Net/Migrations
 /Wall-Net/DataAccess/WallNetDbContext.cs
 
+/Wall-Net-Front/bin
 /Wall-Net-Front/obj
 /Wall-Net-Front/bin/Debug/net6.0
 /Wall-Net-Front/obj/Debug/net6.0
