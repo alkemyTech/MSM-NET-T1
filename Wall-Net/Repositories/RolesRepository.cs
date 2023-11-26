@@ -16,30 +16,30 @@ namespace Wall_Net.Repositories
 
         public async Task<IEnumerable<Roles>> GetAll()
         {
-            return await _dbContext.roles.ToListAsync();
+            return await _dbContext.Roles.ToListAsync();
         }
 
         public async Task<Roles> GetById(int id)
         {
-            return await _dbContext.roles.FirstOrDefaultAsync(p => p.Id == id);
+            return await _dbContext.Roles.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task Add(Roles Roles)
         {
-            _dbContext.roles.Add(Roles);
+            _dbContext.Roles.Add(Roles);
         }
 
         public async Task Update(Roles Roles)
         {
-            _dbContext.roles.Update(Roles);
+            _dbContext.Roles.Update(Roles);
         }
 
         public async Task Delete(int id)
         {
-            var Roles = _dbContext.roles.FirstOrDefault(p => p.Id == id);
+            var Roles = _dbContext.Roles.FirstOrDefault(p => p.Id == id);
             if (Roles != null)
             {
-                _dbContext.roles.Remove(Roles);
+                _dbContext.Roles.Remove(Roles);
             }
         }
     }

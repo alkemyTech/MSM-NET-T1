@@ -13,8 +13,9 @@ namespace Wall_Net.DataAccess
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Account> Accounts{ get; set; }
         public DbSet<Roles> roles { get; set; }
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<FixedTermDeposit> FixedTerms { get; set; }
         public DbSet<Catalogue> Catalogues { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
@@ -22,7 +23,6 @@ namespace Wall_Net.DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=Pavi;Initial Catalog=WalNetDb;User ID=sa;Password=Root;Pooling=False;Trust Server Certificate=true");
-
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -79,7 +79,7 @@ namespace Wall_Net.Controllers
                                 );
 
             //Rol del usuario
-            var rol = _dbContext.roles.FirstOrDefault(p => p.Id == user.Rol_Id);
+            var rol = _dbContext.Roles.FirstOrDefault(p => p.Id == user.Rol_Id);
             var points = user.Points;
 
             var id = user.Id;

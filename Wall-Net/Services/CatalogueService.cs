@@ -29,16 +29,19 @@ namespace Wall_Net.Services
         public async Task AddCatalogueItem(Catalogue catalogue)
         {
             await _unitOfWork.CatalogueRepository.AddCatalogueItem(catalogue);
+            await _unitOfWork.Commit();
         }
 
         public async Task UpdateCatalogueItem(int id, Catalogue updatedCatalogue)
         {
             await _unitOfWork.CatalogueRepository.UpdateCatalogueItem(id, updatedCatalogue);
+            await _unitOfWork.Commit();
         }
 
         public async Task DeleteCatalogueItem(int id)
         {
             await _unitOfWork.CatalogueRepository.DeleteCatalogueItem(id);
+            await _unitOfWork.Commit();
         }
     }
 
