@@ -132,14 +132,24 @@ namespace Wall_Net.Controllers
 
         private User GetCurrentUser()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
 
-            if (userIdClaim != null)
+            if (identity != null)
             {
-                var userIdValue = int.Parse(userIdClaim.Value);
-                var user = _dbContext.Users.FirstOrDefault(u => u.Id == userIdValue);
+                var userClaim = identity.Claims;
 
-                return user; // Devuelve directamente el usuario obtenido de la base de datos
+                var userIdClaim = identity.FindFirst("Id");
+
+                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+                {
+                    return new User
+                    {
+                        Id = userId,
+                        FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                        Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                        LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                    };
+                }
             }
 
             return null;
