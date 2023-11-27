@@ -5,14 +5,32 @@ html {
 @media (max-width: 577px) {
     header .opcionesDeUsuario {
         position: absolute;
-        top: 8rem;
+        top: 8.5rem;
         background-color: black;
         width: 85vw;
         border-bottom: 5px solid #981f67;
         border-radius: 5px;
-        padding-top: 2rem;
+        padding-top: 0.5rem;
         z-index: 1;
     }
+    .btn-topUp {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        right: 2rem;
+        bottom: 2rem;
+        border: 2px solid red;
+        border-radius: 50%;
+    }
+
+        .btn-topUp i {
+            font-size: 30px;
+            color: white;
+        }
 }
 @media (min-width: 768px) {
   html {
@@ -48,6 +66,11 @@ nav.opcionesHeader {
     background-color: black;
     border-radius:5px;
     border-bottom: 5px solid #981f67;
+}
+.navbar-toggler-icon {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
 }
 .logo-Wall {
     display: flex;
@@ -113,5 +136,25 @@ main {
     color: white
 }
 .table {
+    color: white;
+}
+.btn-topUp {
+    position: fixed; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    right: 2rem;
+    bottom: 2rem;
+    border: 4px solid #981f67;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.btn-topUp i {
+    font-size: 30px;
     color: white;
 }

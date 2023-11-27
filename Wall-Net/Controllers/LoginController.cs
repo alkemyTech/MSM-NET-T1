@@ -133,12 +133,19 @@ namespace Wall_Net.Controllers
             if (identity != null)
             {
                 var userClaim = identity.Claims;
-                return new User
+
+                var userIdClaim = identity.FindFirst("Id");
+
+                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
                 {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
-                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
-                };
+                    return new User
+                    {
+                        Id = userId,
+                        FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                        Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                        LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                    };
+                }
             }
 
             return null;

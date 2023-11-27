@@ -19,8 +19,16 @@ namespace Wall_Net.Models
         public string Password { get; set; }
         public decimal Points { get; set; }
         public int Rol_Id { get; set; }
+        public int AccountId { get; set; }
+        [ForeignKey("AccountId")]
+        [JsonIgnore]
+        public virtual Account? Account { get; set; }
         [JsonIgnore]
         [InverseProperty("User")]
         public virtual ICollection<FixedTermDeposit> FixedTermDeposits { get; } = new List<FixedTermDeposit>();
+
+        [JsonIgnore]
+        [InverseProperty("User")]
+        public virtual ICollection<Account>? Accounts { get; set; } = new List<Account>();
     }
 }
