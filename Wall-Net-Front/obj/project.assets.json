@@ -242,6 +242,23 @@
           "lib/netstandard2.0/_._": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.AutoHistory/3.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.AutoHistory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.AutoHistory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.InMemory/6.0.24": {
         "type": "package",
         "dependencies": {
@@ -288,6 +305,23 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.UnitOfWork/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.AutoHistory": "3.1.1",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.UnitOfWork.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.UnitOfWork.dll": {
             "related": ".xml"
           }
         }
@@ -1052,6 +1086,7 @@
           "Microsoft.EntityFrameworkCore": "6.0.24",
           "Microsoft.EntityFrameworkCore.InMemory": "6.0.24",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.24",
+          "Microsoft.EntityFrameworkCore.UnitOfWork": "3.1.0",
           "Microsoft.IdentityModel.Tokens": "7.0.3",
           "StackExchange.Redis": "2.7.4",
           "Swashbuckle.AspNetCore": "6.5.0",
@@ -1433,6 +1468,19 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.AutoHistory/3.1.1": {
+      "sha512": "AUyDffkoWa8urNm0z2TMX7VxYPal5LuHlirlWpzz7xKFMoSwmqpclz9ODXxmgrHLQ7/yT2Pv9Id0HO59dsKxWw==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.autohistory/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.AutoHistory.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.AutoHistory.xml",
+        "microsoft.entityframeworkcore.autohistory.3.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.autohistory.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.InMemory/6.0.24": {
       "sha512": "DMgRBO93VxqSFuof/RokHxGyMLc6IIu49wo/LMnwUba3EnMIJJw8p+0CbT7Pm+Pp2M6ZX/+iz4HRzq2UnQ0a6A==",
       "type": "package",
@@ -1473,6 +1521,19 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.6.0.24.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.UnitOfWork/3.1.0": {
+      "sha512": "JzHpeIljFflhg3TWuro6SlaRR8UJ026PB7RhSg6Z3aNJxxP8x+Mfm+lHpM2lrgw3+T6blPZwxik0lt9lIzW0EQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.unitofwork/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.UnitOfWork.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.UnitOfWork.xml",
+        "microsoft.entityframeworkcore.unitofwork.3.1.0.nupkg.sha512",
+        "microsoft.entityframeworkcore.unitofwork.nuspec"
       ]
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {

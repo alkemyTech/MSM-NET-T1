@@ -89,3 +89,5 @@ C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\bin\Debug\net6.
 C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\bin\Debug\net6.0\Wall-Net.dll
 C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\bin\Debug\net6.0\Wall-Net.pdb
 C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\obj\Debug\net6.0\scopedcss\Pages\Shared\_LoginLayout.cshtml.rz.scp.css
+C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.AutoHistory.dll
+C:\Users\estudiante\source\repos\MSM-NET-T1-Front\Wall-Net-Front\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.UnitOfWork.dll

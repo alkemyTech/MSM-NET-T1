@@ -186,6 +186,18 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/6.0.24": {},
+      "Microsoft.EntityFrameworkCore.AutoHistory/3.1.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.24",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.AutoHistory.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.InMemory/6.0.24": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.24"
@@ -218,6 +230,18 @@
           "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
             "assemblyVersion": "6.0.24.0",
             "fileVersion": "6.0.2423.51805"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.UnitOfWork/3.1.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.AutoHistory": "3.1.1",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.24"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.UnitOfWork.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
           }
         }
       },
@@ -625,6 +649,7 @@
           "Microsoft.EntityFrameworkCore": "6.0.24",
           "Microsoft.EntityFrameworkCore.InMemory": "6.0.24",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.24",
+          "Microsoft.EntityFrameworkCore.UnitOfWork": "3.1.0",
           "Microsoft.IdentityModel.Tokens": "7.0.3",
           "StackExchange.Redis": "2.7.4",
           "Swashbuckle.AspNetCore": "6.5.0",
@@ -740,6 +765,13 @@
       "path": "microsoft.entityframeworkcore.analyzers/6.0.24",
       "hashPath": "microsoft.entityframeworkcore.analyzers.6.0.24.nupkg.sha512"
     },
+    "Microsoft.EntityFrameworkCore.AutoHistory/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AUyDffkoWa8urNm0z2TMX7VxYPal5LuHlirlWpzz7xKFMoSwmqpclz9ODXxmgrHLQ7/yT2Pv9Id0HO59dsKxWw==",
+      "path": "microsoft.entityframeworkcore.autohistory/3.1.1",
+      "hashPath": "microsoft.entityframeworkcore.autohistory.3.1.1.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore.InMemory/6.0.24": {
       "type": "package",
       "serviceable": true,
@@ -760,6 +792,13 @@
       "sha512": "sha512-aKgnw0nOCAAq+ZSBaRiQQnPmiv5kidI+APZCW99pfkzy/TwflImeQLXFgG3+BwEyuqaCpENQH7C3N8IYyvxVRA==",
       "path": "microsoft.entityframeworkcore.sqlserver/6.0.24",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.6.0.24.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.UnitOfWork/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JzHpeIljFflhg3TWuro6SlaRR8UJ026PB7RhSg6Z3aNJxxP8x+Mfm+lHpM2lrgw3+T6blPZwxik0lt9lIzW0EQ==",
+      "path": "microsoft.entityframeworkcore.unitofwork/3.1.0",
+      "hashPath": "microsoft.entityframeworkcore.unitofwork.3.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",

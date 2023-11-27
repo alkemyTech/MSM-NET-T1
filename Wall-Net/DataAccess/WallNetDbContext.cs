@@ -23,7 +23,7 @@ namespace Wall_Net.DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-48IVMU9;Initial Catalog=WallNet-DB;Persist Security Info=True;Trusted_Connection=True;MultipleActiveResultSets=true;Trust Server Certificate=true;");
+            optionsBuilder.UseSqlServer("Data Source=MILI\\SQLEXPRESS;Initial Catalog=Wall-Net;Persist Security Info=True;Trusted_Connection=True;Integrated Security=True;Trust Server Certificate=true;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aGfzu8NqZHDdyIUzlbZCnPMzgdwHz1e034EU0zN76l8=",
+  "Hash": "0kLXjbW1aX3IBFkku9YaK3iYMxdaGCIJI154wbEDNIE=",
   "Source": "Wall-Net-Front",
   "BasePath": "_content/Wall-Net-Front",
   "Mode": "Default",
@@ -112,6 +112,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\images\\backLogin2.jpg",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "images/backLogin2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\backLogin2.jpg"
     },
     {
       "Identity": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\wwwroot\\images\\material-747112_1920.jpg",
