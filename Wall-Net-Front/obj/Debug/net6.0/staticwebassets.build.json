@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Or9sC2y1mRFJ3eueTVuc0dW4WqRDBMWwOXC20NQFEBY=",
+  "Hash": "h1NLjtTstvVVOhUtuCtwdhsZgxrlX6b5Rw9wgnA2TcY=",
   "Source": "Wall-Net-Front",
   "BasePath": "_content/Wall-Net-Front",
   "Mode": "Default",
@@ -63,6 +63,23 @@
       "OriginalItemSpec": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Wall-Net-Front.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\ListUsers.css",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "css/ListUsers.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ListUsers.css"
+    },
+    {
       "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\login.css",
       "SourceId": "Wall-Net-Front",
       "SourceType": "Discovered",
@@ -95,6 +112,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\userProfile.css",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "css/userProfile.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\userProfile.css"
     },
     {
       "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\favicon.ico",
@@ -148,6 +182,23 @@
       "OriginalItemSpec": "wwwroot\\images\\material-747112_1920.jpg"
     },
     {
+      "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\ListUsers.js",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "js/ListUsers.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ListUsers.js"
+    },
+    {
       "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\sessionStorage.js",
       "SourceId": "Wall-Net-Front",
       "SourceType": "Discovered",
@@ -180,6 +231,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\userProfile.js",
+      "SourceId": "Wall-Net-Front",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\",
+      "BasePath": "_content/Wall-Net-Front",
+      "RelativePath": "js/userProfile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userProfile.js"
     },
     {
       "Identity": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

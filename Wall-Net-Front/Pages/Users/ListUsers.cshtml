@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Lista de usuarios";
 }
+<link rel="stylesheet" href="/css/ListUsers.css"/>
 <h1>Lista de Usuarios</h1>
 
 @if (Model.Mensaje != null)
@@ -13,7 +14,7 @@
     </div>
 }
 <form method="post">
-<div class="cotainer">
+    <div class="container-userProfile">
     <div class="row">
         <div class="col">
             <table class="table table-striped table-hover table-bordered tabla-users">
@@ -25,6 +26,7 @@
                         <th class="text-center">EMAIL</th>
                         <th class="text-center">PUNTOS</th>
                         <th class="text-center">ROL</th>
+                        <th class="text-center">ACCIÓN</th>
                     </tr>
                 </thead>
 
@@ -37,7 +39,16 @@
                             <td class="text-center">@usuario.LastName</td>
                             <td class="text-center">@usuario.Email</td>
                             <td class="text-center">@usuario.Points</td>
-                            <td class="text-center">@usuario.Rol_Id</td>
+                            <td class="text-center">
+                                    @if (usuario.Rol_Id == 1)
+                                    {
+                                        <text>Admin</text>
+                                    }
+                                    else
+                                    {
+                                        <text>Regular</text>
+                                    }
+                            </td>
                             <td class="text-center">
                                 <a asp-page="Editar" asp-route-Id="@usuario.Id" class="btn btn-primary">Editar</a>
                                 <button asp-page-handler="Borrar" asp-route-Id="@usuario.Id" onclick="return confirm('Esta seguro de querer borrar el usuario?')"

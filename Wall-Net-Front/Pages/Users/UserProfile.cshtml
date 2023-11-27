@@ -2,177 +2,217 @@
 @model Wall_Net_Front.Pages.Users.UserProfileModel
 @{
 }
-<h1>Perfil</h1>
+<link rel="stylesheet" href="/css/userProfile.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<h1>Perfil de usuario</h1>
+@if (Model.Mensaje != null)
+{
+    <div class="alert-color alert alert-dismissible fade show" role="alert">
+        @Model.Mensaje
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 
 @*Agrega validación, campo no vacio*@
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*Se envia Id oculto*@
-<input type="hidden" asp-for="User.Id" />
 
 <form method="post">
     <input type="hidden" asp-for="User.Id" />
     
 @* FRON USER *@
-    <div class="informacion-perfil">
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="User.FirstName">Nombre</label>
-                    <div class="input-group"> 
-                        <input asp-for="User.FirstName" class="form-control" />
-                        <div class="input-group-append">
-                            <input type="submit" value="Editar" class="btn btn-success form-control" />
+    <div class="faq-container">
+        <div class="faq active">
+            <h3 class="faq-title">Información de usuario</h3>
+            <div class="faq-text">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="mb-2">
+                        <label class="UserProfile-label" asp-for="User.FirstName">Nombre</label>
+                        <div class="input-group">
+                                <input asp-for="User.FirstName" class="form-control input-css" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success form-control" asp-page-handler="Editar">Editar</button>
+                            </div>
                         </div>
+                        <span asp-validation-for="User.FirstName" class="text-danger"></span>
                     </div>
-                    <span asp-validation-for="User.FirstName" class="text-danger"></span>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="User.LastName">Apellido</label>
-                    <div class="input-group">
-                        <input asp-for="User.LastName" class="form-control" />
-                        <div class="input-group-append">
-                            <input type="submit" value="Editar" class="btn btn-success form-control" />
+            <div class="form-group">
+                <div class="row">
+                    <div class="mb-2">
+                        <label class="UserProfile-label" asp-for="User.LastName">Apellido</label>
+                        <div class="input-group">
+                            <input asp-for="User.LastName" class="form-control input-css" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success form-control" asp-page-handler="Editar">Editar</button>
+                            </div>
                         </div>
+                        <span asp-validation-for="User.LastName" class="text-danger"></span>
                     </div>
-                    <span asp-validation-for="User.LastName" class="text-danger"></span>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="User.Email"></label>
-                    <div class="form-control" readonly>@Model.User.Email</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="mb-2">
+                            <label class="UserProfile-label" asp-for="User.Email"></label>
+                            <div class="form-control input-css">@Model.User.Email</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="User.Points">Puntos</label>
-                    <div class="form-control" readonly>@Model.User.Points</div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="mb-2">
+                        <label class="UserProfile-label" asp-for="User.Points">Puntos</label>
+                        <div class="form-control input-css" >@Model.User.Points</div>
+                    </div>
                 </div>
             </div>
+
+            </div>
+            <button class="faq-toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </div>
 
 @* FRONT ACCOUNT *@
-    <div class="informacion-cuenta">
-        <h2>Información de la cuenta</h2>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="Account.CreationDate">Fecha de creación de la cuenta</label>
-                    <div class="form-control" readonly>@Model.Account.CreationDate</div>
-                </div>
-            </div>
-        </div>
+    <div class="faq">
+        <h3 class="faq-title">Información de la cuenta</h3>
+           <div class="faq-text">
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="Account.Money">Saldo cuenta</label>
-                    <div class="form-control" readonly>@Model.Account.Money</div>
+                 <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label class="UserProfile-label" asp-for="Account.CreationDate">Fecha de creación de la cuenta</label>
+                            <div class="form-control input-css">@Model.Account.CreationDate</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 mb-2">
-                    <label asp-for="Account.IsBlocked">Estado de la cuenta</label>
-                    <div class="form-control" readonly>@Model.Account.IsBlocked</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label class="UserProfile-label" asp-for="Account.Money">Saldo cuenta</label>
+                            <div class="form-control input-css">@Model.Account.Money</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label class="UserProfile-label" asp-for="Account.IsBlocked">Estado de la cuenta</label>
+                            <div class="form-control input-css">
+                                @if (Model.Account.IsBlocked)
+                                {
+                                    <text>Bloqueado</text>
+                                }
+                                else
+                                {
+                                    <text>Activo</text>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+            <button class="faq-toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
     </div>
 
 @* FRONT FIXED TERM DEPOSIT*@
-    <div class="informacion-plazo-fijo">
+    <a class="UserProfile-a" asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">
+        <div class="faq">
+            <h3 class="faq-title">Información del plazo fijo</h3>
+            @* @foreach (var item in Model.FixedTermDeposit)
+            {
+            <h2>Información del plazo fijo</h2>
 
-        @foreach (var item in Model.FixedTermDeposit)
-        {
-        <h2>Información del plazo fijo</h2>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 mb-2">
-                        <label asp-for="@item.creation_date">Fecha de creación</label>
-                        <div class="form-control" readonly>@item.creation_date</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label asp-for="@item.creation_date">Fecha de creación</label>
+                            <div class="form-control" readonly>@item.creation_date</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 mb-2">
-                        <label asp-for="@item.amount">Importe</label>
-                        <div class="form-control" readonly>@item.amount</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label asp-for="@item.amount">Importe</label>
+                            <div class="form-control" readonly>@item.amount</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 mb-2">
-                        <label asp-for="@item.closing_date">Fecha de cierre</label>
-                        <div class="form-control" readonly>@item.closing_date</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label asp-for="@item.closing_date">Fecha de cierre</label>
+                            <div class="form-control" readonly>@item.closing_date</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 mb-2">
-                        <label asp-for="@item.nominalRate">Tasa de interés</label>
-                        <div class="form-control" readonly>@item.nominalRate</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label asp-for="@item.nominalRate">Tasa de interés</label>
+                            <div class="form-control" readonly>@item.nominalRate</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6 mb-2">
-                        <label asp-for="@item.state">Estado</label>
-                        <div class="form-control" readonly>@item.state</div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <label asp-for="@item.state">Estado</label>
+                            <div class="form-control" readonly>@item.state</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div> 
+            } *@
+        </div> 
+    </a>
 
 @* FRONT TRANSACTIONS*@
-    <div class="informacion-transacciones">
-        <h2>Historial de transacciones</h2>
-        <table class="table table-striped table-hover table-bordered tabla-users">
-            <thead>
-                <tr>
-                    <th class="text-center">Monto</th>
-                    <th class="text-center">Observación</th>
-                    <th class="text-center">Fecha</th>
-                    <th class="text-center">Tipo de transacción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Transaction)
-                {
+        <a class="UserProfile-a" asp-area="" asp-page="/Transactions/Transaction">
+        <div class="faq">
+            <h3 class="faq-title"> Historial de transacciones </h3>
+           @*  <table class="table table-striped table-hover table-bordered tabla-users">
+                <thead>
                     <tr>
-                        <th>@item.Amount</th>
-                        <th>@item.Concept</th>
-                        <th>@item.Date</th>
-                        <th>@item.Type</th>
+                        <th class="text-center">Monto</th>
+                        <th class="text-center">Observación</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Tipo de transacción</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Transaction)
+                    {
+                        <tr>
+                            <th>@item.Amount</th>
+                            <th>@item.Concept</th>
+                            <th>@item.Date</th>
+                            <th>@item.Type</th>
+                        </tr>
+                    }
+                </tbody>
+            </table> *@
+        </div>
+    </a>
 
 </form>
+    </div>
+<script src="/js/userProfile.js"></script>

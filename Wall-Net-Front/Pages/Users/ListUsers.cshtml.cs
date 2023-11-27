@@ -51,10 +51,13 @@ namespace Wall_Net_Front.Pages.Users
         {
             using (var httpClient = new HttpClient())
             {
+                var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                 var response = await httpClient.DeleteAsync($"http://localhost:5270/api/User/{Id}");
                 if (response.IsSuccessStatusCode)
                 {
-                    Mensaje = "Proyecto eliminado correctamente";
+                    Mensaje = "Usuario eliminado correctamente";
                     return RedirectToPage("ListUsers");
                 }
                 else

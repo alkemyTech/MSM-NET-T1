@@ -21,3 +21,9 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+/*Alert CSS*/
+.alert-color {
+    color: white;
+    background-color: #81f4c3;
+}

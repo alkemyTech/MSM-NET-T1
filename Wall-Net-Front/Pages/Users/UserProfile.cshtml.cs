@@ -25,8 +25,8 @@ namespace Wall_Net_Front.Pages.Users
         [BindProperty]
         public User User { get; set; }
         public Account Account { get; set; }
-        public List<Wall_Net.Models.FixedTermDeposit> FixedTermDeposit { get; set; }
-        public List<Transaction> Transaction { get; set; }
+        //public List<Wall_Net.Models.FixedTermDeposit> FixedTermDeposit { get; set; }
+        //public List<Transaction> Transaction { get; set; }
 
 
         [TempData]
@@ -50,16 +50,16 @@ namespace Wall_Net_Front.Pages.Users
                 {
                     var userResponse = await _httpClient.GetAsync($"http://localhost:5270/api/User/{userId}");
                     var accountResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Accounts/{userId}");
-                    var fixedTermDepositResponse = await _httpClient.GetAsync($"http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
-                    var transactionResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Transactions/Transaction/AllTransaction");
+                    //var fixedTermDepositResponse = await _httpClient.GetAsync($"http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
+                    //var transactionResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Transactions/Transaction/AllTransaction");
 
-                    if (userResponse.IsSuccessStatusCode && accountResponse.IsSuccessStatusCode &&
-                        fixedTermDepositResponse.IsSuccessStatusCode && transactionResponse.IsSuccessStatusCode)
+                    if (userResponse.IsSuccessStatusCode && accountResponse.IsSuccessStatusCode /*&&
+                        fixedTermDepositResponse.IsSuccessStatusCode && transactionResponse.IsSuccessStatusCode*/)
                     {
                         User = await userResponse.Content.ReadFromJsonAsync<User>();
                         Account = await accountResponse.Content.ReadFromJsonAsync<Account>();
-                        FixedTermDeposit = await fixedTermDepositResponse.Content.ReadFromJsonAsync<List<Wall_Net.Models.FixedTermDeposit>>();
-                        Transaction = await transactionResponse.Content.ReadFromJsonAsync<List<Transaction>>();
+                        //FixedTermDeposit = await fixedTermDepositResponse.Content.ReadFromJsonAsync<List<Wall_Net.Models.FixedTermDeposit>>();
+                        //Transaction = await transactionResponse.Content.ReadFromJsonAsync<List<Transaction>>();
 
                         return Page();
                     }
@@ -69,9 +69,9 @@ namespace Wall_Net_Front.Pages.Users
             return NotFound();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostEditarAsync()
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid == false)
             {
                 var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -82,6 +82,8 @@ namespace Wall_Net_Front.Pages.Users
                 {
                     var userToUpdate = await userResponse.Content.ReadFromJsonAsync<User>();
 
+                    User.Email = userToUpdate.Email;
+                    User.Points = userToUpdate.Points;
                     userToUpdate.FirstName = User.FirstName;
                     userToUpdate.LastName = User.LastName;
 
@@ -89,7 +91,7 @@ namespace Wall_Net_Front.Pages.Users
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Mensaje = "Campo editado correctamente";
+                        Mensaje = "Usuario editado correctamente";
                         return RedirectToPage("UserProfile");
                     }
                 }

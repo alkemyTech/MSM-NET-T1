@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\Wall-Net-Front.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\ListUsers.css",
+      "PackagePath": "staticwebassets\\css\\ListUsers.css"
+    },
+    {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\userProfile.css",
+      "PackagePath": "staticwebassets\\css\\userProfile.css"
     },
     {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\favicon.ico",
@@ -25,12 +33,20 @@
       "PackagePath": "staticwebassets\\images\\material-747112_1920.jpg"
     },
     {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\ListUsers.js",
+      "PackagePath": "staticwebassets\\js\\ListUsers.js"
+    },
+    {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\sessionStorage.js",
       "PackagePath": "staticwebassets\\js\\sessionStorage.js"
     },
     {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\js\\userProfile.js",
+      "PackagePath": "staticwebassets\\js\\userProfile.js"
     },
     {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\lib\\bootstrap\\LICENSE",
