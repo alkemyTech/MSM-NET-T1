@@ -158,3 +158,15 @@ main {
     font-size: 30px;
     color: white;
 }
+.btn-rosa {
+    border: 1px black;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: #FF85C5;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-rosa:hover {
+        color: white;
+    }

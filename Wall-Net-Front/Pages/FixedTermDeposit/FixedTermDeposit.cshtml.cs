@@ -77,6 +77,8 @@ namespace Wall_Net_Front.Pages.FixedTermDeposit
                 }
                 else
                 {
+                    ModelState.AddModelError(string.Empty, "Este plazo fijo ya fue cerrado");
+                    await OnGetAsync();
                     return Page();
                 }
             }

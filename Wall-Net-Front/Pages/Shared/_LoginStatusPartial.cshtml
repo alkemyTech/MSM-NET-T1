@@ -1,9 +1,6 @@
 ﻿
 @{
-    bool session = ViewData["token"] != null && ViewData["token"].ToString().ToLower() == "true";
-
-    if (session == true)
-    {
+    
         <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
                 <a class="btn-neon " asp-area="" asp-page="/Catalogues/Catalogue">Catalogue</a>
@@ -18,5 +15,4 @@
         <div>
             <a class="logout btn-neon nav-link" asp-page="/Index">Cerrar Sesion</a>
         </div>
-    }
 }
