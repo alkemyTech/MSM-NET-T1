@@ -58,7 +58,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2039),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(803),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 1
@@ -66,7 +66,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2068),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(820),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 2
@@ -74,7 +74,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2071),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(821),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 3
@@ -82,7 +82,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2073),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(823),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 4
@@ -90,7 +90,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 5,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2075),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(824),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 5
@@ -98,7 +98,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 6,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2078),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(826),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 6
@@ -106,7 +106,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 7,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2080),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(827),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 7
@@ -114,7 +114,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 8,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2082),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(828),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 8
@@ -122,7 +122,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 9,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2084),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(829),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 9
@@ -130,7 +130,7 @@ namespace Wall_Net.Migrations
                         new
                         {
                             Id = 10,
-                            CreationDate = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2086),
+                            CreationDate = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(831),
                             IsBlocked = false,
                             Money = 1000m,
                             UserId = 10
@@ -248,7 +248,7 @@ namespace Wall_Net.Migrations
                             AccountId = 2,
                             UserId = 2,
                             amount = 150m,
-                            closing_date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2168),
+                            closing_date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(879),
                             creation_date = new DateTime(2001, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 5m,
                             state = "Activo"
@@ -259,7 +259,7 @@ namespace Wall_Net.Migrations
                             AccountId = 3,
                             UserId = 2,
                             amount = 200m,
-                            closing_date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2171),
+                            closing_date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(881),
                             creation_date = new DateTime(2001, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             nominalRate = 12m,
                             state = "Activo"
@@ -370,7 +370,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2370),
+                            Date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(922),
                             Type = "topup",
                             UserId = 1
                         },
@@ -380,7 +380,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2381),
+                            Date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(925),
                             Type = "topup",
                             UserId = 1
                         },
@@ -390,7 +390,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2383),
+                            Date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(927),
                             Type = "topup",
                             UserId = 1
                         },
@@ -400,7 +400,7 @@ namespace Wall_Net.Migrations
                             AccountId = 1,
                             Amount = 100.00m,
                             Concept = "Ejemplo de transacción 1",
-                            Date = new DateTime(2023, 11, 26, 15, 53, 49, 901, DateTimeKind.Local).AddTicks(2385),
+                            Date = new DateTime(2023, 11, 27, 15, 55, 48, 921, DateTimeKind.Local).AddTicks(928),
                             Type = "topup",
                             UserId = 1
                         });
@@ -451,7 +451,7 @@ namespace Wall_Net.Migrations
                             Email = "lean@email.com",
                             FirstName = "Leandro",
                             LastName = "Mumbach",
-                            Password = "$2a$11$X5qBa1KRf1.qjpalBQQhW.c6LOJBIMfPK2tvI1Gt5BPphHXH1SAJu",
+                            Password = "$2a$11$qb6.LjNXo2wPS5EhwuoCjO4zJf3IBq./PTlhh4gfTcclx27w.6pwm",
                             Points = 20m,
                             Rol_Id = 1
                         },
@@ -462,7 +462,7 @@ namespace Wall_Net.Migrations
                             Email = "pepe@email.com",
                             FirstName = "Pepe",
                             LastName = "Gonzalez",
-                            Password = "$2a$11$AnXoudaQAy9D4XKtWYifG.AqdVBqBIglqC77ierLTk6LWxfhf1V7W",
+                            Password = "$2a$11$tfrmUr33OOS7RTih8qf.HeEfR4UcdfeljK5l4.aOYTEZfCWB1sNFe",
                             Points = 20m,
                             Rol_Id = 1
                         },
@@ -473,7 +473,7 @@ namespace Wall_Net.Migrations
                             Email = "ana@email.com",
                             FirstName = "Ana",
                             LastName = "Lopez",
-                            Password = "$2a$11$Iz7guIzRTLTVEhoOnwtrGePz1sae4bt/M4hySWMkie6zBUvcIQz7e",
+                            Password = "$2a$11$/HyEAsAY6D3vL4f1lPbQQekBJXmBAwOUVwnGEBFRalRJ6HumNv4e.",
                             Points = 25m,
                             Rol_Id = 2
                         },
@@ -484,7 +484,7 @@ namespace Wall_Net.Migrations
                             Email = "carlos@email.com",
                             FirstName = "Carlos",
                             LastName = "Martinez",
-                            Password = "$2a$11$2/qCK0I44CahYZUwTPKTIO8UtdOspcJRphgT8UcI.4g5yYymDJ1vy",
+                            Password = "$2a$11$7069szOWQkimCzYBe5edl.bdwZnAX2/CehnLigrHwKnaAoSmtqZ7.",
                             Points = 18m,
                             Rol_Id = 1
                         },
@@ -495,7 +495,7 @@ namespace Wall_Net.Migrations
                             Email = "maria@email.com",
                             FirstName = "Maria",
                             LastName = "Rodriguez",
-                            Password = "$2a$11$dMkPDgpmDE92gB2Bt5Ht7ubbGT44zej.DoqBMkazBNs7j1OMcOTim",
+                            Password = "$2a$11$HlZlziM63DMT3L2hR4NzS.ZikOYVP/3bHDONTT6EoFSYFd1BWlrxC",
                             Points = 22m,
                             Rol_Id = 2
                         },
@@ -506,7 +506,7 @@ namespace Wall_Net.Migrations
                             Email = "juan@email.com",
                             FirstName = "Juan",
                             LastName = "Perez",
-                            Password = "$2a$11$as.leZ/p5ges2ZyHJncxoefCiPuLpXjOtc3R9rfBkwJG28bjmFs36",
+                            Password = "$2a$11$GKcSOWZZie77VsSQmMlCYevhgxHyJUBPWNrS3X4OeWFwcB8/jiKCa",
                             Points = 19m,
                             Rol_Id = 1
                         },
@@ -517,7 +517,7 @@ namespace Wall_Net.Migrations
                             Email = "laura@email.com",
                             FirstName = "Laura",
                             LastName = "Fernandez",
-                            Password = "$2a$11$3W2eyjk8O.OIKwnP2IufaOg3fGunnrVSAaD7Wg5C6YpEawGTRO9Yq",
+                            Password = "$2a$11$87eueLSj0NPnzkPq2wwZdezkJ86shSOOPGpTPzngHso97ASPMS6YW",
                             Points = 24m,
                             Rol_Id = 2
                         },
@@ -528,7 +528,7 @@ namespace Wall_Net.Migrations
                             Email = "diego@email.com",
                             FirstName = "Diego",
                             LastName = "Gomez",
-                            Password = "$2a$11$VawppQGAMCR0uRUlKZGPjOOgmTC3cAR9FopQsZdmp2IJbl5Hd.Cou",
+                            Password = "$2a$11$0vZgC8fQa0s7rNQrGSpqyesQVqh0Iziu0WYDbhaL02IDzqU4kFw/K",
                             Points = 21m,
                             Rol_Id = 1
                         },
@@ -539,7 +539,7 @@ namespace Wall_Net.Migrations
                             Email = "carmen@email.com",
                             FirstName = "Carmen",
                             LastName = "Ruiz",
-                            Password = "$2a$11$sNy1QTR/SRok.uqNQw1ql.dLRsLU26sujKu0zpzTlg4c.fMTUZv4q",
+                            Password = "$2a$11$N6bTSb.eqc3I5BbgEqbG7uKwWV5WlptG/CJiSQyWCievEmgdTPx5G",
                             Points = 20m,
                             Rol_Id = 2
                         },
@@ -550,7 +550,7 @@ namespace Wall_Net.Migrations
                             Email = "sergio@email.com",
                             FirstName = "Sergio",
                             LastName = "Lopez",
-                            Password = "$2a$11$kjmJJExX3OOvMfVO8yf8LeDDCIuJi/g721zvUZ5x8Q2eNbGgRADga",
+                            Password = "$2a$11$CeqsPIzZKfO3Z6F.ahKIUuZLGp4ei8au9fk5k9q5dgOcAZqlPKUOm",
                             Points = 23m,
                             Rol_Id = 1
                         },
@@ -561,7 +561,7 @@ namespace Wall_Net.Migrations
                             Email = "luisa@email.com",
                             FirstName = "Luisa",
                             LastName = "Garcia",
-                            Password = "$2a$11$VBftwPhigXWliMwYSBAzz.RnkyKFxKv.P9Fw6LiC56igpfFLT/6Qu",
+                            Password = "$2a$11$ZnFMeaqaupJGfdxCqNbu1e3eZ.XZpiO9Ut4vyy.XPLkTYWOkA7T7e",
                             Points = 19m,
                             Rol_Id = 2
                         },
@@ -572,7 +572,7 @@ namespace Wall_Net.Migrations
                             Email = "alejandro@email.com",
                             FirstName = "Alejandro",
                             LastName = "Sanchez",
-                            Password = "$2a$11$5ABrqY8dMVr6GtNNf71dVeMrNQsFjamSQz/a6iHVtZRKp3yDi.xv6",
+                            Password = "$2a$11$SXAbQnbNtMWC8erWUqNEhua5w3sPFtR0TxRQZWdwFU1ymIi.efjLq",
                             Points = 18m,
                             Rol_Id = 1
                         },
@@ -583,7 +583,7 @@ namespace Wall_Net.Migrations
                             Email = "martina@email.com",
                             FirstName = "Martina",
                             LastName = "Hernandez",
-                            Password = "$2a$11$i65pPFRai94ETwKlrx43iO7tTBIsEvIpLin/CwQAGUtlhsBqcaOpm",
+                            Password = "$2a$11$esBWD4CXoySAGpxC2ZnUz.qt.LvVBt7tnPdLtCkQw7Z5rpA2Zm3yi",
                             Points = 22m,
                             Rol_Id = 2
                         },
@@ -594,7 +594,7 @@ namespace Wall_Net.Migrations
                             Email = "roberto@email.com",
                             FirstName = "Roberto",
                             LastName = "Diaz",
-                            Password = "$2a$11$6mQOc49hzeG0.v89YiDF2e7oNSILrk/j/iyXwYYgWipRGEIW5ez0S",
+                            Password = "$2a$11$PtAylV5lGBnX3izIG/1sAuKazqlXHeiuLsSRSGxXvV3BLn78Kzl/e",
                             Points = 25m,
                             Rol_Id = 1
                         },
@@ -605,7 +605,7 @@ namespace Wall_Net.Migrations
                             Email = "isabel@email.com",
                             FirstName = "Isabel",
                             LastName = "Flores",
-                            Password = "$2a$11$DQ6xRrDmu8G8XdT/4/h9hevdx3YGoAlSvyqbWObI2ZHxIa0jiRohG",
+                            Password = "$2a$11$CYQ/NI97lro8DcHWnW9ns.SMiRmX9QTMPUec2EtcA2dmmmRkFOjn.",
                             Points = 20m,
                             Rol_Id = 2
                         });
