@@ -87,9 +87,9 @@ namespace Wall_Net.Controllers
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
+                    new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.Surname, user.LastName),
                     new Claim(ClaimTypes.Role,rol.Name),
                     new Claim("Points",Convert.ToString(points)),
@@ -122,7 +122,6 @@ namespace Wall_Net.Controllers
             }
             else
             {
-                // Cambia esto según tus requisitos. En este caso, devuelvo Unauthorized para un usuario no autenticado.
                 return Unauthorized();
             }
         }
@@ -134,12 +133,19 @@ namespace Wall_Net.Controllers
             if (identity != null)
             {
                 var userClaim = identity.Claims;
-                return new User
+
+                var userIdClaim = identity.FindFirst("Id");
+
+                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
                 {
-                    FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
-                    Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-                    LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
-                };
+                    return new User
+                    {
+                        Id = userId,
+                        FirstName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                        Email = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                        LastName = userClaim.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value
+                    };
+                }
             }
 
             return null;

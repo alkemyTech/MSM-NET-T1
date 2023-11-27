@@ -17,6 +17,10 @@ namespace Wall_Net_Front.Pages
         public LoginModel(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+
+
+            _httpContextAccessor.HttpContext.Session.Clear();
+
         }
 
         public string AuthToken { get; set; }
@@ -59,7 +63,6 @@ namespace Wall_Net_Front.Pages
             }
 
         }
-
 
     }
 }

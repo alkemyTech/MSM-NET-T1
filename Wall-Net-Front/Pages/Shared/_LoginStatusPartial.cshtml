@@ -1,17 +1,18 @@
 ﻿
 @{
-    bool session = ViewData["token"] != null && ViewData["token"].ToString().ToLower() == "true";
-
-    if (session != true)
-    {
-        <a class="nav-link text-dark" asp-page="/Login">Iniciar Sesión</a>
-    }
-    else
-    {
-<<<<<<< HEAD
-        <a asp-page="/Index" asp-page-handler="">Cerrar Sesion</a>
-=======
-        <a asp-page="/Index" >Cerrar Sesion</a>
->>>>>>> 5e72300fcec7ffc5ce6519beb00c34940be498de
-    }
+    
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="btn-neon " asp-area="" asp-page="/Catalogues/Catalogue">Catalogue</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-neon " asp-area="" asp-page="/Transactions/Transaction">Transaction</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn-neon " asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">FixedTermDeposit</a>
+            </li>
+        </ul>
+        <div>
+            <a class="logout btn-neon nav-link" asp-page="/Index">Cerrar Sesion</a>
+        </div>
 }

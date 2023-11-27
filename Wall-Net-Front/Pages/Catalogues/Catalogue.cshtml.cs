@@ -13,20 +13,38 @@ namespace Wall_Net_Front.Pages.Catalogues
         [BindProperty]
         public CataloguesModel catalogue { get; set; }
 
-        public async Task OnGetAsync()
-        {
-            using (var httpClient = new HttpClient())
-            {
-                var response = await httpClient.GetAsync("http://localhost:5270/api/catalogue\r\n");
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-                if (response.IsSuccessStatusCode)
+        public CatalogueModel(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+            bool tokenValidate = sessionToken != null;
+            ViewData["token"] = tokenValidate;
+            if (!tokenValidate)
+            {
+               return RedirectToPage("/Index");
+            }
+            else
+            {
+                using (var httpClient = new HttpClient())
                 {
-                    catalogueList = await response.Content.ReadFromJsonAsync<List<CataloguesModel>>();
+                    var response = await httpClient.GetAsync("http://localhost:5270/api/catalogue\r\n");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        catalogueList = await response.Content.ReadFromJsonAsync<List<CataloguesModel>>();
+                    }
+                    else
+                    {
+                        catalogueList = new List<CataloguesModel>();
+                    }
                 }
-                else
-                {
-                    catalogueList = new List<CataloguesModel>();
-                }
+               return Page();
             }
         }
 

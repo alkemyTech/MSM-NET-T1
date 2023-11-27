@@ -21,23 +21,34 @@ namespace Wall_Net_Front.Pages.FixedTermDeposit
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            using (var httpClient = new HttpClient())
+            string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+            bool tokenValidate = sessionToken != null;
+            ViewData["token"] = tokenValidate;
+            if (!tokenValidate)
             {
-                var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                var response = await httpClient.GetAsync("http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
-
-                if (response.IsSuccessStatusCode)
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                using (var httpClient = new HttpClient())
                 {
-                    FixedTermList = await response.Content.ReadFromJsonAsync<List<FixedTermDepositsModel>>();
+                    var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    var response = await httpClient.GetAsync("http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        FixedTermList = await response.Content.ReadFromJsonAsync<List<FixedTermDepositsModel>>();
+                    }
+                    else
+                    {
+                        FixedTermList = new List<FixedTermDepositsModel>();
+                    }
                 }
-                else
-                {
-                    FixedTermList = new List<FixedTermDepositsModel>();
-                }
+                return Page();
             }
         }
 
@@ -66,6 +77,8 @@ namespace Wall_Net_Front.Pages.FixedTermDeposit
                 }
                 else
                 {
+                    ModelState.AddModelError(string.Empty, "Este plazo fijo ya fue cerrado");
+                    await OnGetAsync();
                     return Page();
                 }
             }
