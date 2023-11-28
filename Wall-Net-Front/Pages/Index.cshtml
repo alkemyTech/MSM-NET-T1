@@ -14,14 +14,18 @@
                 <label for="email">Ingrese su email</label>
             </div>
             <div class="form-floating" style="width: 80%;">
-                <input type="password" class="form-control" style="width:100%" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control" style="width:100%" id="password" autocomplete="off" name="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
         </div>
         <div class="iniciarSesion">
             <button id="login" class="btn-login" type="submit">Iniciar Sesión</button>
         </div>
+        <div>
+            Aun no tenes una cuenta? <a class="text-white" asp-area="" asp-page="/Register">Registrate aca!</a>
+        </div>
     </form>
+   
 </div>
 <video class="videoLogin" muted autoplay loop>
     <source src="~/videos/videoback.mp4" type="video/mp4" />

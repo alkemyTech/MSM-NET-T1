@@ -88,20 +88,19 @@ namespace Wall_Net.Controllers
             return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
 
         }
-        [HttpPost("Deposito/{id}")]
-        public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
+        [HttpPost("Deposito")]
+        public async Task<IActionResult> Deposito([FromBody] Account account)
         {
             try
             {
                 var currentUser = GetCurrentUserId();
                 int idCurrent = currentUser.Id;
-                if (id == idCurrent)
+                var eAccount = await _accountServices.GetByUserId(idCurrent);
+                if (eAccount.UserId == idCurrent)
                 {
-                    var eAccount = await _accountServices.GetByUserId(id);
                     if (eAccount != null)
                     {
                         eAccount.Money += account.Money;
-                        //await _accountServices.Update(eAccount);
                         var transaction = new Transaction
                         {
                             Amount = account.Money,
