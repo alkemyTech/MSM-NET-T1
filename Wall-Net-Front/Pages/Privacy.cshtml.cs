@@ -16,17 +16,18 @@ namespace Wall_Net_Front.Pages
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            using (var httpClient = new HttpClient())
+            string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+            bool tokenValidate = sessionToken != null;
+            ViewData["token"] = tokenValidate;
+            if (!tokenValidate)
             {
-                string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessionToken);
-
-                // Simplificar la lógica de asignación de token
-                bool token = sessionToken != null;
-
-                ViewData["token"] = token;
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                return Page();
             }
         }
     }
