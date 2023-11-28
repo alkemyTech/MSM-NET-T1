@@ -35,33 +35,43 @@ namespace Wall_Net_Front.Pages.Users
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            // Obtener el ID de usuario actual desde Get() de LoginControllers
-            var currentUserIdResponse = await _httpClient.GetAsync("http://localhost:5270/api/Login");
-            if (currentUserIdResponse.IsSuccessStatusCode)
+            string sessionToken = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+            bool tokenValidate = sessionToken != null;
+            ViewData["token"] = tokenValidate;
+            if (!tokenValidate)
             {
-                var responseContent = await currentUserIdResponse.Content.ReadAsStringAsync();
-                var jsonObject = JObject.Parse(responseContent);
-                var userId = jsonObject["id"].Value<int>();
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                var token = _httpContextAccessor.HttpContext.Session.GetString("NewSession");
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                if (userId != null)
+                // Obtener el ID de usuario actual desde Get() de LoginControllers
+                var currentUserIdResponse = await _httpClient.GetAsync("http://localhost:5270/api/Login");
+                if (currentUserIdResponse.IsSuccessStatusCode)
                 {
-                    var userResponse = await _httpClient.GetAsync($"http://localhost:5270/api/User/{userId}");
-                    var accountResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Accounts/{userId}");
-                    //var fixedTermDepositResponse = await _httpClient.GetAsync($"http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
-                    //var transactionResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Transactions/Transaction/AllTransaction");
+                    var responseContent = await currentUserIdResponse.Content.ReadAsStringAsync();
+                    var jsonObject = JObject.Parse(responseContent);
+                    var userId = jsonObject["id"].Value<int>();
 
-                    if (userResponse.IsSuccessStatusCode && accountResponse.IsSuccessStatusCode /*&&
-                        fixedTermDepositResponse.IsSuccessStatusCode && transactionResponse.IsSuccessStatusCode*/)
+                    if (userId != null)
                     {
-                        User = await userResponse.Content.ReadFromJsonAsync<User>();
-                        Account = await accountResponse.Content.ReadFromJsonAsync<Account>();
-                        //FixedTermDeposit = await fixedTermDepositResponse.Content.ReadFromJsonAsync<List<Wall_Net.Models.FixedTermDeposit>>();
-                        //Transaction = await transactionResponse.Content.ReadFromJsonAsync<List<Transaction>>();
+                        var userResponse = await _httpClient.GetAsync($"http://localhost:5270/api/User/{userId}");
+                        var accountResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Accounts/{userId}");
+                        //var fixedTermDepositResponse = await _httpClient.GetAsync($"http://localhost:5270/api/FixedTermDeposit/FixedTermDeposit/AllFixed");
+                        //var transactionResponse = await _httpClient.GetAsync($"http://localhost:5270/api/Transactions/Transaction/AllTransaction");
 
-                        return Page();
+                        if (userResponse.IsSuccessStatusCode && accountResponse.IsSuccessStatusCode /*&&
+                        fixedTermDepositResponse.IsSuccessStatusCode && transactionResponse.IsSuccessStatusCode*/)
+                        {
+                            User = await userResponse.Content.ReadFromJsonAsync<User>();
+                            Account = await accountResponse.Content.ReadFromJsonAsync<Account>();
+                            //FixedTermDeposit = await fixedTermDepositResponse.Content.ReadFromJsonAsync<List<Wall_Net.Models.FixedTermDeposit>>();
+                            //Transaction = await transactionResponse.Content.ReadFromJsonAsync<List<Transaction>>();
+
+                            return Page();
+                        }
                     }
                 }
             }

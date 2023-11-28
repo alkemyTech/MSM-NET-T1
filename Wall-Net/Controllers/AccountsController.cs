@@ -57,10 +57,10 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        [Authorize/*(Roles = "Admin")*/]
         public async Task<IActionResult> Get(int id)
         {
-            var account = await _accountServices.GetById(id);
+            var account = await _accountServices.GetByUserId(id);
+
             if (account == null)
             {
                 return NotFound("No se encontro la cuenta");
