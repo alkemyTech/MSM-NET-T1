@@ -18,7 +18,7 @@ namespace Wall_Net.Controllers
             _accountServices = accountServices;
         }
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
@@ -57,7 +57,7 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize/*(Roles = "Admin")*/]
         public async Task<IActionResult> Get(int id)
         {
             var account = await _accountServices.GetById(id);
