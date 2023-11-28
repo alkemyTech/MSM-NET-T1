@@ -87,10 +87,9 @@ namespace Wall_Net.Controllers
             //Crea los Claims
             var subject = new ClaimsIdentity(new[]
                     {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.NameIdentifier, user.FirstName),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.GivenName,user.FirstName),
                     new Claim(ClaimTypes.Surname, user.LastName),
                     new Claim(ClaimTypes.Role,rol.Name),
                     new Claim("Points",Convert.ToString(points)),
@@ -125,7 +124,6 @@ namespace Wall_Net.Controllers
             }
             else
             {
-                // Cambia esto según tus requisitos. En este caso, devuelvo Unauthorized para un usuario no autenticado.
                 return Unauthorized();
             }
         }

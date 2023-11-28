@@ -51,7 +51,7 @@ namespace Wall_Net.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task <IActionResult> Post(User user)
         {
             try
@@ -75,7 +75,27 @@ namespace Wall_Net.Controllers
                 user.Rol_Id = 2;
 
                 await _userServices.AddUser(user);
+
+                var newUser = await _userServices.GetUserById(user.Id);
+
+                var newAccount = new Account
+                {
+                    CreationDate = DateTime.Now,
+                    Money = 0,
+                    IsBlocked = false,
+                    UserId = user.Id,
+                };
+
+                if (newUser.Account == null)
+                {
+                    newUser.Accounts.Add(newAccount);
+                }
+
+                await _userServices.UpdateUser(newUser);
+
                 return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
+
+                
             }
             catch (Exception ex)
             {

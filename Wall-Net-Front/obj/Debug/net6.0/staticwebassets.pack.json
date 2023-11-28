@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\css\\ListUsers.css"
     },
     {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
@@ -25,8 +33,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\images\\_ca6e46c6-eef1-4cd2-97b5-0b49486aea76.jpeg",
+      "PackagePath": "staticwebassets\\images\\_ca6e46c6-eef1-4cd2-97b5-0b49486aea76.jpeg"
+    },
+    {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\images\\backLogin2.jpg",
       "PackagePath": "staticwebassets\\images\\backLogin2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\images\\cine2x1.jpg",
+      "PackagePath": "staticwebassets\\images\\cine2x1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\images\\logoWNet.jpeg",
+      "PackagePath": "staticwebassets\\images\\logoWNet.jpeg"
     },
     {
       "Id": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\wwwroot\\images\\material-747112_1920.jpg",

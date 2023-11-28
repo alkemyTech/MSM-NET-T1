@@ -18,6 +18,7 @@ namespace Wall_Net.Repositories
             var usuariosPaginados = await _dbcontext.Users
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
+                .Include(p => p.Account)
                 .ToListAsync();
 
             return usuariosPaginados;
@@ -25,7 +26,9 @@ namespace Wall_Net.Repositories
 
         public async Task<User> GetById(int id)
         {
-            return await _dbcontext.Users.FirstOrDefaultAsync(p => p.Id == id);
+            return _dbcontext.Users
+                .Include(a=>a.Account)
+                .FirstOrDefault(p => p.Id == id);
         }
 
         public async Task Add(User user)

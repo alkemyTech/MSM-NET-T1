@@ -2,33 +2,17 @@
 @model Wall_Net_Front.Pages.FixedTermDeposit.FixedTermDepositDetailModel
 @{
 }
-<div class="container">
-    <div class="row">
-        <form method="post">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Amount</th>
-                        <th>Creation Date</th>
-                        <th>Closing Date</th>
-                        <th>Nominal Rate</th>
-                        <th>State</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th>@Model.fixedTerm.Id</th>
-                        <th>@Model.fixedTerm.amount</th>
-                        <th>@Model.fixedTerm.creation_date</th>
-                        <th>@Model.fixedTerm.closing_date</th>
-                        <th>@Model.fixedTerm.nominalRate</th>
-                        <th>@Model.fixedTerm.state</th>
-                    </tr>
-
-                </tbody>
-            </table>
-        </form>
+<   <div class="card mb-3">
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: @Model.fixedTerm.Id</li>
+            <li class="list-group-item">Monto: @Model.fixedTerm.amount</li>
+            <li class="list-group-item">Fecha de Creación: @Model.fixedTerm.creation_date</li>
+            <li class="list-group-item">Fecha de Cierre: @Model.fixedTerm.closing_date</li>
+            <li class="list-group-item">Interes Nominal: @Model.fixedTerm.nominalRate</li>
+            <li class="list-group-item">Estado: @Model.fixedTerm.state</li>
+        </ul>
     </div>
+</div>
 
+<a class="btn-rosa" asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">Volver</a>

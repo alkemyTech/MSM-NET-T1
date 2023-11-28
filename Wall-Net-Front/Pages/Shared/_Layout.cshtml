@@ -3,49 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Wall_Net_Front</title>
+    <title>@ViewData["Title"] - Wall-Net</title>
+    <script src="https://kit.fontawesome.com/256e07d023.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" type="image/jpg" href="images/logoWNet.jpeg" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="opcionesHeader navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Wall_Net_Front</a>
+                <div>
+                    <a class="logo-Wall btn-neon" asp-area="" asp-page="/Home"><img class="img-log" src="~/images/logownet.jpeg" />WallNet</a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/ListUsers">Usuario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/UserProfile">Mi Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Catalogues/Catalogue">Catalogue</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Transactions/Transaction">Transaction</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/FixedTermDeposit/FixedTermDeposit">FixedTermDeposit</a>
-                        </li>
-                    </ul>
-                    <div>
-                        <partial name="_LoginStatusPartial" />
-                    </div>
+                <div class="opcionesDeUsuario navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_LoginStatusPartial" />
                 </div>
             </div>
-            
         </nav>
     </header>
     <div class="container">
@@ -53,11 +34,55 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Wall_Net_Front - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <button class="btn-topUp scroll-to-top" onclick="scrollToTop()"> <i class="fa-solid fa-arrow-up"></i></button>
+  
+    <footer>
+        <div class="logo-footer">
+            <a class="btn-logo-footer btn-neon" asp-area="" asp-page="/Home"><img class="img-footer" src="~/images/logownet.jpeg" />WallNet</a>
         </div>
+        <section class="links-footer">
+            <div class="info">
+                <h2>Información Importante</h2>
+                <ul class="infoList">
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Código de Prácticas Bancarias</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Defensa al consumidor</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Ayuda Urgente</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Portal del Cliente Bancario</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Protección de datos personales</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Cajeros con funcionalidad para personas con dificultad visual</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Personas expuestas políticamente</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Política ambiental</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Políticas de Salud e Higiene y Seguridad</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Personas Vinculadas Com. A-7404</a></li>
+                    <li><a class="btn-neon" asp-area="" asp-page="/Home">Reporte Responsable de Vulnerabilidades</a></li>
+                </ul>                                                                
+            </div> 
+            <div class="redesSociales">
+                <h2>Nuestras Redes</h2>
+                <ul class="redesList">
+                    <li>
+                        <a asp-page="https://www.facebook.com/" target="_blank">
+                            <i class="fa-brands fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="https://www.instagram.com" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="https://www.whatsapp.com/" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="https://www.linkedin.com/" target="_blank">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </footer>
 
     @* <script>

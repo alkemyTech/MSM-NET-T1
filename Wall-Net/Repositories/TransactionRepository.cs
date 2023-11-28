@@ -19,6 +19,7 @@ public class TransactionRepository : ITransactionRepository
         var usuariosPaginados = await _context.Transactions
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
+                .Include(p => p.Account)
                 .ToListAsync();
         return usuariosPaginados;
     }

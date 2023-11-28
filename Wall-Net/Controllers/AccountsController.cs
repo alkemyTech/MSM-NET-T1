@@ -187,6 +187,7 @@ namespace Wall_Net.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var account = await _accountServices.GetById(id);

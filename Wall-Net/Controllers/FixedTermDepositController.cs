@@ -149,12 +149,17 @@ namespace Wall_Net.Controllers
                     {
                         return NotFound();
                     }
-                    fixedTerm.closing_date = DateTime.Now;
-                    fixedTerm.state = "Cerrado";
-                    fixedTerm.Account.Money += fixedTerm.amount;
+                    if(fixedTerm.state != "Cerrado")
+                    {
+                        fixedTerm.closing_date = DateTime.Now;
+                        fixedTerm.state = "Cerrado";
+                        fixedTerm.Account.Money += fixedTerm.amount;
 
-                    await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
-                    return NoContent();
+                        await _FixedTernDepositServices.UpdateFixedTermDeposit(fixedTerm);
+                        return NoContent();
+                    }
+
+                    return BadRequest("Este plazo fijo ya fue cerrado");
                 }
                 return BadRequest();
             }

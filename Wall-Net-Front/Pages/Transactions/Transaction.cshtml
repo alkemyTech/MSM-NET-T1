@@ -36,7 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach (var item in Model.transactionList)
+                    @foreach (var item in Model.transactionList)
+                    {
+                        if (item != null)
                         {
                             <tr>
                                 <th>@item.TransactionId</th>
@@ -44,10 +46,11 @@
                                 <th>@item.Concept</th>
                                 <th>@item.Date</th>
                                 <th>@item.Type</th>
-                            </tr>
+                        </tr>
                         }
-                    
+                    }
                 </tbody>
             </table>
         </form>
     </div>
+</div>

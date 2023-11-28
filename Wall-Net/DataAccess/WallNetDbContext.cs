@@ -22,11 +22,22 @@ namespace Wall_Net.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Account>()
+                .HasOne(p => p.User)
+                .WithOne(p => p.Account)
+                .HasForeignKey<User>(p => p.AccountId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<User>()
+                .HasOne(p => p.Account)
+                .WithOne(p => p.User)
+                .HasForeignKey<Account>(p => p.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<FixedTermDeposit>()
                 .HasOne(p => p.User)
                 .WithMany(p => p.FixedTermDeposits)
