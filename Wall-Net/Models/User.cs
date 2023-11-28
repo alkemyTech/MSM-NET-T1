@@ -26,12 +26,18 @@ namespace Wall_Net.Models
 
         [Required(ErrorMessage = "El campo Contraseña es oblogatorio.")]
         public string Password { get; set; }
+
         public decimal Points { get; set; }
+
         public int Rol_Id { get; set; }
+
         public int AccountId { get; set; }
+
+
         [ForeignKey("AccountId")]
         [JsonIgnore]
         public virtual Account? Account { get; set; }
+
         [JsonIgnore]
         [InverseProperty("User")]
         public virtual ICollection<FixedTermDeposit> FixedTermDeposits { get; } = new List<FixedTermDeposit>();

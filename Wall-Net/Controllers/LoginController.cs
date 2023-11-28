@@ -111,6 +111,8 @@ namespace Wall_Net.Controllers
 
             return jwtToken;
         }
+        
+        
         [HttpGet]
         public async Task<ActionResult<User>> Get()
         {
