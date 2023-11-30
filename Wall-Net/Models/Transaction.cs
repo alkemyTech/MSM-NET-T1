@@ -7,13 +7,13 @@ namespace Wall_Net.Models
     {
         [Key]
         public int TransactionId { get; set; } // Id de transacción
-
+        [Required(ErrorMessage = "El campo 'Amount' es obligatorio.")]
         public decimal Amount { get; set; } // Monto
-
+        
         public string Concept { get; set; } // Observación
-
+        
         public DateTime Date { get; set; } // Fecha
-
+        
         public string Type { get; set; } // tipo de transacción - debe ser 'topup' o 'payment'
 
         public int AccountId { get; set; } // Id de cuenta

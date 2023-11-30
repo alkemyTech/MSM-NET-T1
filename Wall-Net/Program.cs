@@ -96,8 +96,9 @@ builder.Services.AddScoped<IAccountServices, AccountServices>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 
-builder.Services.AddScoped<IFixedTermDepositRepository,FixedTermDepositRepository>();
-builder.Services.AddScoped<IFixedTermDepositServices,FixedTermDepositServices>();
+
+builder.Services.AddScoped<IFixedTermDepositRepository, FixedTermDepositRepository>();
+builder.Services.AddScoped<IFixedTermDepositServices, FixedTermDepositServices>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

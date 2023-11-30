@@ -13,19 +13,31 @@ namespace Wall_Net.DataAccess
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Account> Accounts{ get; set; }
         public DbSet<Roles> roles { get; set; }
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<FixedTermDeposit> FixedTerms { get; set; }
         public DbSet<Catalogue> Catalogues { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=MILI\\SQLEXPRESS;Initial Catalog=Wall-Net;Integrated Security=True;Connect Timeout=30");
-
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\lean2\\OneDrive\\Documentos\\WallNet-db.mdf;Integrated Security=True;Connect Timeout=30");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Account>()
+                .HasOne(p => p.User)
+                .WithOne(p => p.Account)
+                .HasForeignKey<User>(p => p.AccountId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<User>()
+                .HasOne(p => p.Account)
+                .WithOne(p => p.User)
+                .HasForeignKey<Account>(p => p.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<FixedTermDeposit>()
                 .HasOne(p => p.User)
                 .WithMany(p => p.FixedTermDeposits)

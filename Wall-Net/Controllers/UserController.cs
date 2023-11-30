@@ -63,19 +63,40 @@ namespace Wall_Net.Controllers
                 }
 
                 // Comprobar si el correo electrónico ya existe
-                var users = await _userServices.GetAllUsers(1, 10);
+                var users = await _userServices.GetAllUsers(1, 1000);
                 foreach (var u in users)
                 {
                     if (u.Email == user.Email)
                     {
                         return BadRequest("El correo electrónico ya existe.");
                     }
+
                 }
 
-                user.Rol_Id = 2;
+                    user.Rol_Id = 2;
 
-                await _userServices.AddUser(user);
+                    await _userServices.AddUser(user);
+
+                    var newUser = await _userServices.GetUserById(user.Id);
+
+                    var newAccount = new Account
+                    {
+                        CreationDate = DateTime.Now,
+                        Money = 0,
+                        IsBlocked = false,
+                        UserId = user.Id,
+                    };
+
+                    if (newUser.Account == null)
+                    {
+                        newUser.Accounts.Add(newAccount);
+                    }
+
+                    await _userServices.UpdateUser(newUser);
+
                 return CreatedAtAction(nameof(Get), new { Id = user.Id }, user);
+                
+
             }
             catch (Exception ex)
             {
@@ -96,7 +117,7 @@ namespace Wall_Net.Controllers
                 }
                 user.FirstName = updatedUser.FirstName;
                 user.LastName = updatedUser.LastName;
-                user.Points = updatedUser.Points;
+                //user.Points = updatedUser.Points;
                 await _userServices.UpdateUser(user);
                 return NoContent();
             }

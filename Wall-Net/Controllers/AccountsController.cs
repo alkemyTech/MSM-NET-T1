@@ -18,7 +18,7 @@ namespace Wall_Net.Controllers
             _accountServices = accountServices;
         }
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int? numpag)
         {
             var accounts = await _accountServices.GetAll();
@@ -57,10 +57,10 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int id)
         {
-            var account = await _accountServices.GetById(id);
+            var account = await _accountServices.GetByUserId(id);
+
             if (account == null)
             {
                 return NotFound("No se encontro la cuenta");
@@ -88,20 +88,19 @@ namespace Wall_Net.Controllers
             return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
 
         }
-        [HttpPost("Deposito/{id}")]
-        public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
+        [HttpPost("Deposito")]
+        public async Task<IActionResult> Deposito([FromBody] Account account)
         {
             try
             {
                 var currentUser = GetCurrentUserId();
                 int idCurrent = currentUser.Id;
-                if (id == idCurrent)
+                var eAccount = await _accountServices.GetByUserId(idCurrent);
+                if (eAccount.UserId == idCurrent)
                 {
-                    var eAccount = await _accountServices.GetByUserId(id);
                     if (eAccount != null)
                     {
                         eAccount.Money += account.Money;
-                        //await _accountServices.Update(eAccount);
                         var transaction = new Transaction
                         {
                             Amount = account.Money,
@@ -187,6 +186,7 @@ namespace Wall_Net.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var account = await _accountServices.GetById(id);

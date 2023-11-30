@@ -7,10 +7,10 @@ namespace Wall_Net.DataAccess
         public int PaginaInicio { get; set; }
         public int PaginasTotales { get; set; }
 
-        public Paginacion(List<T> items, int contador, int paginaInicio, int cantidadRegistros) 
+        public Paginacion(List<T> items, int contador, int paginaInicio, int cantidadRegistros)
         {
             PaginaInicio = paginaInicio;
-            PaginasTotales =(int)Math.Ceiling(contador / (double)cantidadRegistros);
+            PaginasTotales = (int)Math.Ceiling(contador / (double)cantidadRegistros);
 
             this.AddRange(items);
         }
@@ -21,7 +21,7 @@ namespace Wall_Net.DataAccess
         public static async Task<Paginacion<T>> CrearPaginacion(IEnumerable<T> fuente, int paginaInicio, int cantidadRegistros)
         {
             var contador = fuente.Count();
-            var items = fuente.Skip((paginaInicio-1)*cantidadRegistros).Take(cantidadRegistros).ToList();
+            var items = fuente.Skip((paginaInicio - 1) * cantidadRegistros).Take(cantidadRegistros).ToList();
             return new Paginacion<T>(items, contador, paginaInicio, cantidadRegistros);
         }
     }

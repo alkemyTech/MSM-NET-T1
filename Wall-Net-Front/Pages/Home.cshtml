@@ -1,0 +1,27 @@
+﻿@page
+@using Wall_Net.Models;
+@model HomeModel
+@{
+    ViewData["Title"] = "Home page";
+    var currentUser = ViewData["currentUser"] as User;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hola @currentUser.FirstName! Bienvenido a Wall-Net!!!</h1>
+</div>
+
+
+<section class="infoMain">
+    <div class="infoCard">
+        <h2>Comprar</h2>
+        <p>Podés hacer compras en cualquier comercio o página web del mundo que acepte pagos con Wall-Net.</p>
+    </div>
+    <div class="infoCard">
+        <h2>Transferir</h2>
+        <p>Podés enviar y recibir plata desde cualquier cuenta. Gratis y en el acto. </p>
+    </div>
+    <div class="infoCard">
+        <h2>Descuentos</h2>
+        <p>Descuentos y beneficios todos los dias en todas tus compras pagando con Wall-Net.</p>
+    </div>
+</section>
