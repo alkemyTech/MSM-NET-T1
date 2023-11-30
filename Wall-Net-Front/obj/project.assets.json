@@ -2871,24 +2871,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\estudiante\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\lean2\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\Wall-Net-Front.csproj",
+      "projectUniqueName": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\Wall-Net-Front.csproj",
       "projectName": "Wall-Net-Front",
-      "projectPath": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\Wall-Net-Front.csproj",
-      "packagesPath": "C:\\Users\\estudiante\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net-Front\\obj\\",
+      "projectPath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\Wall-Net-Front.csproj",
+      "packagesPath": "C:\\Users\\lean2\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net-Front\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\estudiante\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\lean2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2896,15 +2891,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net\\Wall-Net.csproj": {
-              "projectPath": "C:\\Users\\estudiante\\source\\repos\\MSM-NET-T1-Front\\Wall-Net\\Wall-Net.csproj"
+            "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj": {
+              "projectPath": "C:\\Users\\lean2\\OneDrive\\Escritorio\\MSM-NET-T1\\Wall-Net\\Wall-Net.csproj"
             }
           }
         }
@@ -2943,7 +2937,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
