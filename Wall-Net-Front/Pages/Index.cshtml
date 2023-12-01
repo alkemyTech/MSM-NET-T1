@@ -10,12 +10,52 @@
         <h1 class="titulo display-4">Wall-Net</h1>
         <div class="InputsLogin">
             <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="email" placeholder="name@example.com" asp-for="Login.Email">
+                <label for="email">Ingrese su email</label>
+                <span asp-validation-for="Login.Email" class="text-white"></span>
+            </div>
+            <div class="form-floating" style="width: 80%;">
+                <input type="password" class="form-control" style="width:100%" id="password" autocomplete="off" placeholder="Password" asp-for="Login.Password">
+                <label for="password">Password</label>
+                <span asp-validation-for="Login.Password" class="text-white"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </div>
+        <div class="iniciarSesion">
+            <button id="login" class="btn-login" type="submit">Iniciar Sesión</button>
+        </div>
+        <div>
+            Aun no tenes una cuenta? <a class="text-white" asp-area="" asp-page="/Register">Registrate aca!</a>
+        </div>
+    </form>
+</div>
+<video class="videoLogin" muted autoplay loop>
+    <source src="~/videos/videoback.mp4" type="video/mp4" />
+</video>
+<div class="capa"></div>
+
+
+@* @page
+@model Wall_Net_Front.Pages.IndexModel
+@{
+    ViewData["Title"] = "Login page";
+    Layout = "_LoginLayout";
+}
+
+<div class="login">
+    <form class="formLogin" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h1 class="titulo display-4">Wall-Net</h1>
+        <div class="InputsLogin">
+            <div class="form-floating mb-3" style="width: 80%;">
                 <input type="text" class="form-control" style="width:100%" id="email" name="email" placeholder="name@example.com">
                 <label for="email">Ingrese su email</label>
+                <span asp-validation-for="Login.Email" class="text-white"></span>
             </div>
             <div class="form-floating" style="width: 80%;">
                 <input type="password" class="form-control" style="width:100%" id="password" autocomplete="off" name="password" placeholder="Password">
                 <label for="password">Password</label>
+                <span asp-validation-for="Login.Password" class="text-white"></span>
             </div>
         </div>
         <div class="iniciarSesion">
@@ -30,4 +70,4 @@
 <video class="videoLogin" muted autoplay loop>
     <source src="~/videos/videoback.mp4" type="video/mp4" />
 </video>
-<div class="capa"></div>
+<div class="capa"></div> *@

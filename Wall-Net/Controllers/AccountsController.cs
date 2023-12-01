@@ -213,7 +213,7 @@ namespace Wall_Net.Controllers
             account.IsBlocked = true;
             await _accountServices.Update(account);
 
-            return Ok();
+            return Ok("Su cuenta ha sido bloqueada");
         }
         //Desbloqueo de cuenta
         [HttpPatch("user/unlock/{id}")]
