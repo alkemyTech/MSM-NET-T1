@@ -1,7 +1,7 @@
 ﻿@page "/Catalogue"
 @model CatalogueModel
 @{
-    ViewData["Title"] = "Catalogue";
+    ViewData["Title"] = "Catálogo";
 }
 
 <div class="container">
@@ -29,8 +29,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
-                            <th>Points</th>
+                            <th>Puntos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +39,6 @@
                         {
                             <tr>
                                 <th>@item.Id</th>
-                                <th>@item.Image</th>
                                 <th>@item.Points</th>
                                 <th>
                                     <a asp-page="/Catalogues/CatalogueDetail" asp-route-id="@item.Id"  class="btn btn-primary">Ver detalles</a>

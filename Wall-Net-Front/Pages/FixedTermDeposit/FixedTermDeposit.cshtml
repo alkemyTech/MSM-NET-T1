@@ -1,7 +1,7 @@
 ﻿@page
 @model Wall_Net_Front.Pages.FixedTermDeposit.FixedTermDepositModel
 @{
-    ViewData["Title"] = "FixedTermDeposit";
+    ViewData["Title"] = "Plazo Fijo";
 }
 
 <div class="container">
@@ -29,8 +29,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Amount</th>
-                        <th>State</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +43,7 @@
                                 <th>@item.amount</th>
                                 <th>@item.state</th>
                                 <th>
-                                    <button asp-page-handler="Put" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro de cerrar el proyecto?')">Cerrar</button>
+                                    <button asp-page-handler="Put" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Esta seguro que desea cerrar el plazo fijo?')">Cerrar</button>
                                     <a asp-page="/FixedTermDeposit/FixedTermDepositDetail" asp-route-id="@item.Id" class="btn btn-primary">Ver detalles</a>
                                 </th>
                             </tr>

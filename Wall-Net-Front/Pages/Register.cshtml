@@ -1,0 +1,96 @@
+﻿@page
+@using Wall_Net.Models
+@model Wall_Net_Front.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register page";
+    Layout = "_LoginLayout";
+}
+
+<div class="login">
+    <form class="formLogin" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h1 class="titulo display-4">Wall-Net</h1>
+        <div class="InputsLogin">
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="FirstName" name="User.FirstName" placeholder="Ingrese su nombre">
+                <label for="FirstName">Ingrese su nombre</label>
+            </div>
+            <span asp-validation-for="User.FirstName" class="text-white"></span>
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="LastName" name="User.LastName" placeholder="Ingrese su apellido">
+                <label for="LastName">Ingrese su apellido</label>
+            </div>
+            <span asp-validation-for="User.LastName" class="text-white"></span>
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="email" name="User.Email" placeholder="Ingrese su email">
+                <label for="email">Ingrese su email</label>
+            </div>
+            <span asp-validation-for="User.Email " class="text-white"></span>
+            <div class="form-floating" style="width: 80%;">
+                <input type="password" class="form-control" style="width:100%" id="password" autocomplete="off" name="User.Password" placeholder="Password">
+                <label for="password">Password</label>
+            </div>
+            <span asp-validation-for="User.Password" class="text-white"></span>
+        </div>
+        <div class="iniciarSesion">
+            <button id="Register" class="btn-login" type="submit">Crear Cuenta</button>
+        </div>
+        <div>
+            Si ya tienes una cuenta? <a class="text-white" asp-area="" asp-page="/Index">Haz clic aquí</a>
+        </div>
+    </form>
+
+</div>
+<video class="videoLogin" muted autoplay loop>
+    <source src="~/videos/videoback.mp4" type="video/mp4" />
+</video>
+<div class="capa"></div>
+
+
+@* @page
+@using Wall_Net.Models;
+@model Wall_Net_Front.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register page";
+    Layout = "_LoginLayout";
+}
+
+<div class="login">
+    <form class="formLogin" method="post">
+        <h1 class="titulo display-4">Wall-Net</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="InputsLogin">
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="FirstName" name="firstName" placeholder="Ingrese su nombre">
+                <label for="email">Ingrese su nombre</label>
+            </div> 
+            <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="LastName" name="lastName" placeholder="Ingrese su apellido">
+                <label for="email">Ingrese su apellido</label>
+            </div> 
+            <span asp-validation-for="User.LastName" class="text-danger"></span>
+            <div class="form-floating mb-3" style="width: 80%;">
+                <input type="text" class="form-control" style="width:100%" id="email" name="email" placeholder="Ingrese su email">
+                <label for="email">Ingrese su email</label>
+            </div>
+            <span asp-validation-for="User.Email" class="text-danger"></span>
+            <div class="form-floating" style="width: 80%;">
+                <input type="password" class="form-control" style="width:100%" id="password" autocomplete="off" name="password" placeholder="Password">
+                <label for="password">Password</label>
+            </div>
+            <span asp-validation-for="User.Password" class="text-danger"></span>
+        </div>
+        <div class="iniciarSesion">
+            <button id="Register" class="btn-login" type="submit">Crear Cuenta</button>
+        </div>
+        <div>
+            Si ya tenes una cuenta? <a class="text-white" asp-area="" asp-page="/Index">Click aca!</a>
+        </div>
+    </form>
+   
+</div>
+<video class="videoLogin" muted autoplay loop>
+    <source src="~/videos/videoback.mp4" type="video/mp4" />
+</video>
+<div class="capa"></div> *@

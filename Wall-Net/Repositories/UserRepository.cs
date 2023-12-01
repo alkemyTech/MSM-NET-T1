@@ -45,7 +45,7 @@ namespace Wall_Net.Repositories
 
         public async Task Delete(int id)
         {
-            var user = _dbcontext.Users.FirstOrDefault(p => p.Id == id);
+            var user = await _dbcontext.Users.FirstOrDefaultAsync(p => p.Id == id);
             if (user != null)
             {
                 _dbcontext.Users.Remove(user);

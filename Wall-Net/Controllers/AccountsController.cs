@@ -57,10 +57,10 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpGet("{id}")]
-        [Authorize/*(Roles = "Admin")*/]
         public async Task<IActionResult> Get(int id)
         {
-            var account = await _accountServices.GetById(id);
+            var account = await _accountServices.GetByUserId(id);
+
             if (account == null)
             {
                 return NotFound("No se encontro la cuenta");
@@ -88,30 +88,29 @@ namespace Wall_Net.Controllers
             return StatusCode(201, new { message = "La cuenta ha sido creada exitosamente." });
 
         }
-        [HttpPost("Deposito/{id}")]
-        public async Task<IActionResult> Deposito(int id, [FromBody] Account account)
+        [HttpPost("Deposito")]
+        public async Task<IActionResult> Deposito(int Money)
         {
             try
             {
                 var currentUser = GetCurrentUserId();
                 int idCurrent = currentUser.Id;
-                if (id == idCurrent)
+                var eAccount = await _accountServices.GetByUserId(idCurrent);
+                if (eAccount.UserId == idCurrent)
                 {
-                    var eAccount = await _accountServices.GetByUserId(id);
                     if (eAccount != null)
                     {
-                        eAccount.Money += account.Money;
-                        //await _accountServices.Update(eAccount);
+                        eAccount.Money += Money;
                         var transaction = new Transaction
                         {
-                            Amount = account.Money,
+                            Amount = Money,
                             AccountId = eAccount.Id,
                             Concept = "Deposito",
                             Type = "topup",
                             UserId = currentUser.Id,
                         };
                         eAccount.Transactions.Add(transaction);
-                        decimal points = account.Money * 2 / 100;
+                        decimal points = Money * 2 / 100;
                         eAccount.User.Points += points;
                         await _accountServices.Update(eAccount);
                     }
@@ -128,21 +127,19 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpPost("Transferencia/{id}")]
-        public async Task<IActionResult> Transferencia(int id, [FromBody] Account account)
+        public async Task<IActionResult> Transferencia(int id, int Money)
         {
             try
             {
                 var currentUser = GetCurrentUserId();
                 var sendAccount = await _accountServices.GetByUserId(currentUser.Id);
 
-
-
                 var recAccount = await _accountServices.GetByUserId(id);
                 if (recAccount != null)
                 {
                     if (sendAccount.Money > 100)
                     {
-                        var montoTransferido = account.Money;
+                        var montoTransferido = Money;
                         sendAccount.Money -= montoTransferido;
                         recAccount.Money += montoTransferido;
                         await _accountServices.Update(recAccount);
@@ -155,7 +152,7 @@ namespace Wall_Net.Controllers
                     //await _accountServices.Update(eAccount);
                     var transaction = new Transaction
                     {
-                        Amount = account.Money,
+                        Amount = Money,
                         AccountId = currentUser.Id,
                         Concept = "Transferencia",
                         Type = "topup",
@@ -163,7 +160,7 @@ namespace Wall_Net.Controllers
                         ToAccountId = recAccount.Id,
                     };
                     sendAccount.Transactions.Add(transaction);
-                    decimal points = account.Money * 3 / 100;
+                    decimal points = Money * 3 / 100;
                     sendAccount.User.Points += points;
                     await _accountServices.Update(sendAccount);
                 }
@@ -216,7 +213,7 @@ namespace Wall_Net.Controllers
             account.IsBlocked = true;
             await _accountServices.Update(account);
 
-            return Ok();
+            return Ok("Su cuenta ha sido bloqueada");
         }
         //Desbloqueo de cuenta
         [HttpPatch("user/unlock/{id}")]
