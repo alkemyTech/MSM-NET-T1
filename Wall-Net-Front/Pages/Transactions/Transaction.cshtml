@@ -1,7 +1,7 @@
 ﻿@page "/Transaction"
 @model Wall_Net_Front.Pages.Transactions.TransactionModel
 @{
-    ViewData["Title"] = "Transaction";
+    ViewData["Title"] = "Transacciones";
 }
 
 <div class="container">
@@ -29,10 +29,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Amount</th>
-                        <th>Concept</th>
-                        <th>Date</th>
-                        <th>Type</th>
+                        <th>Monto</th>
+                        <th>Concepto</th>
+                        @* <th>Fecha</th> *@
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +44,7 @@
                                 <th>@item.TransactionId</th>
                                 <th>@item.Amount</th>
                                 <th>@item.Concept</th>
-                                <th>@item.Date</th>
+                                @* <th>@item.Date</th> *@
                                 <th>@item.Type</th>
                         </tr>
                         }

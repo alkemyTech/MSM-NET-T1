@@ -127,7 +127,7 @@ namespace Wall_Net.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{Id}")]
         public async Task <IActionResult> Delete(int Id)
         {

@@ -89,7 +89,7 @@ namespace Wall_Net.Controllers
 
         }
         [HttpPost("Deposito")]
-        public async Task<IActionResult> Deposito([FromBody] Account account)
+        public async Task<IActionResult> Deposito(int Money)
         {
             try
             {
@@ -100,17 +100,17 @@ namespace Wall_Net.Controllers
                 {
                     if (eAccount != null)
                     {
-                        eAccount.Money += account.Money;
+                        eAccount.Money += Money;
                         var transaction = new Transaction
                         {
-                            Amount = account.Money,
+                            Amount = Money,
                             AccountId = eAccount.Id,
                             Concept = "Deposito",
                             Type = "topup",
                             UserId = currentUser.Id,
                         };
                         eAccount.Transactions.Add(transaction);
-                        decimal points = account.Money * 2 / 100;
+                        decimal points = Money * 2 / 100;
                         eAccount.User.Points += points;
                         await _accountServices.Update(eAccount);
                     }
@@ -127,21 +127,19 @@ namespace Wall_Net.Controllers
             }
         }
         [HttpPost("Transferencia/{id}")]
-        public async Task<IActionResult> Transferencia(int id, [FromBody] Account account)
+        public async Task<IActionResult> Transferencia(int id, int Money)
         {
             try
             {
                 var currentUser = GetCurrentUserId();
                 var sendAccount = await _accountServices.GetByUserId(currentUser.Id);
 
-
-
                 var recAccount = await _accountServices.GetByUserId(id);
                 if (recAccount != null)
                 {
                     if (sendAccount.Money > 100)
                     {
-                        var montoTransferido = account.Money;
+                        var montoTransferido = Money;
                         sendAccount.Money -= montoTransferido;
                         recAccount.Money += montoTransferido;
                         await _accountServices.Update(recAccount);
@@ -154,7 +152,7 @@ namespace Wall_Net.Controllers
                     //await _accountServices.Update(eAccount);
                     var transaction = new Transaction
                     {
-                        Amount = account.Money,
+                        Amount = Money,
                         AccountId = currentUser.Id,
                         Concept = "Transferencia",
                         Type = "topup",
@@ -162,7 +160,7 @@ namespace Wall_Net.Controllers
                         ToAccountId = recAccount.Id,
                     };
                     sendAccount.Transactions.Add(transaction);
-                    decimal points = account.Money * 3 / 100;
+                    decimal points = Money * 3 / 100;
                     sendAccount.User.Points += points;
                     await _accountServices.Update(sendAccount);
                 }

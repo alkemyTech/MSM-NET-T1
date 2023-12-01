@@ -50,7 +50,7 @@
                                     }
                             </td>
                             <td class="text-center">
-                                <a asp-page="Editar" asp-route-Id="@usuario.Id" class="btn btn-primary">Editar</a>
+                                @* <a asp-page="Editar" asp-route-Id="@usuario.Id" class="btn btn-primary">Editar</a> *@
                                 <button asp-page-handler="Borrar" asp-route-Id="@usuario.Id" onclick="return confirm('Esta seguro de querer borrar el usuario?')"
                                         class="btn btn-danger btnsm">
                                     Borrar
